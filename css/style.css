@@ -1,0 +1,49 @@
+
+body{
+margin:0;
+font-family:Arial;
+background:#050510;
+color:white;
+text-align:center;
+}
+
+.hero{
+padding:100px 20px;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
+
+h1{
+font-size:48px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 30px;
+background:#00ffc3;
+color:black;
+border-radius:30px;
+text-decoration:none;
+margin-top:20px;
+}
+
+.products{
+padding:60px 20px;
+}
+
+.card{
+border:1px solid #00ffc3;
+padding:20px;
+margin:20px;
+display:inline-block;
+border-radius:15px;
+width:200px;
+}
+
+button{
+padding:8px 15px;
+margin-top:10px;
+}
+
+.cart{
+padding:60px 20px;
+}
