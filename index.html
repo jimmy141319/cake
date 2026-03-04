@@ -1,247 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#070812" />
-  <title>沐星人 MuStar｜外星電影品牌・甜點實驗室（商業版）</title>
-  <meta name="description" content="沐星人 MuStar 外星電影風甜點實驗室：商品展示、購物車、快速下單（Line 訊息一鍵帶單）。GitHub Pages 可直接上線。" />
-  <meta property="og:title" content="沐星人 MuStar｜外星電影品牌・甜點實驗室（商業版）" />
-  <meta property="og:description" content="外星電影風甜點實驗室：商品展示、購物車、快速下單（Line 一鍵帶單）。" />
-  <meta property="og:type" content="website" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沐星人 MuStar | 外星甜點基地</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <canvas id="starfield" aria-hidden="true"></canvas>
-  <div class="nebula" aria-hidden="true"></div>
-  <div class="vignette" aria-hidden="true"></div>
 
-  <header class="topbar">
-    <a class="brand" href="#top" aria-label="回到最上面">
-      <span class="logo">👽</span>
-      <span class="name">沐星人 <span class="muted">MuStar</span></span>
-    </a>
+<header class="hero">
+<h1>👽 沐星人 MuStar</h1>
+<p>外星電影品牌 · 甜點實驗室</p>
+<a class="btn" href="#products">立即購買</a>
+</header>
 
-    <nav class="navlinks" aria-label="網站導覽">
-      <a href="#products">商品</a>
-      <a href="#how">下單</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">聯絡</a>
-    </nav>
+<section id="products" class="products">
+<h2>外星實驗品</h2>
 
-    <div class="top-actions">
-      <button class="iconbtn" id="openCartTop" aria-label="打開購物車">
-        <span class="icon">🛒</span>
-        <span class="badge" id="cartCountTop">0</span>
-      </button>
-      <a class="cta" href="#products">立即購買</a>
-    </div>
-  </header>
+<div class="card">
+<h3>黑洞爆漿蛋糕</h3>
+<p>$420</p>
+<button onclick="addCart('黑洞爆漿蛋糕',420)">加入購物車</button>
+</div>
 
-  <main id="top">
-    <section class="hero section">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="badge-line">
-            <span class="chip">MOVIE MODE</span>
-            <span class="chip glow">ALIEN DESSERT LAB</span>
-            <span class="chip">FAST · MOBILE</span>
-          </div>
+<div class="card">
+<h3>星塵餅乾</h3>
+<p>$180</p>
+<button onclick="addCart('星塵餅乾',180)">加入購物車</button>
+</div>
 
-          <h1 class="title">
-            外星電影品牌<br />
-            <span class="grad">甜點實驗室</span>
-          </h1>
+<div class="card">
+<h3>DNA馬卡龍</h3>
+<p>$260</p>
+<button onclick="addCart('DNA馬卡龍',260)">加入購物車</button>
+</div>
 
-          <p class="lead">
-            這不是一般官網，是一個「可以直接收單」的商業版本：
-            <strong>商品展示</strong>＋<strong>購物車</strong>＋<strong>Line 一鍵帶單</strong>。
-          </p>
+</section>
 
-          <div class="hero-actions">
-            <a class="btn primary" href="#products">進入基地</a>
-            <button class="btn ghost" id="openCartHero" type="button">打開購物車</button>
-          </div>
+<section class="cart">
+<h2>🛒 購物車</h2>
+<ul id="cartList"></ul>
+<p id="total"></p>
+<a id="lineOrder" class="btn">用Line下單</a>
+</section>
 
-          <div class="trust">
-            <div class="trust-item"><div class="k">⚡</div><div class="v">霓虹電影感</div></div>
-            <div class="trust-item"><div class="k">🧊</div><div class="v">玻璃擬態</div></div>
-            <div class="trust-item"><div class="k">🛒</div><div class="v">前端購物車</div></div>
-            <div class="trust-item"><div class="k">📱</div><div class="v">手機優化</div></div>
-          </div>
-        </div>
+<script src="js/main.js"></script>
 
-        <div class="hero-visual" aria-hidden="true">
-          <div class="planet">
-            <div class="shine"></div>
-            <div class="ring"></div>
-          </div>
-          <div class="hud">
-            <div class="hud-row"><span>基地狀態</span><span class="ok">ONLINE</span></div>
-            <div class="hud-row"><span>甜點能量</span><span>98%</span></div>
-            <div class="hud-row"><span>下單通道</span><span class="ok">LINE</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scrollhint" aria-hidden="true">
-        <span class="dot"></span>
-        <span>往下滑查看商品</span>
-      </div>
-    </section>
-
-    <section class="section products" id="products">
-      <div class="container">
-        <div class="section-head">
-          <h2>外星實驗品</h2>
-          <p class="muted">首發 4 款商品（可自行改價格/圖片/文案）</p>
-        </div>
-
-        <div class="filters" role="group" aria-label="商品篩選">
-          <button class="pill active" data-filter="all" type="button">全部</button>
-          <button class="pill" data-filter="cake" type="button">蛋糕</button>
-          <button class="pill" data-filter="cookie" type="button">餅乾</button>
-          <button class="pill" data-filter="macaron" type="button">馬卡龍</button>
-        </div>
-
-        <div id="productGrid" class="grid" aria-live="polite"></div>
-
-        <div class="promo">
-          <div class="promo-card">
-            <div class="promo-title">🎬 電影道具級包裝</div>
-            <div class="promo-text">想做更像「外星基地補給箱」的包裝風格？可把包裝圖放到 assets/pack-*.png。</div>
-          </div>
-          <div class="promo-card">
-            <div class="promo-title">💰 要金流？</div>
-            <div class="promo-text">下一步可升級：表單下單 / 購物車結帳 / 綠界・藍新串接。</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section how" id="how">
-      <div class="container">
-        <div class="section-head">
-          <h2>快速下單（商業流程）</h2>
-          <p class="muted">目前最適合你：用 Line 帶單，立刻開始接單</p>
-        </div>
-
-        <div class="how-grid">
-          <div class="how-card">
-            <div class="num">1</div>
-            <h3>加入購物車</h3>
-            <p>挑商品、選數量，購物車自動計算總金額。</p>
-          </div>
-          <div class="how-card">
-            <div class="num">2</div>
-            <h3>填收件資訊</h3>
-            <p>輸入：姓名、電話、地址、備註（例如：幾點到）。</p>
-          </div>
-          <div class="how-card">
-            <div class="num">3</div>
-            <h3>一鍵送出 Line 訊息</h3>
-            <p>按「用 Line 下單」會把訂單內容帶入訊息，直接傳給你。</p>
-          </div>
-        </div>
-
-        <div class="linebox" id="contact">
-          <div class="line-left">
-            <div class="line-title">📡 Line 下單管道</div>
-            <div class="line-id">Line ID：<strong id="lineIdText">jimmy141319</strong></div>
-            <div class="muted">可改成官方帳號，或加 QR Code 圖（assets/line-qr.png）。</div>
-          </div>
-          <div class="line-right">
-            <button class="btn ghost" id="copyLine" type="button">複製 Line ID</button>
-            <a class="btn primary" id="lineDirect" href="#" rel="noopener">直接開 Line</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section faq" id="faq">
-      <div class="container">
-        <div class="section-head">
-          <h2>FAQ</h2>
-          <p class="muted">把內容改成你真實的配送 / 取貨 / 付款方式即可</p>
-        </div>
-
-        <div class="faq-grid">
-          <details class="faq-item" open>
-            <summary>可以自取嗎？</summary>
-            <div class="ans">可以。下單時在備註寫「自取時間」，我會回覆確認。</div>
-          </details>
-          <details class="faq-item">
-            <summary>多久可以出貨？</summary>
-            <div class="ans">一般 1–2 天內安排出貨（可依你實際狀況修改）。</div>
-          </details>
-          <details class="faq-item">
-            <summary>保存方式？</summary>
-            <div class="ans">蛋糕冷藏、餅乾常溫密封、馬卡龍冷藏；以你產品特性修改。</div>
-          </details>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- CART DRAWER -->
-  <aside class="drawer" id="cartDrawer" aria-hidden="true">
-    <div class="drawer-backdrop" id="drawerBackdrop"></div>
-    <div class="drawer-panel" role="dialog" aria-label="購物車">
-      <div class="drawer-head">
-        <div class="drawer-title">🛒 購物車</div>
-        <button class="iconbtn" id="closeCart" aria-label="關閉購物車">✕</button>
-      </div>
-
-      <div class="drawer-body">
-        <div class="cart-items" id="cartItems"></div>
-
-        <div class="cart-sum">
-          <div class="row"><span>小計</span><span id="subtotal">NT$ 0</span></div>
-          <div class="row"><span>運費</span><span id="shipping">NT$ 0</span></div>
-          <div class="row total"><span>總計</span><span id="total">NT$ 0</span></div>
-          <div class="muted tiny">※ 運費規則可在 js/main.js 修改（目前：滿 999 免運，否則 80）。</div>
-        </div>
-
-        <div class="form">
-          <div class="frow">
-            <label>姓名</label>
-            <input id="custName" placeholder="王小明" autocomplete="name" />
-          </div>
-          <div class="frow">
-            <label>電話</label>
-            <input id="custPhone" placeholder="09xx-xxx-xxx" autocomplete="tel" />
-          </div>
-          <div class="frow">
-            <label>地址</label>
-            <input id="custAddr" placeholder="基隆市/台北市…" autocomplete="street-address" />
-          </div>
-          <div class="frow">
-            <label>備註</label>
-            <textarea id="custNote" rows="3" placeholder="自取/配送時間、口味、蠟燭需求…"></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div class="drawer-foot">
-        <button class="btn ghost" id="clearCart" type="button">清空</button>
-        <button class="btn primary" id="checkoutLine" type="button">用 Line 下單</button>
-      </div>
-    </div>
-  </aside>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <footer class="footer">
-    <div class="container foot-inner">
-      <div>© 2026 沐星人 MuStar Bakery · Alien Cinematic Commerce</div>
-      <div class="muted">GitHub Pages Ready · 前端購物車 + Line 帶單</div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
 </body>
 </html>
