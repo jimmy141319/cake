@@ -1,51 +1,96 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>沐星人 MuStar | 外星甜點基地</title>
-<link rel="stylesheet" href="css/style.css">
-</head>
+<!doctype html>
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#070812"/>
+<title>沐星人 MuStar｜V3 品牌官網</title>
+<link rel="icon" href="assets/favicon.svg?v=1772599880" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=1772599880"/>
+</head><body>
+<canvas id="stars" aria-hidden="true"></canvas>
 
-<body>
-
-<header class="hero">
-<h1>👽 沐星人 MuStar</h1>
-<p>外星電影品牌 · 甜點實驗室</p>
-<a class="btn" href="#products">立即購買</a>
+<header class="top">
+  <a class="brand" href="#top"><span class="logo">👽</span><span>沐星人 <b>MuStar</b></span></a>
+  <div class="actions">
+    <button class="icon" id="cartBtn">🛒<span id="cartCount">0</span></button>
+    <a class="cta" href="#products">立即購買</a>
+  </div>
 </header>
 
-<section id="products" class="products">
-<h2>外星實驗品</h2>
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="chips"><span>MOVIE MODE</span><span class="g">ALIEN DESSERT LAB</span><span>V3</span></div>
+      <h1>外星電影品牌<br><span class="grad">甜點實驗室</span></h1>
+      <p>V3 升級：<b>圖片商品卡</b>＋<b>購物車</b>＋<b>Line 一鍵下單</b>。目前圖片先用網路示意圖，之後可換成你的照片。</p>
+      <div class="btns">
+        <a class="btn p" href="#products">進入基地</a>
+        <button class="btn" id="cartBtn2">打開購物車</button>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<h3>黑洞爆漿蛋糕</h3>
-<p>$420</p>
-<button onclick="addCart('黑洞爆漿蛋糕',420)">加入購物車</button>
+  <section class="sec" id="products">
+    <div class="wrap">
+      <div class="head"><h2>外星實驗品</h2><span class="muted">示意圖用網路圖（可換）</span></div>
+      <div class="filters" id="filters">
+        <button data-f="all" class="on">全部</button>
+        <button data-f="cake">蛋糕</button>
+        <button data-f="cookie">餅乾</button>
+        <button data-f="macaron">馬卡龍</button>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="how">
+    <div class="wrap">
+      <div class="head"><h2>快速下單</h2><span class="muted">加入購物車 → 填資訊 → Line 送出</span></div>
+      <div class="how">
+        <div><b>1</b><p>加入購物車</p></div>
+        <div><b>2</b><p>填收件資訊</p></div>
+        <div><b>3</b><p>Line 一鍵帶單</p></div>
+      </div>
+      <div class="linebox" id="contact">
+        <div><div class="t">📡 Line 下單</div><div>Line ID：<b id="lineIdTxt">jimmy141319</b></div><div class="muted">之後可加 QR Code</div></div>
+        <div class="btns">
+          <button class="btn" id="copyLine">複製 Line ID</button>
+          <a class="btn p" id="openLine" href="#">直接開 Line</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="back" id="back"></div>
+  <div class="panel">
+    <div class="ph"><div>🛒 購物車</div><button class="x" id="close">✕</button></div>
+    <div class="pb">
+      <div id="items" class="items"></div>
+      <div class="sum">
+        <div><span>小計</span><span id="sub">NT$ 0</span></div>
+        <div><span>運費</span><span id="ship">NT$ 0</span></div>
+        <div class="tot"><span>總計</span><span id="tot">NT$ 0</span></div>
+        <div class="muted s">滿 999 免運，否則 80（可改）</div>
+      </div>
+      <div class="form">
+        <label>姓名<input id="n" placeholder="王小明"></label>
+        <label>電話<input id="p" placeholder="09xx-xxx-xxx"></label>
+        <label>地址<input id="a" placeholder="基隆市/台北市…"></label>
+        <label>備註<textarea id="m" rows="3" placeholder="自取/配送時間、口味…"></textarea></label>
+      </div>
+    </div>
+    <div class="pf">
+      <button class="btn" id="clear">清空</button>
+      <button class="btn p" id="checkout">用 Line 下單</button>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<h3>星塵餅乾</h3>
-<p>$180</p>
-<button onclick="addCart('星塵餅乾',180)">加入購物車</button>
-</div>
+<div class="toast" id="toast"></div>
 
-<div class="card">
-<h3>DNA馬卡龍</h3>
-<p>$260</p>
-<button onclick="addCart('DNA馬卡龍',260)">加入購物車</button>
-</div>
-
-</section>
-
-<section class="cart">
-<h2>🛒 購物車</h2>
-<ul id="cartList"></ul>
-<p id="total"></p>
-<a id="lineOrder" class="btn">用Line下單</a>
-</section>
-
-<script src="js/main.js"></script>
-
-</body>
-</html>
+<script id="seed" type="application/json">[{"id": "p1", "cat": "cake", "tag": "BLACK HOLE", "name": "黑洞爆漿蛋糕", "price": 420, "desc": "外層微苦可可，內餡爆漿像引力崩塌。", "img": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=80"}, {"id": "p2", "cat": "cookie", "tag": "STAR DUST", "name": "星塵餅乾", "price": 180, "desc": "奶油香氣像失重漂浮，入口酥化尾韻擴散。", "img": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=1200&q=80"}, {"id": "p3", "cat": "macaron", "tag": "DNA", "name": "DNA 馬卡龍", "price": 260, "desc": "外殼脆、內裡柔，甜度像被校準過。", "img": "https://images.unsplash.com/photo-1587248720327-8eb72564be1e?auto=format&fit=crop&w=1200&q=80"}, {"id": "p4", "cat": "cake", "tag": "NEBULA", "name": "星雲奶油蛋糕", "price": 380, "desc": "莓果酸甜像穿越星雲的光。", "img": "https://images.unsplash.com/photo-1542826438-1d0b45b7b04b?auto=format&fit=crop&w=1200&q=80"}]</script>
+<script src="js/main.js?v=1772599880"></script>
+</body></html>
