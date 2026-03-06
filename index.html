@@ -1,96 +1,172 @@
-<!doctype html>
-<html lang="zh-Hant"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<meta name="theme-color" content="#070812"/>
-<title>沐星人 MuStar｜V3 品牌官網</title>
-<link rel="icon" href="assets/favicon.svg?v=1772599880" type="image/svg+xml"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=1772599880"/>
-</head><body>
-<canvas id="stars" aria-hidden="true"></canvas>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MuStar AI Studio | V16 AI + 商業顧問案例網站</title>
+  <meta name="description" content="MuStar AI Studio：AI品牌升級、互動網站設計、商業顧問案例展示。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
 
-<header class="top">
-  <a class="brand" href="#top"><span class="logo">👽</span><span>沐星人 <b>MuStar</b></span></a>
-  <div class="actions">
-    <button class="icon" id="cartBtn">🛒<span id="cartCount">0</span></button>
-    <a class="cta" href="#products">立即購買</a>
-  </div>
-</header>
-
-<main id="top">
-  <section class="hero">
-    <div class="wrap">
-      <div class="chips"><span>MOVIE MODE</span><span class="g">ALIEN DESSERT LAB</span><span>V3</span></div>
-      <h1>外星電影品牌<br><span class="grad">甜點實驗室</span></h1>
-      <p>V3 升級：<b>圖片商品卡</b>＋<b>購物車</b>＋<b>Line 一鍵下單</b>。目前圖片先用網路示意圖，之後可換成你的照片。</p>
-      <div class="btns">
-        <a class="btn p" href="#products">進入基地</a>
-        <button class="btn" id="cartBtn2">打開購物車</button>
-      </div>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <span class="brand-badge">M</span>
+        <span>
+          <strong>MuStar AI Studio</strong>
+          <small>V16 · AI + 商業混合</small>
+        </span>
+      </a>
+      <nav class="menu">
+        <a href="#services">服務</a>
+        <a href="#cases">案例</a>
+        <a href="#about">關於我</a>
+        <a href="#contact">聯絡</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <section class="sec" id="products">
-    <div class="wrap">
-      <div class="head"><h2>外星實驗品</h2><span class="muted">示意圖用網路圖（可換）</span></div>
-      <div class="filters" id="filters">
-        <button data-f="all" class="on">全部</button>
-        <button data-f="cake">蛋糕</button>
-        <button data-f="cookie">餅乾</button>
-        <button data-f="macaron">馬卡龍</button>
-      </div>
-      <div class="grid" id="grid"></div>
-    </div>
-  </section>
-
-  <section class="sec" id="how">
-    <div class="wrap">
-      <div class="head"><h2>快速下單</h2><span class="muted">加入購物車 → 填資訊 → Line 送出</span></div>
-      <div class="how">
-        <div><b>1</b><p>加入購物車</p></div>
-        <div><b>2</b><p>填收件資訊</p></div>
-        <div><b>3</b><p>Line 一鍵帶單</p></div>
-      </div>
-      <div class="linebox" id="contact">
-        <div><div class="t">📡 Line 下單</div><div>Line ID：<b id="lineIdTxt">jimmy141319</b></div><div class="muted">之後可加 QR Code</div></div>
-        <div class="btns">
-          <button class="btn" id="copyLine">複製 Line ID</button>
-          <a class="btn p" id="openLine" href="#">直接開 Line</a>
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-copy">
+        <p class="eyebrow">AI 顧問案例網站</p>
+        <h1>幫中小企業做<br><span>AI 品牌升級 × 互動網站 × 商業展示</span></h1>
+        <p class="lead">
+          MuStar AI Studio 以「品牌、UI、互動、導流」為核心，
+          把抽象想法變成可上線、可展示、可成交的網站案例。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#cases">查看案例</a>
+          <a class="btn btn-secondary" href="#contact">聯絡顧問</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric"><strong>AI</strong><span>品牌升級</span></div>
+          <div class="metric"><strong>UI</strong><span>互動體驗</span></div>
+          <div class="metric"><strong>WEB</strong><span>GitHub 上線</span></div>
         </div>
       </div>
-    </div>
-  </section>
-</main>
 
-<div class="drawer" id="drawer" aria-hidden="true">
-  <div class="back" id="back"></div>
-  <div class="panel">
-    <div class="ph"><div>🛒 購物車</div><button class="x" id="close">✕</button></div>
-    <div class="pb">
-      <div id="items" class="items"></div>
-      <div class="sum">
-        <div><span>小計</span><span id="sub">NT$ 0</span></div>
-        <div><span>運費</span><span id="ship">NT$ 0</span></div>
-        <div class="tot"><span>總計</span><span id="tot">NT$ 0</span></div>
-        <div class="muted s">滿 999 免運，否則 80（可改）</div>
+      <div class="hero-card glass">
+        <div class="card-top">
+          <span class="pill">展示型網站</span>
+          <span class="pill">顧問型定位</span>
+        </div>
+        <h3>你的定位不是只會做網站</h3>
+        <p>而是能幫客戶整理品牌、規劃案例、做出可成交的展示入口。</p>
+        <ul class="feature-list">
+          <li>AI 品牌顧問定位</li>
+          <li>互動式案例展示</li>
+          <li>商業導流頁規劃</li>
+          <li>可直接上 GitHub Pages</li>
+        </ul>
       </div>
-      <div class="form">
-        <label>姓名<input id="n" placeholder="王小明"></label>
-        <label>電話<input id="p" placeholder="09xx-xxx-xxx"></label>
-        <label>地址<input id="a" placeholder="基隆市/台北市…"></label>
-        <label>備註<textarea id="m" rows="3" placeholder="自取/配送時間、口味…"></textarea></label>
+    </section>
+
+    <section id="services" class="section container">
+      <div class="section-head">
+        <p class="eyebrow">服務內容</p>
+        <h2>你可以提供給客戶的服務</h2>
       </div>
-    </div>
-    <div class="pf">
-      <button class="btn" id="clear">清空</button>
-      <button class="btn p" id="checkout">用 Line 下單</button>
-    </div>
-  </div>
-</div>
+      <div class="grid-3">
+        <article class="card glass">
+          <div class="icon">🎯</div>
+          <h3>AI 品牌升級</h3>
+          <p>品牌故事、視覺方向、網站定位、內容架構，幫企業先把品牌講清楚。</p>
+        </article>
+        <article class="card glass">
+          <div class="icon">🧠</div>
+          <h3>AI 互動網站</h3>
+          <p>不只是官網，而是可展示、可互動、可被客戶記住的數位門面。</p>
+        </article>
+        <article class="card glass">
+          <div class="icon">📈</div>
+          <h3>商業導流規劃</h3>
+          <p>整合 LINE、IG、表單、Landing Page，讓流量不只是曝光，而是轉化。</p>
+        </article>
+      </div>
+    </section>
 
-<div class="toast" id="toast"></div>
+    <section id="cases" class="section container">
+      <div class="section-head">
+        <p class="eyebrow">案例展示</p>
+        <h2>目前可展示的 AI UI 案例</h2>
+      </div>
 
-<script id="seed" type="application/json">[{"id": "p1", "cat": "cake", "tag": "BLACK HOLE", "name": "黑洞爆漿蛋糕", "price": 420, "desc": "外層微苦可可，內餡爆漿像引力崩塌。", "img": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=80"}, {"id": "p2", "cat": "cookie", "tag": "STAR DUST", "name": "星塵餅乾", "price": 180, "desc": "奶油香氣像失重漂浮，入口酥化尾韻擴散。", "img": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=1200&q=80"}, {"id": "p3", "cat": "macaron", "tag": "DNA", "name": "DNA 馬卡龍", "price": 260, "desc": "外殼脆、內裡柔，甜度像被校準過。", "img": "https://images.unsplash.com/photo-1587248720327-8eb72564be1e?auto=format&fit=crop&w=1200&q=80"}, {"id": "p4", "cat": "cake", "tag": "NEBULA", "name": "星雲奶油蛋糕", "price": 380, "desc": "莓果酸甜像穿越星雲的光。", "img": "https://images.unsplash.com/photo-1542826438-1d0b45b7b04b?auto=format&fit=crop&w=1200&q=80"}]</script>
-<script src="js/main.js?v=1772599880"></script>
-</body></html>
+      <div class="case-main glass">
+        <div class="case-copy">
+          <span class="pill hot">主案例</span>
+          <h3>MuStar 火星寵物樂園</h3>
+          <p>
+            這是一個把品牌風格、角色設定、互動 UI 與 GitHub Pages 上線整合在一起的展示案例。
+            適合用來對客戶說明：品牌可以不只是靜態頁，而是有記憶點的互動體驗。
+          </p>
+          <ul>
+            <li>火星宇宙視覺</li>
+            <li>寵物角色互動</li>
+            <li>品牌故事延伸</li>
+            <li>GitHub 可直接部署</li>
+          </ul>
+          <a class="btn btn-primary" href="https://jimmy141319.github.io/cake/" target="_blank" rel="noopener">查看目前 GitHub 案例</a>
+        </div>
+
+        <div class="case-visual">
+          <div class="planet"></div>
+          <div class="case-panel glass">
+            <div class="mini-title">Case Preview</div>
+            <div class="mini-screen">
+              <div class="mini-cat">🐱</div>
+              <div class="mini-bars"><span></span><span></span><span></span></div>
+            </div>
+            <p>AI UI × 商業展示 × 互動品牌案例</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card glass">
+          <h3>品牌案例頁</h3>
+          <p>可幫客戶整理品牌定位、服務內容、案例結構，做成提案型網站。</p>
+        </article>
+        <article class="card glass">
+          <h3>商業 Landing Page</h3>
+          <p>把商品、服務、聯絡方式、表單、QR code 串在一起，方便導流成交。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section container">
+      <div class="section-head">
+        <p class="eyebrow">關於我</p>
+        <h2>Jimmy Chang · AI 品牌升級顧問</h2>
+      </div>
+      <div class="about glass">
+        <p>我目前正在建立一套能落地變現的 AI 顧問模式，方向聚焦在 <strong>中小企業品牌升級、互動網站設計、數位展示案例</strong>。</p>
+        <p>MuStar AI Studio 不只是作品，而是未來拿給客戶看的「顧問案例入口」。</p>
+      </div>
+    </section>
+
+    <section id="contact" class="section container">
+      <div class="section-head">
+        <p class="eyebrow">聯絡方式</p>
+        <h2>讓客戶可以直接找到你</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="card glass"><h3>LINE</h3><p>jimmy141319</p></div>
+        <div class="card glass"><h3>Instagram</h3><p>@mustar_bakery</p></div>
+        <div class="card glass"><h3>GitHub</h3><p>jimmy141319 / cake</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p>© 2026 MuStar AI Studio · V16 AI + 商業混合版</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
