@@ -1,127 +1,427 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MuStar AI Studio | V18 Notion 商業版</title>
-  <meta name="description" content="MuStar AI Studio：AI品牌顧問、互動網站、商業展示與導流規劃。" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <title>Guide Quiz V900 商業版</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{
+      box-sizing:border-box;
+    }
+    body{
+      margin:0;
+      font-family:Arial,"Microsoft JhengHei",sans-serif;
+      background:linear-gradient(180deg,#f7f9ff 0%,#eef3ff 100%);
+      color:#222;
+    }
+    .hero{
+      background:linear-gradient(135deg,#4a90e2 0%,#7b61ff 100%);
+      color:#fff;
+      padding:60px 20px 40px;
+      text-align:center;
+    }
+    .hero h1{
+      margin:0 0 12px;
+      font-size:38px;
+    }
+    .hero p{
+      margin:0 auto 24px;
+      max-width:700px;
+      line-height:1.8;
+      font-size:18px;
+    }
+    .hero-btn{
+      display:inline-block;
+      padding:14px 26px;
+      border-radius:10px;
+      background:#fff;
+      color:#4a90e2;
+      font-weight:bold;
+      text-decoration:none;
+      cursor:pointer;
+      border:none;
+      font-size:17px;
+      margin:6px;
+    }
+    .section{
+      max-width:960px;
+      margin:0 auto;
+      padding:28px 20px;
+    }
+    .card{
+      background:#fff;
+      border-radius:16px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.08);
+      padding:24px;
+      margin-bottom:22px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
+    .feature{
+      background:#fff;
+      border-radius:14px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.06);
+      padding:22px;
+      text-align:center;
+    }
+    .feature h3{
+      margin-top:0;
+      color:#4a90e2;
+    }
+    .quiz-title{
+      font-size:28px;
+      margin-bottom:10px;
+      text-align:center;
+    }
+    .quiz-sub{
+      text-align:center;
+      color:#666;
+      margin-bottom:24px;
+    }
+    #question{
+      font-size:24px;
+      font-weight:bold;
+      margin-bottom:20px;
+      text-align:center;
+      line-height:1.6;
+    }
+    .option{
+      display:block;
+      width:100%;
+      border:none;
+      padding:16px;
+      margin:12px 0;
+      border-radius:12px;
+      background:#edf3ff;
+      font-size:18px;
+      cursor:pointer;
+      transition:0.2s;
+    }
+    .option:hover{
+      background:#dce8ff;
+      transform:translateY(-1px);
+    }
+    .main-btn{
+      display:inline-block;
+      padding:14px 24px;
+      border:none;
+      border-radius:10px;
+      background:#4a90e2;
+      color:#fff;
+      font-size:17px;
+      cursor:pointer;
+      text-decoration:none;
+      margin:6px;
+    }
+    .main-btn:hover{
+      background:#357abd;
+    }
+    .line-btn{
+      display:inline-block;
+      padding:14px 24px;
+      border-radius:10px;
+      background:#06c755;
+      color:#fff;
+      text-decoration:none;
+      font-size:17px;
+      margin:6px;
+    }
+    .line-btn:hover{
+      background:#05aa49;
+    }
+    .result-box{
+      text-align:center;
+    }
+    .result-box h2{
+      font-size:32px;
+      margin-bottom:12px;
+      color:#4a90e2;
+    }
+    .result-text{
+      font-size:20px;
+      line-height:1.8;
+      margin:16px auto;
+      max-width:760px;
+    }
+    .tag{
+      display:inline-block;
+      padding:8px 14px;
+      background:#eef3ff;
+      border-radius:999px;
+      margin:6px;
+      color:#4a90e2;
+      font-weight:bold;
+    }
+    .contact-form{
+      max-width:700px;
+      margin:0 auto;
+    }
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:14px;
+      margin:10px 0;
+      border:1px solid #d7def0;
+      border-radius:10px;
+      font-size:16px;
+    }
+    .contact-form textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+    footer{
+      text-align:center;
+      padding:30px 20px 50px;
+      color:#777;
+      font-size:14px;
+    }
+    .hidden{
+      display:none;
+    }
+    .progress{
+      text-align:center;
+      color:#666;
+      margin-bottom:16px;
+      font-size:15px;
+    }
+    @media (max-width:640px){
+      .hero h1{
+        font-size:30px;
+      }
+      #question{
+        font-size:21px;
+      }
+    }
+  </style>
 </head>
 <body>
-  
-<header class="site-header">
-  <div class="container nav">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">M</span>
-      <span class="brand-copy">
-        <strong>MuStar AI Studio</strong>
-        <small>V18 · Notion 商業感</small>
-      </span>
-    </a>
-    <nav class="menu">
-      <a href="services.html">AI顧問</a>
-      <a href="cases.html">案例</a>
-      <a href="pricing.html">方案</a>
-      <a href="contact.html">聯絡</a>
-    </nav>
-  </div>
-</header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">AI 品牌顧問公司型網站</div>
-          <h1>幫企業打造<br><span>AI 品牌系統 × 互動網站 × 商業成長入口</span></h1>
-          <p class="lead">
-            MuStar AI Studio 專注於品牌定位、網站設計、案例展示與導流規劃，
-            幫中小企業、創業者與品牌方把抽象想法變成可展示、可成交的數位入口。
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-dark" href="cases.html">查看案例</a>
-            <a class="btn btn-light" href="contact.html">預約顧問</a>
-          </div>
-          <div class="hero-tags">
-            <span>AI 品牌定位</span>
-            <span>互動式網站</span>
-            <span>商業 Landing Page</span>
-          </div>
-        </div>
-        <div class="hero-panel card">
-          <div class="panel-top">
-            <span class="mini-pill">顧問型定位</span>
-            <span class="mini-pill">Notion 商業風</span>
-          </div>
-          <h3>你的定位不是只會做網站</h3>
-          <p>
-            而是能幫客戶整理品牌、規劃案例、建立服務方案，並做出可被理解、可被詢問的商業型網站。
-          </p>
-          <ul>
-            <li>AI 品牌定位</li>
-            <li>案例展示架構</li>
-            <li>顧問型 Landing Page</li>
-            <li>GitHub Pages 快速上線</li>
-          </ul>
+  <section class="hero">
+    <h1>Guide Quiz V900 商業版</h1>
+    <p>用互動測驗快速了解你的個人特質，並引導用戶留下聯絡資料、加入 LINE，讓這個頁面不只是測驗，更能作為品牌展示與名單收集頁。</p>
+    <button class="hero-btn" onclick="scrollToQuiz()">立即開始測驗</button>
+    <a class="hero-btn" href="#contact">立即聯絡</a>
+  </section>
+
+  <section class="section">
+    <div class="grid">
+      <div class="feature">
+        <h3>品牌展示</h3>
+        <p>讓訪客一進站就知道你的服務定位與專業感。</p>
+      </div>
+      <div class="feature">
+        <h3>互動測驗</h3>
+        <p>用簡單問題提高停留時間，增加參與感。</p>
+      </div>
+      <div class="feature">
+        <h3>結果分析</h3>
+        <p>依照答題結果顯示對應類型與建議內容。</p>
+      </div>
+      <div class="feature">
+        <h3>收集名單</h3>
+        <p>加入聯絡表單與 LINE 按鈕，方便後續成交。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="quiz-section">
+    <div class="card" id="startCard">
+      <div class="quiz-title">人格測驗</div>
+      <div class="quiz-sub">回答 4 個問題，看看你屬於哪一種類型</div>
+      <div style="text-align:center;">
+        <button class="main-btn" onclick="startQuiz()">開始測驗</button>
+      </div>
+    </div>
+
+    <div class="card hidden" id="quizCard">
+      <div class="progress" id="progressText">第 1 / 4 題</div>
+      <div id="question"></div>
+      <div id="options"></div>
+    </div>
+
+    <div class="card hidden" id="resultCard">
+      <div class="result-box">
+        <h2 id="resultTitle">你的結果</h2>
+        <div id="resultTags"></div>
+        <div class="result-text" id="resultText"></div>
+        <div style="margin-top:18px;">
+          <a class="line-btn" href="https://line.me/" target="_blank">加入 LINE 諮詢</a>
+          <button class="main-btn" onclick="restartQuiz()">重新測驗</button>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">核心服務</div>
-          <h2>從品牌到成交入口，一次整理</h2>
+  <section class="section">
+    <div class="card">
+      <h2 style="text-align:center;margin-top:0;">這個頁面可以怎麼用？</h2>
+      <div class="grid">
+        <div class="feature">
+          <h3>客戶開發</h3>
+          <p>把測驗頁分享給潛在客戶，提升互動率與回覆率。</p>
         </div>
-        <div class="grid-4">
-          <article class="card service-card">
-            <div class="service-icon">01</div>
-            <h3>AI 品牌定位</h3>
-            <p>整理品牌故事、客群與網站主軸，建立清晰的對外說法。</p>
-          </article>
-          <article class="card service-card">
-            <div class="service-icon">02</div>
-            <h3>互動網站設計</h3>
-            <p>從首頁到案例頁，建立更有記憶點的品牌展示網站。</p>
-          </article>
-          <article class="card service-card">
-            <div class="service-icon">03</div>
-            <h3>案例包裝</h3>
-            <p>把你的作品整理成可展示、可說明、可成交的提案型頁面。</p>
-          </article>
-          <article class="card service-card">
-            <div class="service-icon">04</div>
-            <h3>導流規劃</h3>
-            <p>串接 LINE、社群、表單與 CTA，讓網站不只是展示。</p>
-          </article>
+        <div class="feature">
+          <h3>品牌簡介頁</h3>
+          <p>結合服務介紹、聯絡方式與行動按鈕，當作單頁官網。</p>
+        </div>
+        <div class="feature">
+          <h3>社群導流</h3>
+          <p>可放在 LINE、Facebook、IG 個人檔案中當導流入口。</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section soft">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">顧問流程</div>
-          <h2>企業最容易理解的合作流程</h2>
+  <section class="section" id="contact">
+    <div class="card">
+      <h2 style="text-align:center;margin-top:0;">聯絡我們</h2>
+      <p style="text-align:center;color:#666;">你可以把這裡當成名單收集區，讓客戶留下聯絡方式。</p>
+      <form class="contact-form" onsubmit="submitForm(event)">
+        <input type="text" id="name" placeholder="你的姓名" required>
+        <input type="email" id="email" placeholder="你的 Email" required>
+        <input type="text" id="phone" placeholder="你的電話 / LINE ID">
+        <textarea id="message" placeholder="請輸入你的需求或想詢問的內容"></textarea>
+        <div style="text-align:center;">
+          <button class="main-btn" type="submit">送出資料</button>
         </div>
-        <div class="timeline">
-          <div class="card timeline-card"><strong>STEP 1</strong><h3>品牌診斷</h3><p>了解產業、產品、客戶與現況。</p></div>
-          <div class="card timeline-card"><strong>STEP 2</strong><h3>品牌定位</h3><p>整理品牌核心與網站溝通方向。</p></div>
-          <div class="card timeline-card"><strong>STEP 3</strong><h3>網站設計</h3><p>建立首頁、案例頁、服務頁與聯絡入口。</p></div>
-          <div class="card timeline-card"><strong>STEP 4</strong><h3>AI 導流</h3><p>串接 LINE、社群與成交 CTA。</p></div>
-        </div>
-      </div>
-    </section>
-  </main>
-  
-<footer class="site-footer">
-  <div class="container footer-wrap">
-    <div>© 2026 MuStar AI Studio · V18 Notion 商業版</div>
-    <div>LINE：jimmy141319</div>
-  </div>
-</footer>
+      </form>
+      <p id="formResult" style="text-align:center;color:#4a90e2;font-weight:bold;"></p>
+    </div>
+  </section>
+
+  <footer>
+    Guide Quiz V900 商業版 · 可做品牌頁、測驗頁、導流頁
+  </footer>
+
+  <script>
+    const quizData = [
+      {
+        q: "當你開始一個新目標時，你最在意的是什麼？",
+        a: ["能不能做出特色", "能不能帶領團隊", "能不能穩定執行", "能不能保有彈性"]
+      },
+      {
+        q: "面對壓力時，你通常怎麼做？",
+        a: ["想新方法突破", "先協調資源", "按步驟處理", "先留空間調整"]
+      },
+      {
+        q: "哪一種工作模式最吸引你？",
+        a: ["創新與行銷", "管理與決策", "技術與系統", "自由與多元"]
+      },
+      {
+        q: "你最希望別人怎麼形容你？",
+        a: ["有想法", "有影響力", "可靠專業", "靈活自在"]
+      }
+    ];
+
+    let current = 0;
+    let score = [0,0,0,0];
+
+    const resultData = [
+      {
+        title: "創業型人格",
+        tags: ["創意強", "行動快", "擅長突破"],
+        text: "你偏向創業型人格，喜歡新想法、新機會與新市場。你適合品牌經營、創意企劃、行銷導流、產品開發等方向。你最大的優勢是敢開始、敢嘗試，也很適合把個人特色轉成商業價值。"
+      },
+      {
+        title: "領導型人格",
+        tags: ["帶人能力", "決策力", "整合資源"],
+        text: "你偏向領導型人格，重視方向、效率與團隊整合。你適合管理、業務拓展、專案統籌、顧問型工作。你的優勢在於能把人和資源組合起來，推動事情真正落地。"
+      },
+      {
+        title: "技術型人格",
+        tags: ["穩定", "邏輯", "專業度高"],
+        text: "你偏向技術型人格，做事講求邏輯、細節與穩定性。你適合系統規劃、工程技術、資料整理、流程優化、專業服務。你的價值在於可靠、扎實，能把複雜問題處理得更有效率。"
+      },
+      {
+        title: "自由型人格",
+        tags: ["彈性高", "適應快", "探索力強"],
+        text: "你偏向自由型人格，不喜歡被過度限制，喜歡彈性與多樣性。你適合自媒體、接案、顧客服務、旅遊類、內容創作或多元收入模式。你的優勢是反應快、轉換快，適合快速變動的市場。"
+      }
+    ];
+
+    function scrollToQuiz(){
+      document.getElementById("quiz-section").scrollIntoView({behavior:"smooth"});
+    }
+
+    function startQuiz(){
+      current = 0;
+      score = [0,0,0,0];
+      document.getElementById("startCard").classList.add("hidden");
+      document.getElementById("resultCard").classList.add("hidden");
+      document.getElementById("quizCard").classList.remove("hidden");
+      showQuestion();
+    }
+
+    function showQuestion(){
+      const item = quizData[current];
+      document.getElementById("progressText").innerText = "第 " + (current + 1) + " / " + quizData.length + " 題";
+      document.getElementById("question").innerText = item.q;
+
+      let html = "";
+      for(let i = 0; i < item.a.length; i++){
+        html += '<button class="option" onclick="chooseAnswer(' + i + ')">' + item.a[i] + '</button>';
+      }
+      document.getElementById("options").innerHTML = html;
+    }
+
+    function chooseAnswer(index){
+      score[index]++;
+      current++;
+      if(current < quizData.length){
+        showQuestion();
+      }else{
+        showResult();
+      }
+    }
+
+    function showResult(){
+      document.getElementById("quizCard").classList.add("hidden");
+      document.getElementById("resultCard").classList.remove("hidden");
+
+      const maxScore = Math.max(...score);
+      const resultIndex = score.indexOf(maxScore);
+      const result = resultData[resultIndex];
+
+      document.getElementById("resultTitle").innerText = result.title;
+      document.getElementById("resultText").innerText = result.text;
+
+      let tagHtml = "";
+      for(let i = 0; i < result.tags.length; i++){
+        tagHtml += '<span class="tag">' + result.tags[i] + '</span>';
+      }
+      document.getElementById("resultTags").innerHTML = tagHtml;
+
+      document.getElementById("resultCard").scrollIntoView({behavior:"smooth"});
+    }
+
+    function restartQuiz(){
+      document.getElementById("resultCard").classList.add("hidden");
+      document.getElementById("startCard").classList.remove("hidden");
+      document.getElementById("quiz-section").scrollIntoView({behavior:"smooth"});
+    }
+
+    function submitForm(event){
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if(name === "" || email === ""){
+        document.getElementById("formResult").innerText = "請先填寫姓名與 Email";
+        return;
+      }
+
+      document.getElementById("formResult").innerText = "資料已送出成功！你可以把這裡改成串接 Google 表單或實際後台。";
+
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("phone").value = "";
+      document.getElementById("message").value = "";
+    }
+  </script>
 
 </body>
 </html>
