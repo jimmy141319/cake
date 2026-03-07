@@ -2,349 +2,676 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>Guide Quiz V900 商業版</title>
+  <title>沐星人 MuStar｜V1000 品牌版</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     *{
       box-sizing:border-box;
     }
+    html{
+      scroll-behavior:smooth;
+    }
     body{
       margin:0;
       font-family:Arial,"Microsoft JhengHei",sans-serif;
-      background:linear-gradient(180deg,#f7f9ff 0%,#eef3ff 100%);
-      color:#222;
+      background:linear-gradient(180deg,#fffaf7 0%,#fff3ec 48%,#fffdfb 100%);
+      color:#4b3a33;
+    }
+    a{
+      text-decoration:none;
+    }
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(255,250,247,0.92);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(205,168,150,0.18);
+    }
+    .nav{
+      max-width:1120px;
+      margin:0 auto;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      font-size:24px;
+      font-weight:800;
+      color:#c97f5f;
+      letter-spacing:1px;
+    }
+    .nav-links{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .nav-links a{
+      color:#7b5c4d;
+      font-size:15px;
+      font-weight:600;
+    }
+    .btn{
+      display:inline-block;
+      border:none;
+      cursor:pointer;
+      border-radius:999px;
+      padding:13px 22px;
+      font-size:16px;
+      font-weight:700;
+      transition:0.2s;
+    }
+    .btn-main{
+      background:#f29b77;
+      color:#fff;
+      box-shadow:0 8px 20px rgba(242,155,119,0.28);
+    }
+    .btn-main:hover{
+      transform:translateY(-1px);
+      background:#eb8d66;
+    }
+    .btn-soft{
+      background:#fff;
+      color:#c97f5f;
+      border:1px solid #f2c7b3;
+    }
+    .btn-soft:hover{
+      background:#fff6f1;
+    }
+    .btn-line{
+      background:#06c755;
+      color:#fff;
+    }
+    .btn-line:hover{
+      background:#05af4b;
     }
     .hero{
-      background:linear-gradient(135deg,#4a90e2 0%,#7b61ff 100%);
-      color:#fff;
-      padding:60px 20px 40px;
-      text-align:center;
+      position:relative;
+      overflow:hidden;
     }
-    .hero h1{
-      margin:0 0 12px;
-      font-size:38px;
+    .hero-wrap{
+      max-width:1120px;
+      margin:0 auto;
+      padding:70px 20px 40px;
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:34px;
+      align-items:center;
     }
-    .hero p{
-      margin:0 auto 24px;
-      max-width:700px;
-      line-height:1.8;
+    .hero-text h1{
+      margin:0 0 16px;
+      font-size:54px;
+      line-height:1.15;
+      color:#7b4e3b;
+    }
+    .hero-text p{
+      margin:0 0 24px;
       font-size:18px;
+      line-height:1.9;
+      color:#7d6258;
+      max-width:640px;
     }
-    .hero-btn{
+    .badge-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:26px;
+    }
+    .badge{
       display:inline-block;
-      padding:14px 26px;
-      border-radius:10px;
-      background:#fff;
-      color:#4a90e2;
-      font-weight:bold;
-      text-decoration:none;
-      cursor:pointer;
-      border:none;
-      font-size:17px;
-      margin:6px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#fff1e7;
+      color:#c97f5f;
+      font-size:14px;
+      font-weight:700;
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+    .hero-card{
+      background:linear-gradient(180deg,#fff 0%,#fff6f1 100%);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:0 18px 50px rgba(189,132,101,0.16);
+      border:1px solid rgba(228,179,154,0.3);
+      position:relative;
+    }
+    .cake-emoji{
+      font-size:82px;
+      text-align:center;
+      margin-top:10px;
+    }
+    .hero-card h3{
+      text-align:center;
+      margin:12px 0 10px;
+      font-size:28px;
+      color:#b86d4d;
+    }
+    .hero-card p{
+      text-align:center;
+      color:#7d6258;
+      line-height:1.8;
+      margin:0;
     }
     .section{
-      max-width:960px;
+      max-width:1120px;
       margin:0 auto;
-      padding:28px 20px;
+      padding:34px 20px;
+    }
+    .section-title{
+      text-align:center;
+      margin-bottom:22px;
+    }
+    .section-title h2{
+      margin:0 0 8px;
+      font-size:34px;
+      color:#7b4e3b;
+    }
+    .section-title p{
+      margin:0;
+      color:#8a6d61;
+      line-height:1.8;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+    .grid-4{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
     }
     .card{
       background:#fff;
-      border-radius:16px;
-      box-shadow:0 8px 24px rgba(0,0,0,0.08);
+      border-radius:24px;
       padding:24px;
-      margin-bottom:22px;
+      box-shadow:0 14px 34px rgba(188,136,107,0.1);
+      border:1px solid rgba(233,198,180,0.28);
     }
-    .grid{
+    .feature-icon{
+      font-size:34px;
+      margin-bottom:10px;
+    }
+    .card h3{
+      margin:0 0 8px;
+      color:#b86d4d;
+      font-size:22px;
+    }
+    .card p{
+      margin:0;
+      color:#7d6258;
+      line-height:1.85;
+    }
+    .story{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .story-box{
+      background:#fff;
+      border-radius:26px;
+      padding:28px;
+      box-shadow:0 14px 34px rgba(188,136,107,0.1);
+      border:1px solid rgba(233,198,180,0.28);
+    }
+    .story-box h3{
+      margin-top:0;
+      font-size:28px;
+      color:#b86d4d;
+    }
+    .story-box p{
+      color:#7d6258;
+      line-height:1.95;
+      margin-bottom:14px;
+    }
+    .menu-list{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
       gap:18px;
     }
-    .feature{
+    .menu-item{
       background:#fff;
-      border-radius:14px;
-      box-shadow:0 8px 24px rgba(0,0,0,0.06);
+      border-radius:22px;
       padding:22px;
+      border:1px solid rgba(233,198,180,0.28);
+      box-shadow:0 12px 28px rgba(188,136,107,0.08);
       text-align:center;
     }
-    .feature h3{
-      margin-top:0;
-      color:#4a90e2;
-    }
-    .quiz-title{
-      font-size:28px;
+    .menu-item .emoji{
+      font-size:42px;
       margin-bottom:10px;
-      text-align:center;
     }
-    .quiz-sub{
+    .menu-item h4{
+      margin:0 0 8px;
+      color:#b86d4d;
+      font-size:20px;
+    }
+    .menu-item p{
+      margin:0;
+      color:#7d6258;
+      line-height:1.8;
+      font-size:15px;
+    }
+    .quiz-wrap{
+      max-width:900px;
+      margin:0 auto;
+    }
+    .quiz-card{
+      background:linear-gradient(180deg,#fff 0%,#fff8f4 100%);
+      border-radius:28px;
+      padding:30px;
+      box-shadow:0 18px 40px rgba(188,136,107,0.12);
+      border:1px solid rgba(233,198,180,0.3);
+    }
+    .quiz-head{
       text-align:center;
-      color:#666;
-      margin-bottom:24px;
+      margin-bottom:20px;
+    }
+    .quiz-head h2{
+      margin:0 0 8px;
+      color:#7b4e3b;
+      font-size:32px;
+    }
+    .quiz-head p{
+      margin:0;
+      color:#8a6d61;
+      line-height:1.8;
+    }
+    .progress{
+      text-align:center;
+      color:#9a7564;
+      margin-bottom:12px;
+      font-size:15px;
+      font-weight:700;
     }
     #question{
-      font-size:24px;
-      font-weight:bold;
-      margin-bottom:20px;
       text-align:center;
-      line-height:1.6;
+      font-size:26px;
+      color:#7b4e3b;
+      line-height:1.7;
+      font-weight:800;
+      margin-bottom:18px;
     }
     .option{
-      display:block;
       width:100%;
       border:none;
-      padding:16px;
-      margin:12px 0;
-      border-radius:12px;
-      background:#edf3ff;
-      font-size:18px;
+      border-radius:16px;
+      padding:16px 18px;
+      margin:10px 0;
+      background:#fff;
+      color:#6d5348;
+      font-size:17px;
+      font-weight:700;
       cursor:pointer;
+      border:1px solid #f2d8ca;
       transition:0.2s;
     }
     .option:hover{
-      background:#dce8ff;
+      background:#fff1e8;
       transform:translateY(-1px);
-    }
-    .main-btn{
-      display:inline-block;
-      padding:14px 24px;
-      border:none;
-      border-radius:10px;
-      background:#4a90e2;
-      color:#fff;
-      font-size:17px;
-      cursor:pointer;
-      text-decoration:none;
-      margin:6px;
-    }
-    .main-btn:hover{
-      background:#357abd;
-    }
-    .line-btn{
-      display:inline-block;
-      padding:14px 24px;
-      border-radius:10px;
-      background:#06c755;
-      color:#fff;
-      text-decoration:none;
-      font-size:17px;
-      margin:6px;
-    }
-    .line-btn:hover{
-      background:#05aa49;
-    }
-    .result-box{
-      text-align:center;
-    }
-    .result-box h2{
-      font-size:32px;
-      margin-bottom:12px;
-      color:#4a90e2;
-    }
-    .result-text{
-      font-size:20px;
-      line-height:1.8;
-      margin:16px auto;
-      max-width:760px;
-    }
-    .tag{
-      display:inline-block;
-      padding:8px 14px;
-      background:#eef3ff;
-      border-radius:999px;
-      margin:6px;
-      color:#4a90e2;
-      font-weight:bold;
-    }
-    .contact-form{
-      max-width:700px;
-      margin:0 auto;
-    }
-    .contact-form input,
-    .contact-form textarea{
-      width:100%;
-      padding:14px;
-      margin:10px 0;
-      border:1px solid #d7def0;
-      border-radius:10px;
-      font-size:16px;
-    }
-    .contact-form textarea{
-      min-height:120px;
-      resize:vertical;
-    }
-    footer{
-      text-align:center;
-      padding:30px 20px 50px;
-      color:#777;
-      font-size:14px;
     }
     .hidden{
       display:none;
     }
-    .progress{
+    .result-title{
       text-align:center;
-      color:#666;
-      margin-bottom:16px;
-      font-size:15px;
+      color:#b86d4d;
+      font-size:34px;
+      margin:0 0 10px;
+    }
+    .result-text{
+      text-align:center;
+      max-width:720px;
+      margin:0 auto;
+      color:#7d6258;
+      line-height:1.95;
+      font-size:18px;
+    }
+    .tag-row{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+      margin:18px 0 20px;
+    }
+    .tag{
+      background:#fff1e7;
+      color:#c97f5f;
+      border-radius:999px;
+      padding:8px 14px;
+      font-size:14px;
+      font-weight:800;
+    }
+    .center{
+      text-align:center;
+    }
+    .contact-box{
+      max-width:820px;
+      margin:0 auto;
+    }
+    .contact-form{
+      display:grid;
+      gap:12px;
+    }
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:15px 16px;
+      border-radius:14px;
+      border:1px solid #edd3c4;
+      font-size:16px;
+      color:#5f463c;
+      background:#fffdfa;
+    }
+    .contact-form textarea{
+      min-height:130px;
+      resize:vertical;
+    }
+    .contact-note{
+      text-align:center;
+      color:#c97f5f;
+      font-weight:800;
+      margin-top:12px;
+    }
+    .footer{
+      text-align:center;
+      padding:26px 20px 50px;
+      color:#947363;
+      font-size:14px;
+    }
+    @media (max-width:980px){
+      .hero-wrap,
+      .story{
+        grid-template-columns:1fr;
+      }
+      .grid-4{
+        grid-template-columns:repeat(2,1fr);
+      }
+      .grid-3,
+      .menu-list{
+        grid-template-columns:1fr;
+      }
+      .hero-text h1{
+        font-size:42px;
+      }
     }
     @media (max-width:640px){
-      .hero h1{
-        font-size:30px;
+      .nav{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .nav-links{
+        gap:12px;
+      }
+      .hero-wrap{
+        padding:46px 16px 26px;
+      }
+      .hero-text h1{
+        font-size:34px;
+      }
+      .hero-text p{
+        font-size:16px;
+      }
+      .section{
+        padding:26px 16px;
+      }
+      .section-title h2{
+        font-size:28px;
+      }
+      .quiz-card{
+        padding:22px;
       }
       #question{
-        font-size:21px;
+        font-size:22px;
+      }
+      .grid-4{
+        grid-template-columns:1fr;
       }
     }
   </style>
 </head>
 <body>
 
+  <div class="topbar">
+    <div class="nav">
+      <div class="brand">沐星人 MuStar</div>
+      <div class="nav-links">
+        <a href="#about">品牌故事</a>
+        <a href="#features">品牌特色</a>
+        <a href="#menu">人氣品項</a>
+        <a href="#quiz">風格測驗</a>
+        <a href="#contact">聯絡我們</a>
+      </div>
+    </div>
+  </div>
+
   <section class="hero">
-    <h1>Guide Quiz V900 商業版</h1>
-    <p>用互動測驗快速了解你的個人特質，並引導用戶留下聯絡資料、加入 LINE，讓這個頁面不只是測驗，更能作為品牌展示與名單收集頁。</p>
-    <button class="hero-btn" onclick="scrollToQuiz()">立即開始測驗</button>
-    <a class="hero-btn" href="#contact">立即聯絡</a>
-  </section>
-
-  <section class="section">
-    <div class="grid">
-      <div class="feature">
-        <h3>品牌展示</h3>
-        <p>讓訪客一進站就知道你的服務定位與專業感。</p>
-      </div>
-      <div class="feature">
-        <h3>互動測驗</h3>
-        <p>用簡單問題提高停留時間，增加參與感。</p>
-      </div>
-      <div class="feature">
-        <h3>結果分析</h3>
-        <p>依照答題結果顯示對應類型與建議內容。</p>
-      </div>
-      <div class="feature">
-        <h3>收集名單</h3>
-        <p>加入聯絡表單與 LINE 按鈕，方便後續成交。</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="quiz-section">
-    <div class="card" id="startCard">
-      <div class="quiz-title">人格測驗</div>
-      <div class="quiz-sub">回答 4 個問題，看看你屬於哪一種類型</div>
-      <div style="text-align:center;">
-        <button class="main-btn" onclick="startQuiz()">開始測驗</button>
-      </div>
-    </div>
-
-    <div class="card hidden" id="quizCard">
-      <div class="progress" id="progressText">第 1 / 4 題</div>
-      <div id="question"></div>
-      <div id="options"></div>
-    </div>
-
-    <div class="card hidden" id="resultCard">
-      <div class="result-box">
-        <h2 id="resultTitle">你的結果</h2>
-        <div id="resultTags"></div>
-        <div class="result-text" id="resultText"></div>
-        <div style="margin-top:18px;">
-          <a class="line-btn" href="https://line.me/" target="_blank">加入 LINE 諮詢</a>
-          <button class="main-btn" onclick="restartQuiz()">重新測驗</button>
+    <div class="hero-wrap">
+      <div class="hero-text">
+        <div class="badge-row">
+          <span class="badge">可愛烘焙品牌</span>
+          <span class="badge">品牌展示頁</span>
+          <span class="badge">互動導流頁</span>
         </div>
+        <h1>把可愛、溫柔、療癒<br>做成一個會被記住的品牌</h1>
+        <p>
+          沐星人是以溫暖烘焙與可愛形象為核心的品牌概念頁。  
+          這個版本結合品牌介紹、人氣特色、互動測驗與聯絡導流，讓頁面不只是好看，
+          也能拿來展示給客戶、分享給朋友，或作為品牌官網的第一版。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-main" href="#quiz">立即開始測驗</a>
+          <a class="btn btn-soft" href="#about">看看品牌故事</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="cake-emoji">🧁✨</div>
+        <h3>沐星人品牌感</h3>
+        <p>
+          奶油色、烘焙感、溫柔系、療癒系。<br>
+          讓「沐星人」看起來像真的品牌，而不是只有一個測驗頁。
+        </p>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="card">
-      <h2 style="text-align:center;margin-top:0;">這個頁面可以怎麼用？</h2>
-      <div class="grid">
-        <div class="feature">
-          <h3>客戶開發</h3>
-          <p>把測驗頁分享給潛在客戶，提升互動率與回覆率。</p>
+  <section class="section" id="about">
+    <div class="section-title">
+      <h2>品牌故事</h2>
+      <p>從烘焙的香氣出發，把可愛感、陪伴感與療癒感，做成有記憶點的品牌。</p>
+    </div>
+
+    <div class="story">
+      <div class="story-box">
+        <h3>沐星人的想像</h3>
+        <p>
+          沐星人代表一種溫柔又有光的存在。像剛出爐的甜點一樣，讓人一看到就覺得舒服，
+          一吃到就想記住。品牌想傳遞的不是冰冷的商品，而是一種帶著溫度的日常陪伴。
+        </p>
+        <p>
+          不論是品牌視覺、產品描述，還是整體網站氛圍，都以「可愛但不幼稚、療癒但不空泛」
+          為方向，讓沐星人有機會成為一個真正可以對外呈現的品牌原型。
+        </p>
+      </div>
+
+      <div class="story-box">
+        <h3>品牌定位</h3>
+        <p>
+          沐星人可延伸成烘焙品牌、禮盒品牌、甜點工作室、社群電商品牌，
+          甚至發展為角色 IP 與內容品牌。這個版本先把「溫柔烘焙品牌」的感覺建立起來。
+        </p>
+        <p>
+          你可以把這頁當成第一版品牌官網，之後再慢慢加入產品照片、訂購方式、真實聯絡資訊、
+          社群連結，逐步變成完整商業網站。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="section-title">
+      <h2>品牌特色</h2>
+      <p>用簡單清楚的方式，把沐星人的印象建立起來。</p>
+    </div>
+
+    <div class="grid-4">
+      <div class="card">
+        <div class="feature-icon">🍞</div>
+        <h3>烘焙感</h3>
+        <p>用奶油色與甜點感元素，建立柔和又親近的品牌氣質。</p>
+      </div>
+      <div class="card">
+        <div class="feature-icon">🌙</div>
+        <h3>療癒感</h3>
+        <p>畫面與文字都走舒服、溫柔、沒有壓力的風格。</p>
+      </div>
+      <div class="card">
+        <div class="feature-icon">💫</div>
+        <h3>記憶點</h3>
+        <p>品牌名稱與視覺有辨識度，適合做成社群與官網入口。</p>
+      </div>
+      <div class="card">
+        <div class="feature-icon">💌</div>
+        <h3>可導流</h3>
+        <p>頁面內建測驗、LINE 按鈕與聯絡表單，方便互動與收單。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="menu">
+    <div class="section-title">
+      <h2>人氣品項想像</h2>
+      <p>先用品牌概念呈現，之後你可以再換成真實產品照片與內容。</p>
+    </div>
+
+    <div class="menu-list">
+      <div class="menu-item">
+        <div class="emoji">🧁</div>
+        <h4>星奶油杯子蛋糕</h4>
+        <p>柔軟蛋糕體搭配綿密奶油，主打可愛療癒系視覺與送禮感。</p>
+      </div>
+      <div class="menu-item">
+        <div class="emoji">🍪</div>
+        <h4>沐光手工餅乾</h4>
+        <p>適合搭配茶飲與禮盒，呈現溫暖手作感與日常陪伴氛圍。</p>
+      </div>
+      <div class="menu-item">
+        <div class="emoji">🎁</div>
+        <h4>星願甜點禮盒</h4>
+        <p>把品牌感做進包裝中，作為節日、生日、企業送禮的延伸。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="quiz-wrap">
+      <div class="quiz-card" id="startCard">
+        <div class="quiz-head">
+          <h2>你的甜點系品牌風格是？</h2>
+          <p>回答 4 題，看看你更接近哪一種沐星人風格人格。</p>
         </div>
-        <div class="feature">
-          <h3>品牌簡介頁</h3>
-          <p>結合服務介紹、聯絡方式與行動按鈕，當作單頁官網。</p>
+        <div class="center">
+          <button class="btn btn-main" onclick="startQuiz()">開始測驗</button>
         </div>
-        <div class="feature">
-          <h3>社群導流</h3>
-          <p>可放在 LINE、Facebook、IG 個人檔案中當導流入口。</p>
+      </div>
+
+      <div class="quiz-card hidden" id="quizCard">
+        <div class="progress" id="progressText">第 1 / 4 題</div>
+        <div id="question"></div>
+        <div id="options"></div>
+      </div>
+
+      <div class="quiz-card hidden" id="resultCard">
+        <h3 class="result-title" id="resultTitle">你的結果</h3>
+        <div class="tag-row" id="resultTags"></div>
+        <p class="result-text" id="resultText"></p>
+        <div class="center" style="margin-top:22px;">
+          <a class="btn btn-line" href="https://line.me/" target="_blank">加入 LINE 諮詢</a>
+          <button class="btn btn-soft" onclick="restartQuiz()">重新測驗</button>
         </div>
       </div>
     </div>
   </section>
 
   <section class="section" id="contact">
-    <div class="card">
-      <h2 style="text-align:center;margin-top:0;">聯絡我們</h2>
-      <p style="text-align:center;color:#666;">你可以把這裡當成名單收集區，讓客戶留下聯絡方式。</p>
+    <div class="section-title">
+      <h2>聯絡我們</h2>
+      <p>你之後可以把這裡改成真正收單表單，或串接 Google 表單。</p>
+    </div>
+
+    <div class="card contact-box">
       <form class="contact-form" onsubmit="submitForm(event)">
         <input type="text" id="name" placeholder="你的姓名" required>
         <input type="email" id="email" placeholder="你的 Email" required>
         <input type="text" id="phone" placeholder="你的電話 / LINE ID">
-        <textarea id="message" placeholder="請輸入你的需求或想詢問的內容"></textarea>
-        <div style="text-align:center;">
-          <button class="main-btn" type="submit">送出資料</button>
+        <textarea id="message" placeholder="想詢問什麼？例如合作、訂購、品牌設計、客製禮盒"></textarea>
+        <div class="center">
+          <button class="btn btn-main" type="submit">送出資料</button>
         </div>
       </form>
-      <p id="formResult" style="text-align:center;color:#4a90e2;font-weight:bold;"></p>
+      <div class="contact-note" id="formResult"></div>
     </div>
   </section>
 
-  <footer>
-    Guide Quiz V900 商業版 · 可做品牌頁、測驗頁、導流頁
-  </footer>
+  <div class="footer">
+    沐星人 MuStar｜V1000 品牌版<br>
+    可作為品牌展示頁、測驗頁、導流頁的第一版原型
+  </div>
 
   <script>
     const quizData = [
       {
-        q: "當你開始一個新目標時，你最在意的是什麼？",
-        a: ["能不能做出特色", "能不能帶領團隊", "能不能穩定執行", "能不能保有彈性"]
+        q: "如果沐星人是一款甜點，你希望它最先給人的感覺是什麼？",
+        a: ["夢幻可愛", "溫柔療癒", "精緻專業", "自由有趣"]
       },
       {
-        q: "面對壓力時，你通常怎麼做？",
-        a: ["想新方法突破", "先協調資源", "按步驟處理", "先留空間調整"]
+        q: "你最喜歡哪一種品牌互動方式？",
+        a: ["拍照打卡分享", "陪伴感與故事感", "高質感內容介紹", "有趣測驗與活動"]
       },
       {
-        q: "哪一種工作模式最吸引你？",
-        a: ["創新與行銷", "管理與決策", "技術與系統", "自由與多元"]
+        q: "你最想把沐星人做成哪一種類型？",
+        a: ["可愛甜點品牌", "療癒陪伴品牌", "精品禮盒品牌", "角色創意品牌"]
       },
       {
-        q: "你最希望別人怎麼形容你？",
-        a: ["有想法", "有影響力", "可靠專業", "靈活自在"]
+        q: "當別人想到沐星人時，你最希望他們記住什麼？",
+        a: ["可愛辨識度", "溫暖安心感", "精緻品質感", "靈活創新感"]
+      }
+    ];
+
+    const resultData = [
+      {
+        title: "星糖可愛系",
+        tags: ["可愛感", "拍照感", "高辨識"],
+        text: "你偏向星糖可愛系，最適合把沐星人做成一個有角色感、有甜點感、容易被分享與記住的品牌。這一型很適合走社群擴散、可愛視覺、包裝設計與打卡風格。"
+      },
+      {
+        title: "奶霜療癒系",
+        tags: ["溫柔感", "陪伴感", "舒適氛圍"],
+        text: "你偏向奶霜療癒系，適合把沐星人做成會讓人放鬆、舒服、想靠近的品牌。這類風格非常適合走溫暖故事、節日禮物、陪伴型內容與長期品牌經營。"
+      },
+      {
+        title: "星盒精品系",
+        tags: ["精緻感", "質感禮盒", "品牌力"],
+        text: "你偏向星盒精品系，適合把沐星人做成更成熟、更有設計感的甜點或禮盒品牌。這一路線很適合朝客製禮盒、企業送禮、節慶包裝與高單價產品延伸。"
+      },
+      {
+        title: "流光創意系",
+        tags: ["靈活", "新鮮感", "創意延伸"],
+        text: "你偏向流光創意系，適合讓沐星人不只是一個甜點品牌，也能延伸為角色、內容、活動、聯名或創意 IP。這類型適合不斷推出新主題，讓品牌保有驚喜感。"
       }
     ];
 
     let current = 0;
     let score = [0,0,0,0];
-
-    const resultData = [
-      {
-        title: "創業型人格",
-        tags: ["創意強", "行動快", "擅長突破"],
-        text: "你偏向創業型人格，喜歡新想法、新機會與新市場。你適合品牌經營、創意企劃、行銷導流、產品開發等方向。你最大的優勢是敢開始、敢嘗試，也很適合把個人特色轉成商業價值。"
-      },
-      {
-        title: "領導型人格",
-        tags: ["帶人能力", "決策力", "整合資源"],
-        text: "你偏向領導型人格，重視方向、效率與團隊整合。你適合管理、業務拓展、專案統籌、顧問型工作。你的優勢在於能把人和資源組合起來，推動事情真正落地。"
-      },
-      {
-        title: "技術型人格",
-        tags: ["穩定", "邏輯", "專業度高"],
-        text: "你偏向技術型人格，做事講求邏輯、細節與穩定性。你適合系統規劃、工程技術、資料整理、流程優化、專業服務。你的價值在於可靠、扎實，能把複雜問題處理得更有效率。"
-      },
-      {
-        title: "自由型人格",
-        tags: ["彈性高", "適應快", "探索力強"],
-        text: "你偏向自由型人格，不喜歡被過度限制，喜歡彈性與多樣性。你適合自媒體、接案、顧客服務、旅遊類、內容創作或多元收入模式。你的優勢是反應快、轉換快，適合快速變動的市場。"
-      }
-    ];
-
-    function scrollToQuiz(){
-      document.getElementById("quiz-section").scrollIntoView({behavior:"smooth"});
-    }
 
     function startQuiz(){
       current = 0;
@@ -361,7 +688,7 @@
       document.getElementById("question").innerText = item.q;
 
       let html = "";
-      for(let i = 0; i < item.a.length; i++){
+      for(let i=0;i<item.a.length;i++){
         html += '<button class="option" onclick="chooseAnswer(' + i + ')">' + item.a[i] + '</button>';
       }
       document.getElementById("options").innerHTML = html;
@@ -388,11 +715,11 @@
       document.getElementById("resultTitle").innerText = result.title;
       document.getElementById("resultText").innerText = result.text;
 
-      let tagHtml = "";
-      for(let i = 0; i < result.tags.length; i++){
-        tagHtml += '<span class="tag">' + result.tags[i] + '</span>';
+      let tags = "";
+      for(let i=0;i<result.tags.length;i++){
+        tags += '<span class="tag">' + result.tags[i] + '</span>';
       }
-      document.getElementById("resultTags").innerHTML = tagHtml;
+      document.getElementById("resultTags").innerHTML = tags;
 
       document.getElementById("resultCard").scrollIntoView({behavior:"smooth"});
     }
@@ -400,7 +727,7 @@
     function restartQuiz(){
       document.getElementById("resultCard").classList.add("hidden");
       document.getElementById("startCard").classList.remove("hidden");
-      document.getElementById("quiz-section").scrollIntoView({behavior:"smooth"});
+      document.getElementById("quiz").scrollIntoView({behavior:"smooth"});
     }
 
     function submitForm(event){
@@ -410,11 +737,11 @@
       const email = document.getElementById("email").value.trim();
 
       if(name === "" || email === ""){
-        document.getElementById("formResult").innerText = "請先填寫姓名與 Email";
+        document.getElementById("formResult").innerText = "請先填寫姓名與 Email。";
         return;
       }
 
-      document.getElementById("formResult").innerText = "資料已送出成功！你可以把這裡改成串接 Google 表單或實際後台。";
+      document.getElementById("formResult").innerText = "資料已送出成功。之後可把這裡改成串接 Google 表單或真正後台。";
 
       document.getElementById("name").value = "";
       document.getElementById("email").value = "";
