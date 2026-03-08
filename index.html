@@ -1,550 +1,362 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MuStar 沐星人手作餅乾</title>
-  <meta name="description" content="MuStar 沐星人手作餅乾，提供手工餅乾、餅乾禮盒、客製送禮與 LINE 訂購。">
-  <meta name="theme-color" content="#ff7a18">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    *{
-      box-sizing:border-box;
-    }
+<title>MuStar 沐星人手作餅乾</title>
 
-    html{
-      scroll-behavior:smooth;
-    }
+<meta name="description" content="MuStar 沐星人手作餅乾，提供手工餅乾、禮盒與客製送禮。">
 
-    body{
-      margin:0;
-      font-family:Arial,sans-serif;
-      background:#fffaf5;
-      color:#444;
-      line-height:1.7;
-    }
+<style>
 
-    a{
-      text-decoration:none;
-    }
+body{
+margin:0;
+font-family:Arial;
+background:#fffaf5;
+color:#444;
+}
 
-    img{
-      display:block;
-      max-width:100%;
-    }
+header{
+background:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
+position:sticky;
+top:0;
+}
 
-    header{
-      background:#ffffff;
-      padding:16px 24px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      box-shadow:0 2px 10px rgba(0,0,0,0.08);
-      position:sticky;
-      top:0;
-      z-index:1000;
-    }
+.logo{
+font-size:30px;
+font-weight:bold;
+color:#ff7a18;
+}
 
-    .logo{
-      font-size:30px;
-      font-weight:bold;
-      color:#d97706;
-      white-space:nowrap;
-    }
+nav a{
+margin:0 12px;
+text-decoration:none;
+color:#555;
+font-size:16px;
+}
 
-    nav{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
+.hero{
+text-align:center;
+padding:90px 20px;
 
-    nav a{
-      color:#555;
-      font-size:16px;
-      font-weight:600;
-    }
+background:
+linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),
+url("https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1400&q=80");
 
-    .hero{
-      min-height:72vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:90px 20px;
-      background:
-        linear-gradient(rgba(50,30,10,0.35), rgba(50,30,10,0.35)),
-        url("https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
-      color:white;
-    }
+background-size:cover;
+background-position:center;
 
-    .hero-inner{
-      max-width:900px;
-    }
+color:white;
+}
 
-    .hero h1{
-      font-size:56px;
-      line-height:1.2;
-      margin:0 0 16px;
-      text-shadow:0 2px 8px rgba(0,0,0,0.25);
-    }
+.hero h1{
+font-size:50px;
+margin:10px 0;
+}
 
-    .hero p{
-      font-size:24px;
-      margin:0 0 28px;
-      text-shadow:0 2px 8px rgba(0,0,0,0.25);
-    }
+.hero p{
+font-size:22px;
+}
 
-    .hero-btn{
-      display:inline-block;
-      padding:16px 36px;
-      background:#ff7a18;
-      color:white;
-      border-radius:14px;
-      font-size:20px;
-      font-weight:bold;
-      box-shadow:0 8px 20px rgba(255,122,24,0.28);
-    }
+.hero button{
+margin-top:25px;
+padding:16px 35px;
+font-size:18px;
+background:#ff7a18;
+border:none;
+border-radius:10px;
+color:white;
+}
 
-    .section{
-      padding:72px 20px;
-    }
+.section{
+padding:70px 20px;
+max-width:1100px;
+margin:auto;
+}
 
-    .container{
-      max-width:1120px;
-      margin:0 auto;
-    }
+.title{
+text-align:center;
+font-size:34px;
+margin-bottom:40px;
+}
 
-    .title{
-      text-align:center;
-      font-size:38px;
-      color:#3f3f46;
-      margin:0 0 40px;
-    }
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
 
-    .subtitle{
-      text-align:center;
-      color:#777;
-      margin:-18px auto 36px;
-      max-width:720px;
-      font-size:18px;
-    }
+.card{
+background:white;
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:24px;
-    }
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
 
-    .card{
-      background:white;
-      border-radius:18px;
-      overflow:hidden;
-      box-shadow:0 8px 22px rgba(0,0,0,0.08);
-      transition:transform 0.2s ease;
-    }
+.card h3{
+padding:12px;
+margin:0;
+}
 
-    .card:hover{
-      transform:translateY(-4px);
-    }
+.card p{
+padding:0 12px 15px;
+}
 
-    .card img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-    }
+.gift{
+background:#fff0df;
+text-align:center;
+padding:70px 20px;
+}
 
-    .card-body{
-      padding:16px;
-    }
+.story{
+text-align:center;
+max-width:700px;
+margin:auto;
+line-height:1.8;
+}
 
-    .card h3{
-      margin:0 0 8px;
-      font-size:23px;
-      color:#333;
-    }
+.reviews{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
 
-    .price{
-      color:#ff7a18;
-      font-weight:bold;
-      font-size:20px;
-      margin-bottom:8px;
-    }
+.review{
+background:#fffaf5;
+padding:20px;
+border-radius:12px;
+}
 
-    .gift{
-      background:#fff0df;
-    }
+.stars{
+color:orange;
+font-size:20px;
+}
 
-    .gift-wrap{
-      display:grid;
-      grid-template-columns:1.1fr 0.9fr;
-      gap:28px;
-      align-items:center;
-      max-width:1120px;
-      margin:0 auto;
-    }
+.instagram-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:10px;
+}
 
-    .gift-text h2{
-      font-size:40px;
-      margin:0 0 14px;
-      color:#3f3f46;
-    }
+.instagram-grid img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
 
-    .gift-text p{
-      font-size:18px;
-      margin:0 0 22px;
-    }
+footer{
+background:#333;
+color:white;
+text-align:center;
+padding:40px 20px;
+}
 
-    .gift-btn{
-      display:inline-block;
-      padding:16px 34px;
-      background:#ff7a18;
-      color:white;
-      border-radius:14px;
-      font-size:18px;
-      font-weight:bold;
-    }
+.line-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#06c755;
+color:white;
+padding:15px 18px;
+border-radius:30px;
+font-weight:bold;
+}
 
-    .gift-image img{
-      width:100%;
-      height:320px;
-      object-fit:cover;
-      border-radius:18px;
-      box-shadow:0 8px 22px rgba(0,0,0,0.08);
-    }
-
-    .story-box{
-      max-width:820px;
-      margin:0 auto;
-      text-align:center;
-      font-size:18px;
-      color:#555;
-    }
-
-    .reviews{
-      background:#fff;
-    }
-
-    .review-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-    }
-
-    .review{
-      background:#fffaf5;
-      border-radius:16px;
-      padding:24px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.06);
-    }
-
-    .stars{
-      color:#f59e0b;
-      font-size:22px;
-      margin-bottom:10px;
-      letter-spacing:2px;
-    }
-
-    .review p{
-      margin:0 0 12px;
-    }
-
-    .review-name{
-      color:#777;
-      font-size:15px;
-      font-weight:bold;
-    }
-
-    .instagram{
-      background:#fffaf5;
-    }
-
-    .insta-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-      gap:12px;
-    }
-
-    .insta-grid img{
-      width:100%;
-      height:210px;
-      object-fit:cover;
-      border-radius:14px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.06);
-    }
-
-    .follow-box{
-      text-align:center;
-      margin-top:28px;
-    }
-
-    .follow-btn{
-      display:inline-block;
-      padding:14px 28px;
-      background:#333;
-      color:white;
-      border-radius:12px;
-      font-weight:bold;
-    }
-
-    .map iframe{
-      width:100%;
-      height:320px;
-      border:0;
-      border-radius:18px;
-      box-shadow:0 8px 22px rgba(0,0,0,0.08);
-    }
-
-    footer{
-      background:#333;
-      color:white;
-      text-align:center;
-      padding:40px 20px;
-    }
-
-    footer p{
-      margin:6px 0;
-    }
-
-    .line-float{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      background:#06c755;
-      color:white;
-      width:64px;
-      height:64px;
-      border-radius:999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:14px;
-      font-weight:bold;
-      box-shadow:0 10px 20px rgba(0,0,0,0.18);
-      z-index:2000;
-    }
-
-    @media (max-width: 900px){
-      .gift-wrap{
-        grid-template-columns:1fr;
-      }
-
-      .gift-image img{
-        height:260px;
-      }
-    }
-
-    @media (max-width: 768px){
-      header{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:12px;
-      }
-
-      nav{
-        gap:14px;
-      }
-
-      .logo{
-        font-size:26px;
-      }
-
-      .hero{
-        min-height:60vh;
-        padding:80px 20px;
-      }
-
-      .hero h1{
-        font-size:40px;
-      }
-
-      .hero p{
-        font-size:20px;
-      }
-
-      .title{
-        font-size:32px;
-      }
-
-      .gift-text h2{
-        font-size:32px;
-      }
-    }
-
-    @media (max-width: 480px){
-      .hero h1{
-        font-size:32px;
-      }
-
-      .hero p{
-        font-size:18px;
-      }
-
-      nav a{
-        font-size:15px;
-      }
-
-      .card img{
-        height:200px;
-      }
-
-      .insta-grid img{
-        height:180px;
-      }
-    }
-  </style>
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">MuStar</div>
+<header>
 
-    <nav>
-      <a href="#home">首頁</a>
-      <a href="#cookies">餅乾</a>
-      <a href="#gift">禮盒</a>
-      <a href="#story">品牌故事</a>
-      <a href="#order">訂購</a>
-    </nav>
-  </header>
+<div class="logo">
+MuStar
+</div>
 
-  <section class="hero" id="home">
-    <div class="hero-inner">
-      <h1>MuStar 沐星人手作餅乾</h1>
-      <p>每一片餅乾都是一顆星</p>
-      <a class="hero-btn" href="https://line.me/ti/p/jimmy141319" target="_blank">LINE 訂購</a>
-    </div>
-  </section>
+<nav>
 
-  <section class="section" id="cookies">
-    <div class="container">
-      <h2 class="title">熱門餅乾</h2>
-      <p class="subtitle">精選經典口味，適合自己享用，也適合作為送禮小點心。</p>
+<a href="#home">首頁</a>
+<a href="#cookies">餅乾</a>
+<a href="#gift">禮盒</a>
+<a href="#story">品牌故事</a>
 
-      <div class="grid">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=80" alt="奶油手工餅乾">
-          <div class="card-body">
-            <h3>奶油手工餅乾</h3>
-            <div class="price">NT$150 / 盒</div>
-            <p>奶香濃郁，口感酥鬆，適合日常下午茶。</p>
-          </div>
-        </div>
+</nav>
 
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1590080877777-95c0dfa7f6bf?auto=format&fit=crop&w=900&q=80" alt="巧克力餅乾">
-          <div class="card-body">
-            <h3>巧克力餅乾</h3>
-            <div class="price">NT$180 / 盒</div>
-            <p>濃郁可可搭配巧克力豆，經典人氣口味。</p>
-          </div>
-        </div>
+</header>
 
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=900&q=80" alt="杏仁脆餅">
-          <div class="card-body">
-            <h3>杏仁脆餅</h3>
-            <div class="price">NT$190 / 盒</div>
-            <p>酥脆口感配上杏仁香氣，層次豐富。</p>
-          </div>
-        </div>
+<section class="hero" id="home">
 
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1464306076886-da185f6a9d05?auto=format&fit=crop&w=900&q=80" alt="抹茶餅乾">
-          <div class="card-body">
-            <h3>抹茶餅乾</h3>
-            <div class="price">NT$180 / 盒</div>
-            <p>茶香清爽，甜度適中，送禮也很體面。</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<h1>MuStar 沐星人手作餅乾</h1>
 
-  <section class="section gift" id="gift">
-    <div class="gift-wrap">
-      <div class="gift-text">
-        <h2>客製禮盒餅乾</h2>
-        <p>
-          提供生日禮盒、婚禮小物、節慶送禮與企業禮盒。<br>
-          可依需求調整口味、包裝與數量，做出屬於你的 MuStar 禮盒。
-        </p>
-        <a class="gift-btn" href="https://line.me/ti/p/jimmy141319" target="_blank">LINE 客製詢問</a>
-      </div>
+<p>每一片餅乾都是一顆星</p>
 
-      <div class="gift-image">
-        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=1200&q=80" alt="餅乾禮盒">
-      </div>
-    </div>
-  </section>
+<button onclick="window.open('https://line.me/ti/p/jimmy141319')">
 
-  <section class="section" id="story">
-    <div class="container">
-      <h2 class="title">品牌故事</h2>
-      <div class="story-box">
-        MuStar 沐星人相信，甜點不只是食物，而是一份溫柔的陪伴。<br>
-        我們用真誠與細節製作每一片手工餅乾，希望你在忙碌生活裡，
-        也能因為一口香甜，找到屬於自己的小小幸福。
-      </div>
-    </div>
-  </section>
+LINE 訂購
 
-  <section class="section reviews">
-    <div class="container">
-      <h2 class="title">客戶評價</h2>
-      <div class="review-grid">
-        <div class="review">
-          <div class="stars">★★★★★</div>
-          <p>餅乾很香很好吃，包裝也很漂亮，送朋友很有質感。</p>
-          <div class="review-name">－ 王小姐</div>
-        </div>
+</button>
 
-        <div class="review">
-          <div class="stars">★★★★★</div>
-          <p>巧克力餅乾很受小朋友歡迎，會想再回購。</p>
-          <div class="review-name">－ 林先生</div>
-        </div>
+</section>
 
-        <div class="review">
-          <div class="stars">★★★★★</div>
-          <p>客製禮盒服務很貼心，LINE 回覆也很快。</p>
-          <div class="review-name">－ 陳小姐</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="section" id="cookies">
 
-  <section class="section instagram">
-    <div class="container">
-      <h2 class="title">最新作品</h2>
-      <div class="insta-grid">
-        <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=80" alt="作品1">
-        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80" alt="作品2">
-        <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=900&q=80" alt="作品3">
-        <img src="https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=900&q=80" alt="作品4">
-      </div>
+<div class="title">
+熱門餅乾
+</div>
 
-      <div class="follow-box">
-        <a class="follow-btn" href="#" target="_blank">追蹤 Instagram</a>
-      </div>
-    </div>
-  </section>
+<div class="grid">
 
-  <section class="section map" id="order">
-    <div class="container">
-      <h2 class="title">門市位置</h2>
-      <iframe src="https://www.google.com/maps?q=taipei&output=embed"></iframe>
-    </div>
-  </section>
+<div class="card">
 
-  <footer>
-    <p>MuStar 沐星人手作餅乾</p>
-    <p>LINE：jimmy141319</p>
-    <p>© MuStar Cookie</p>
-  </footer>
+<img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=80">
 
-  <a class="line-float" href="https://line.me/ti/p/jimmy141319" target="_blank">LINE</a>
+<h3>奶油餅乾</h3>
+
+<p>NT$150</p>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1590080877777-95c0dfa7f6bf?auto=format&fit=crop&w=900&q=80">
+
+<h3>巧克力餅乾</h3>
+
+<p>NT$180</p>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=900&q=80">
+
+<h3>杏仁餅乾</h3>
+
+<p>NT$180</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="gift" id="gift">
+
+<h2>
+客製餅乾禮盒
+</h2>
+
+<p>
+生日禮盒 / 婚禮小物 / 企業送禮
+</p>
+
+<button onclick="window.open('https://line.me/ti/p/jimmy141319')">
+
+LINE 客製詢問
+
+</button>
+
+</section>
+
+<section class="section">
+
+<div class="title">
+客戶評價
+</div>
+
+<div class="reviews">
+
+<div class="review">
+
+<div class="stars">★★★★★</div>
+
+<p>
+餅乾很好吃！
+</p>
+
+</div>
+
+<div class="review">
+
+<div class="stars">★★★★★</div>
+
+<p>
+包裝很漂亮很適合送禮
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="title">
+Instagram 作品
+</div>
+
+<div class="instagram-grid">
+
+<img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80">
+
+<img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=900&q=80">
+
+<img src="https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=900&q=80">
+
+<img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=80">
+
+</div>
+
+</section>
+
+<section class="section" id="story">
+
+<div class="title">
+品牌故事
+</div>
+
+<div class="story">
+
+MuStar 沐星人相信甜點是一種幸福。
+
+我們希望透過每一片手作餅乾，
+讓生活多一點溫度。
+
+</div>
+
+</section>
+
+<footer>
+
+MuStar 沐星人手作餅乾
+
+<br><br>
+
+LINE：jimmy141319
+
+</footer>
+
+<a class="line-btn" href="https://line.me/ti/p/jimmy141319">
+
+LINE
+
+</a>
 
 </body>
+
 </html>
