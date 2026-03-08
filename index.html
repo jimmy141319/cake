@@ -1,259 +1,222 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MuStar 沐星人｜客製蛋糕甜點品牌</title>
+<title>MuStar 沐星人手作蛋糕</title>
 
 <style>
 
 body{
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI";
 margin:0;
-background:#faf6f3;
-color:#6b4a3a;
+font-family:Arial;
+background:#fff7f0;
+color:#444;
 }
+
+/* header */
 
 header{
 background:white;
 padding:20px;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
-}
-
-nav{
 display:flex;
-gap:20px;
-font-weight:600;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
 }
 
-.container{
-max-width:900px;
-margin:auto;
-padding:30px;
+.logo{
+font-size:26px;
+font-weight:bold;
+color:#d97706;
 }
+
+nav a{
+margin-left:20px;
+text-decoration:none;
+color:#444;
+}
+
+/* hero */
 
 .hero{
-padding:40px 0;
+text-align:center;
+padding:80px 20px;
+background:#ffe9d6;
+}
+
+.hero h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.hero button{
+margin-top:20px;
+padding:14px 30px;
+font-size:18px;
+background:#f97316;
+border:none;
+border-radius:10px;
+color:white;
+cursor:pointer;
+}
+
+/* section */
+
+.section{
+padding:60px 20px;
+max-width:1000px;
+margin:auto;
 }
 
 .title{
-font-size:40px;
-font-weight:800;
+font-size:28px;
+text-align:center;
+margin-bottom:40px;
 }
 
-.subtitle{
-font-size:18px;
-line-height:1.8;
-color:#8a6a5c;
-}
+/* cake grid */
 
-.button{
-display:inline-block;
-padding:14px 22px;
-border-radius:30px;
-margin-top:20px;
-font-weight:700;
-text-decoration:none;
-}
-
-.btn-primary{
-background:#e79a75;
-color:white;
-}
-
-.btn-outline{
-border:2px solid #e79a75;
-color:#e79a75;
-margin-left:10px;
-}
-
-.section{
-margin-top:60px;
-}
-
-.cards{
+.grid{
 display:grid;
-grid-template-columns:1fr 1fr 1fr;
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
 }
 
 .card{
 background:white;
-padding:20px;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,0.05);
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+overflow:hidden;
 }
 
-.product{
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card h3{
+padding:10px;
+margin:0;
+}
+
+.card p{
+padding:0 10px 15px;
+font-size:14px;
+}
+
+/* story */
+
+.story{
+background:#fff3e6;
+padding:60px 20px;
 text-align:center;
 }
 
-.price{
-font-weight:700;
-margin-top:10px;
-color:#e79a75;
-}
-
-.contact{
-background:white;
-padding:30px;
-border-radius:15px;
-margin-top:40px;
-box-shadow:0 5px 15px rgba(0,0,0,0.05);
-}
+/* footer */
 
 footer{
-margin-top:80px;
-padding:40px;
-background:white;
+background:#333;
+color:white;
 text-align:center;
-font-size:14px;
-color:#8a6a5c;
-}
-
-@media(max-width:700px){
-
-.cards{
-grid-template-columns:1fr;
-}
-
-.title{
-font-size:32px;
-}
-
+padding:30px;
+margin-top:40px;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header>
 
-<div class="container">
-
-<h2>MuStar 沐星人</h2>
+<div class="logo">MuStar</div>
 
 <nav>
-
-<span>品牌故事</span>
-<span>人氣甜點</span>
-<span>訂購方式</span>
-<span>聯絡我們</span>
-
+<a href="#">首頁</a>
+<a href="#">蛋糕</a>
+<a href="#">品牌故事</a>
+<a href="#">訂購</a>
 </nav>
-
-</div>
 
 </header>
 
-<div class="container hero">
 
-<div class="title">
-把生日、送禮與療癒時刻  
-做成會被記住的甜點
+<!-- hero -->
+
+<section class="hero">
+
+<h1>MuStar 沐星人手作蛋糕</h1>
+
+<p>每一顆蛋糕都是一顆星</p>
+
+<button onclick="window.open('https://line.me')">
+LINE 訂購
+</button>
+
+</section>
+
+
+<!-- cakes -->
+
+<section class="section">
+
+<div class="title">熱門蛋糕</div>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1551024601-bec78aea704b">
+<h3>草莓奶油蛋糕</h3>
+<p>新鮮草莓與手作奶油</p>
 </div>
 
-<p class="subtitle">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1602351447937-745cb720612f">
+<h3>巧克力蛋糕</h3>
+<p>濃郁可可風味</p>
+</div>
 
-MuStar 沐星人是一個溫暖可愛的甜點品牌。  
-我們提供客製生日蛋糕、療癒系甜點與送禮小點，  
-讓每一次慶祝都多一點儀式感。
-
-</p>
-
-<a class="button btn-primary">LINE 下單</a>
-<a class="button btn-outline">IG 看作品</a>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587">
+<h3>生日蛋糕</h3>
+<p>客製化生日蛋糕</p>
+</div>
 
 </div>
 
-<div class="container section">
+</section>
 
-<h2>人氣甜點</h2>
 
-<div class="cards">
+<!-- story -->
 
-<div class="card product">
+<section class="story">
 
-<h3>草莓奶油生日蛋糕</h3>
+<h2>品牌故事</h2>
 
 <p>
-新鮮草莓搭配柔滑奶油  
-適合生日與節日慶祝
+MuStar 沐星人是一個溫暖的手作烘焙品牌。  
+我們相信每一個蛋糕都能帶來幸福與笑容。
 </p>
 
-<div class="price">
-NT$980 起
-</div>
+</section>
 
-</div>
-
-<div class="card product">
-
-<h3>杯子蛋糕禮盒</h3>
-
-<p>
-可愛療癒甜點  
-送禮人氣首選
-</p>
-
-<div class="price">
-NT$520
-</div>
-
-</div>
-
-<div class="card product">
-
-<h3>莓果生乳捲</h3>
-
-<p>
-清爽莓果與柔軟蛋糕  
-人氣甜點
-</p>
-
-<div class="price">
-NT$420
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="container section">
-
-<h2>訂購方式</h2>
-
-<div class="contact">
-
-<p>
-
-1️⃣ 選擇想要的商品  
-
-2️⃣ 加 LINE 傳送需求  
-
-3️⃣ 確認日期與客製內容  
-
-4️⃣ 完成訂單
-
-</p>
-
-</div>
-
-</div>
 
 <footer>
 
-MuStar 沐星人甜點品牌  
-Instagram：@mustar.cake  
-LINE：@mustar
+<p>MuStar 沐星人手作烘焙</p>
+
+<p>LINE：jimmy141319</p>
 
 </footer>
 
-</body>
 
+</body>
 </html>
