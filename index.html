@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MuStar 沐星人手作餅乾</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#faf7f4;
+text-align:center;
+}
+
+header{
+background:white;
+padding:20px;
+font-size:28px;
+font-weight:bold;
+color:#e67e22;
+}
+
+.hero{
+background:#d9c6b8;
+padding:60px 20px;
+color:white;
+}
+
+button{
+padding:15px 25px;
+font-size:16px;
+border:none;
+border-radius:8px;
+background:#ff7a1a;
+color:white;
+}
+
+.products{
+padding:40px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:20px auto;
+max-width:300px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.line{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#06c755;
+color:white;
+padding:20px;
+border-radius:50%;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+MuStar 沐星人手作餅乾
+</header>
+
+<section class="hero">
+<h1>手作餅乾品牌</h1>
+<p>LINE 快速訂購</p>
+
+<button onclick="order()">LINE 訂購</button>
+
+</section>
+
+<section class="products">
+
+<div class="card">
+<h3>堅果塔</h3>
+<p>NT$180</p>
+<button onclick="order()">訂購</button>
+</div>
+
+<div class="card">
+<h3>手作餅乾</h3>
+<p>NT$220</p>
+<button onclick="order()">訂購</button>
+</div>
+
+<div class="card">
+<h3>綜合禮盒</h3>
+<p>NT$520</p>
+<button onclick="order()">訂購</button>
+</div>
+
+</section>
+
+<a class="line" href="https://line.me/R/msg/text/?MuStar訂購">LINE</a>
+
+<script>
+
+function order(){
+window.open("https://line.me/R/msg/text/?MuStar訂購");
+}
+
+</script>
+
+</body>
+</html>
