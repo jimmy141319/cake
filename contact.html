@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MuStar 訂購</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,"Microsoft JhengHei";
+background:#f8f4ef;
+color:#2f2a26;
+line-height:1.6;
+}
+
+header{
+background:white;
+padding:20px;
+border-bottom:1px solid #eee;
+}
+
+.logo{
+font-size:32px;
+font-weight:800;
+color:#dd7a16;
+}
+
+nav{
+margin-top:10px;
+}
+
+nav a{
+margin-right:20px;
+font-weight:700;
+color:#514740;
+text-decoration:none;
+}
+
+.hero{
+padding:60px 20px;
+text-align:center;
+background:#f5ede6;
+}
+
+.hero h1{
+font-size:40px;
+margin:0 0 10px;
+}
+
+.hero p{
+margin:0;
+color:#6d625a;
+font-size:18px;
+}
+
+.section{
+padding:60px 20px;
+max-width:980px;
+margin:auto;
+}
+
+.box{
+background:white;
+border-radius:20px;
+padding:30px;
+margin-bottom:24px;
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+}
+
+.box h2{
+margin-top:0;
+font-size:28px;
+}
+
+.steps{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px;
+margin-top:20px;
+}
+
+.step{
+background:#f8f4ef;
+border-radius:16px;
+padding:18px;
+text-align:center;
+font-weight:700;
+color:#5b514b;
+}
+
+button{
+padding:16px 26px;
+border:none;
+border-radius:15px;
+background:#ff7a1a;
+color:white;
+font-weight:800;
+font-size:16px;
+cursor:pointer;
+}
+
+.footer{
+text-align:center;
+padding:30px;
+background:white;
+border-top:1px solid #eee;
+}
+
+.line{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#06c755;
+color:white;
+width:90px;
+height:90px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:800;
+}
+
+@media (max-width: 900px){
+.steps{
+grid-template-columns:1fr;
+}
+.hero h1{
+font-size:34px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">MuStar</div>
+
+<nav>
+<a href="index.html">首頁</a>
+<a href="services.html">商品</a>
+<a href="pricing.html">禮盒</a>
+<a href="cases.html">品牌故事</a>
+<a href="contact.html">訂購</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>MuStar 訂購方式</h1>
+<p>看商品、選品項、用 LINE 快速完成下單</p>
+</section>
+
+<section class="section">
+
+<div class="box">
+<h2>訂購流程</h2>
+
+<div class="steps">
+<div class="step">1. 查看商品</div>
+<div class="step">2. 選擇品項</div>
+<div class="step">3. 點擊 LINE</div>
+<div class="step">4. 完成下單</div>
+</div>
+</div>
+
+<div class="box">
+<h2>LINE 快速訂購</h2>
+<p>目前 MuStar 採用 LINE 快速下單方式，你可以直接傳送想詢問或想訂購的商品。</p>
+<button onclick="order()">立即 LINE 訂購</button>
+</div>
+
+<div class="box">
+<h2>可直接傳送的內容</h2>
+<p>例如：</p>
+<p>
+我要訂購：堅果塔 2 個<br>
+我要詢問：綜合禮盒<br>
+我想了解：企業禮盒方案
+</p>
+</div>
+
+</section>
+
+<footer class="footer">
+© MuStar 沐星人手作餅乾
+</footer>
+
+<div class="line" onclick="order()">LINE</div>
+
+<script>
+function order(){
+window.open("https://line.me/R/msg/text/?你好，我想詢問 MuStar 訂購方式")
+}
+</script>
+
+</body>
+</html>
