@@ -1,115 +1,568 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MuStar 沐星人手作餅乾</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MuStar 沐星人手作餅乾</title>
+  <meta name="description" content="MuStar 沐星人手作餅乾，手作餅乾、堅果塔、綜合禮盒，LINE 快速訂購。" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
+    html {
+      scroll-behavior: smooth;
+    }
 
-body{
-font-family:Arial;
-margin:0;
-background:#faf7f4;
-text-align:center;
-}
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft JhengHei", sans-serif;
+      background: #f8f4ef;
+      color: #2f2a26;
+      line-height: 1.6;
+    }
 
-header{
-background:white;
-padding:20px;
-font-size:28px;
-font-weight:bold;
-color:#e67e22;
-}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-.hero{
-background:#d9c6b8;
-padding:60px 20px;
-color:white;
-}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-button{
-padding:15px 25px;
-font-size:16px;
-border:none;
-border-radius:8px;
-background:#ff7a1a;
-color:white;
-}
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
 
-.products{
-padding:40px;
-}
+    .topbar {
+      background: #ffffff;
+      text-align: center;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      border-bottom: 1px solid #eee3d8;
+      color: #6b5d52;
+    }
 
-.card{
-background:white;
-padding:20px;
-margin:20px auto;
-max-width:300px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #eee3d8;
+    }
 
-.line{
-position:fixed;
-right:20px;
-bottom:20px;
-background:#06c755;
-color:white;
-padding:20px;
-border-radius:50%;
-font-weight:bold;
-}
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+      flex-wrap: wrap;
+    }
 
-</style>
+    .logo {
+      font-size: 38px;
+      font-weight: 800;
+      color: #dd7a16;
+      letter-spacing: 0.5px;
+    }
 
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-weight: 700;
+      color: #514740;
+    }
+
+    .hero {
+      background: linear-gradient(180deg, #f5ede6 0%, #d2bfb0 100%);
+      padding: 72px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-box {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 30px;
+      padding: 40px 34px;
+      box-shadow: 0 20px 40px rgba(92, 66, 45, 0.12);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.32);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: 54px;
+      line-height: 1.15;
+      color: #fff;
+      text-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .hero p {
+      margin: 0 0 24px;
+      font-size: 20px;
+      color: #fffaf5;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      border: none;
+      border-radius: 18px;
+      padding: 16px 28px;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #ff7a1a;
+      color: white;
+      box-shadow: 0 12px 24px rgba(255, 122, 26, 0.28);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.55);
+    }
+
+    .hero-visual {
+      background: #f6ede5;
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 18px 40px rgba(92, 66, 45, 0.12);
+    }
+
+    .mock-card {
+      background: white;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .mock-image {
+      height: 240px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #eacdb0, #c38c62);
+      margin-bottom: 18px;
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 46px;
+      margin: 0 0 14px;
+      color: #2f2a26;
+    }
+
+    .section-desc {
+      max-width: 760px;
+      margin: 0 auto 36px;
+      text-align: center;
+      color: #6d625a;
+      font-size: 18px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.07);
+    }
+
+    .product-image {
+      height: 220px;
+      background: linear-gradient(135deg, #ecd6bf, #d3a07a);
+    }
+
+    .product-body {
+      padding: 22px;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #f7efe7;
+      color: #9b7558;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .product-title {
+      margin: 0 0 10px;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .product-text {
+      margin: 0 0 12px;
+      color: #6f635a;
+      min-height: 48px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: 800;
+      color: #dd7a16;
+      margin-bottom: 16px;
+    }
+
+    .gift-section {
+      background: #fff;
+    }
+
+    .gift-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      background: #f7f0e8;
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    .gift-visual {
+      min-height: 300px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #f1d8bc, #c89269);
+    }
+
+    .gift-content h3 {
+      margin-top: 0;
+      font-size: 36px;
+    }
+
+    .gift-content p {
+      color: #6b6159;
+      font-size: 18px;
+    }
+
+    .story-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
+
+    .story-wrap h3 {
+      font-size: 34px;
+      margin-top: 0;
+    }
+
+    .story-wrap p {
+      color: #6d635d;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .order-box {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #fff8f2;
+      border: 1px solid #f0dfcf;
+      border-radius: 26px;
+      padding: 30px;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.04);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .step {
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      font-weight: 700;
+      color: #5b514b;
+    }
+
+    .footer {
+      padding: 34px 0 48px;
+      text-align: center;
+      color: #756a63;
+      border-top: 1px solid #eadfd5;
+      background: white;
+    }
+
+    .line-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      background: #06c755;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      box-shadow: 0 14px 26px rgba(6, 199, 85, 0.3);
+      z-index: 200;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .gift-box,
+      .products,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .section-title {
+        font-size: 34px;
+      }
+
+      .gift-content h3,
+      .story-wrap h3 {
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .logo {
+        font-size: 32px;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero {
+        padding: 50px 0 40px;
+      }
+
+      .hero-box {
+        padding: 28px 22px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .line-float {
+        width: 84px;
+        height: 84px;
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="topbar">MuStar 沐星人手作餅乾</div>
 
-<header>
-MuStar 沐星人手作餅乾
-</header>
+  <header class="header">
+    <div class="container nav">
+      <div class="logo">MuStar</div>
+      <nav class="nav-links">
+        <a href="#home">首頁</a>
+        <a href="#products">商品</a>
+        <a href="#gift">禮盒</a>
+        <a href="#story">品牌故事</a>
+        <a href="#order">訂購</a>
+      </nav>
+    </div>
+  </header>
 
-<section class="hero">
-<h1>手作餅乾品牌</h1>
-<p>LINE 快速訂購</p>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-box">
+          <div class="badge">手作餅乾品牌</div>
+          <h1>MuStar 沐星人手作餅乾</h1>
+          <p>真實作品展示、禮盒包裝、LINE 快速下單，讓送禮與日常甜點都更有溫度。</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="lineOrder('MuStar 官網訂購')">LINE 訂購</button>
+            <a class="btn btn-secondary" href="#products">查看商品</a>
+          </div>
+        </div>
 
-<button onclick="order()">LINE 訂購</button>
+        <div class="hero-visual">
+          <div class="mock-card">
+            <div class="mock-image"></div>
+            <h3>今日推薦：綜合禮盒</h3>
+            <p>節慶送禮、企業拜訪、探望親友都很適合。</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</section>
+    <section class="section" id="products">
+      <div class="container">
+        <h2 class="section-title">熱門商品</h2>
+        <p class="section-desc">
+          這一版已經能像真正品牌商店一樣展示商品，客人可直接看完商品後快速透過 LINE 下單。
+        </p>
 
-<section class="products">
+        <div class="products">
+          <article class="product-card">
+            <div class="product-image"></div>
+            <div class="product-body">
+              <div class="tag">人氣熱銷</div>
+              <h3 class="product-title">堅果塔</h3>
+              <p class="product-text">香酥塔皮搭配堅果，適合下午茶與精緻送禮。</p>
+              <div class="price">NT$180</div>
+              <button class="btn btn-primary" onclick="lineOrder('我要訂購：堅果塔 NT$180')">LINE 訂購</button>
+            </div>
+          </article>
 
-<div class="card">
-<h3>堅果塔</h3>
-<p>NT$180</p>
-<button onclick="order()">訂購</button>
-</div>
+          <article class="product-card">
+            <div class="product-image"></div>
+            <div class="product-body">
+              <div class="tag">經典款</div>
+              <h3 class="product-title">手作餅乾</h3>
+              <p class="product-text">奶香酥脆、溫柔順口，適合日常分享與伴手禮。</p>
+              <div class="price">NT$220</div>
+              <button class="btn btn-primary" onclick="lineOrder('我要訂購：手作餅乾 NT$220')">LINE 訂購</button>
+            </div>
+          </article>
 
-<div class="card">
-<h3>手作餅乾</h3>
-<p>NT$220</p>
-<button onclick="order()">訂購</button>
-</div>
+          <article class="product-card">
+            <div class="product-image"></div>
+            <div class="product-body">
+              <div class="tag">送禮首選</div>
+              <h3 class="product-title">綜合禮盒</h3>
+              <p class="product-text">多款甜點一次滿足，節日與企業送禮都很合適。</p>
+              <div class="price">NT$520</div>
+              <button class="btn btn-primary" onclick="lineOrder('我要訂購：綜合禮盒 NT$520')">LINE 訂購</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<div class="card">
-<h3>綜合禮盒</h3>
-<p>NT$520</p>
-<button onclick="order()">訂購</button>
-</div>
+    <section class="section gift-section" id="gift">
+      <div class="container">
+        <h2 class="section-title">禮盒專區</h2>
+        <p class="section-desc">把 MuStar 做成不只是甜點，而是一份適合送出去的心意。</p>
 
-</section>
+        <div class="gift-box">
+          <div class="gift-visual"></div>
+          <div class="gift-content">
+            <h3>綜合禮盒 / 企業禮盒</h3>
+            <p>
+              可作為節慶禮盒、拜訪禮、企業贈禮。未來可再擴充客製貼紙、品牌卡片與不同包裝形式。
+            </p>
+            <button class="btn btn-primary" onclick="lineOrder('我想詢問 MuStar 禮盒方案')">詢問禮盒</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<a class="line" href="https://line.me/R/msg/text/?MuStar訂購">LINE</a>
+    <section class="section" id="story">
+      <div class="container">
+        <h2 class="section-title">品牌故事</h2>
+        <div class="story-wrap">
+          <h3>手作、溫柔、送禮的心意</h3>
+          <p>
+            MuStar 想把甜點做成一份可以被記住的體驗，不只是味道，也包括包裝、心意與被重視的感覺。
+          </p>
+          <p>
+            從手作餅乾到綜合禮盒，我們希望每一份商品都能成為日常的小幸福，或送給重要的人時的一份溫柔表達。
+          </p>
+        </div>
+      </div>
+    </section>
 
-<script>
+    <section class="section" id="order">
+      <div class="container">
+        <h2 class="section-title">訂購方式</h2>
+        <div class="order-box">
+          <p class="section-desc" style="margin-bottom:0;">
+            先看商品，再用 LINE 快速傳送訂購內容，簡單直接。
+          </p>
 
-function order(){
-window.open("https://line.me/R/msg/text/?MuStar訂購");
-}
+          <div class="steps">
+            <div class="step">1. 查看商品</div>
+            <div class="step">2. 選擇品項</div>
+            <div class="step">3. 點擊 LINE</div>
+            <div class="step">4. 完成下單</div>
+          </div>
 
-</script>
+          <div style="margin-top:24px; text-align:center;">
+            <button class="btn btn-primary" onclick="lineOrder('你好，我想詢問 MuStar 訂購方式')">立即 LINE 訂購</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer class="footer">
+    <div class="container">
+      © MuStar 沐星人手作餅乾
+    </div>
+  </footer>
+
+  <a class="line-float" href="javascript:void(0)" onclick="lineOrder('你好，我想詢問 MuStar 商品')">LINE</a>
+
+  <script>
+    function lineOrder(message) {
+      const text = encodeURIComponent(message);
+      window.open("https://line.me/R/msg/text/?" + text, "_blank");
+    }
+  </script>
 </body>
 </html>
