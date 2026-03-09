@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MuStar 商品</title>
+  <meta name="description" content="MuStar 沐星人手作餅乾商品頁，包含堅果塔、手作餅乾、綜合禮盒。" />
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft JhengHei", sans-serif;
+      background: #f8f4ef;
+      color: #2f2a26;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: #ffffff;
+      text-align: center;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      border-bottom: 1px solid #eee3d8;
+      color: #6b5d52;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #eee3d8;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 38px;
+      font-weight: 800;
+      color: #dd7a16;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-weight: 700;
+      color: #514740;
+    }
+
+    .page-hero {
+      background: linear-gradient(180deg, #f5ede6 0%, #e9ddd2 100%);
+      padding: 56px 0 42px;
+      text-align: center;
+    }
+
+    .page-hero h1 {
+      margin: 0 0 10px;
+      font-size: 46px;
+      color: #2f2a26;
+    }
+
+    .page-hero p {
+      margin: 0 auto;
+      max-width: 760px;
+      color: #6d625a;
+      font-size: 18px;
+    }
+
+    .section {
+      padding: 68px 0;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.07);
+    }
+
+    .product-image {
+      height: 220px;
+      background: linear-gradient(135deg, #ecd6bf, #d3a07a);
+    }
+
+    .product-body {
+      padding: 22px;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #f7efe7;
+      color: #9b7558;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .product-title {
+      margin: 0 0 10px;
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .product-text {
+      margin: 0 0 12px;
+      color: #6f635a;
+      min-height: 50px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: 800;
+      color: #dd7a16;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      border: none;
+      border-radius: 18px;
+      padding: 16px 28px;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      background: #ff7a1a;
+      color: white;
+      box-shadow: 0 12px 24px rgba(255, 122, 26, 0.28);
+    }
+
+    .footer {
+      padding: 34px 0 48px;
+      text-align: center;
+      color: #756a63;
+      border-top: 1px solid #eadfd5;
+      background: white;
+    }
+
+    .line-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      background: #06c755;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      box-shadow: 0 14px 26px rgba(6, 199, 85, 0.3);
+      z-index: 200;
+    }
+
+    @media (max-width: 920px) {
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .page-hero h1 {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .logo {
+        font-size: 32px;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .line-float {
+        width: 84px;
+        height: 84px;
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">MuStar 沐星人手作餅乾</div>
+
+  <header class="header">
+    <div class="container nav">
+      <div class="logo">MuStar</div>
+      <nav class="nav-links">
+        <a href="index.html">首頁</a>
+        <a href="services.html">商品</a>
+        <a href="pricing.html">禮盒</a>
+        <a href="cases.html">品牌故事</a>
+        <a href="contact.html">訂購</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>MuStar 商品</h1>
+        <p>精選手作甜點與送禮品項，從日常小點心到完整禮盒，都能快速透過 LINE 訂購。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="products">
+          <article class="product-card">
+            <div class="product-image"></div>
+            <div class="product-body">
+              <div class="tag">人氣熱銷</div>
+              <h3 class="product-title">堅果塔</h3>
+              <p class="product-text">香酥塔皮搭配堅果，層次豐富，適合下午茶與精緻送禮。</p>
+              <div class="price">NT$180</div>
+              <button class="btn" onclick="lineOrder('我要訂購：堅果塔 NT$180')">LINE 訂購</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image"></div>
+            <div class="product-body">
+              <div class="tag">經典款</div>
+              <h3 class="product-title">手作餅乾</h3>
+              <p class="product-text">奶香酥脆、溫柔順口，適合日常分享與伴手禮。</p>
+              <div class="price">NT$220</div>
+              <button class="btn" onclick="lineOrder('我要訂購：手作餅乾 NT$220')">LINE 訂購</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image"></div>
+            <div class="product-body">
+              <div class="tag">送禮首選</div>
+              <h3 class="product-title">綜合禮盒</h3>
+              <p class="product-text">多款甜點一次滿足，節日送禮、企業拜訪都很合適。</p>
+              <div class="price">NT$520</div>
+              <button class="btn" onclick="lineOrder('我要訂購：綜合禮盒 NT$520')">LINE 訂購</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © MuStar 沐星人手作餅乾
+    </div>
+  </footer>
+
+  <a class="line-float" href="javascript:void(0)" onclick="lineOrder('你好，我想詢問 MuStar 商品')">LINE</a>
+
+  <script>
+    function lineOrder(message) {
+      const text = encodeURIComponent(message);
+      window.open("https://line.me/R/msg/text/?" + text, "_blank");
+    }
+  </script>
+</body>
+</html>
