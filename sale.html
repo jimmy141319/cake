@@ -1,203 +1,50 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MuStar 手工堅果塔</title>
-
-<style>
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:#fff;
-  color:#333;
-  text-align:center;
-  padding-bottom:90px;
-  overflow-x:hidden;
-}
-
-@keyframes heroBreath{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.04);}
-  100%{transform:scale(1);}
+@keyframes heroMove{
+  0%{transform:scale(1) translateY(0)}
+  50%{transform:scale(1.08) translateY(-10px)}
+  100%{transform:scale(1) translateY(0)}
 }
 
 @keyframes waveMove{
-  0%{transform:translateX(0);}
-  50%{transform:translateX(-18px);}
-  100%{transform:translateX(0);}
+  0%{transform:translateX(0)}
+  50%{transform:translateX(-120px)}
+  100%{transform:translateX(0)}
 }
 
-@keyframes floatText{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-4px);}
-  100%{transform:translateY(0);}
+@keyframes waveFloat{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+  100%{transform:translateY(0)}
 }
 
-.hero{
-  position:relative;
-  width:100%;
-  height:70vh;
-  overflow:hidden;
+@keyframes lightFlow{
+  0%{opacity:.2;transform:translateX(-60px)}
+  50%{opacity:.6;transform:translateX(60px)}
+  100%{opacity:.2;transform:translateX(-60px)}
+}
+
+.hero img{
+  animation:heroMove 10s ease-in-out infinite;
 }
 
 .hero::after{
   content:"";
   position:absolute;
-  left:-5%;
+  left:-15%;
   bottom:0;
-  width:110%;
-  height:28%;
-  background:linear-gradient(to top, rgba(255,255,255,0.06), rgba(255,255,255,0));
-  animation:waveMove 8s ease-in-out infinite;
+  width:130%;
+  height:35%;
+  background:linear-gradient(to top,rgba(255,255,255,.18),rgba(255,255,255,0));
+  animation:waveMove 6s ease-in-out infinite, waveFloat 4s ease-in-out infinite;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-15%;
+  width:130%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.2),transparent);
+  animation:lightFlow 4s linear infinite;
   pointer-events:none;
 }
-
-.hero img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  animation:heroBreath 10s ease-in-out infinite;
-  transform-origin:center center;
-}
-
-.content{
-  padding:20px;
-}
-
-.price{
-  font-size:30px;
-  font-weight:800;
-  margin:10px 0;
-  animation:floatText 3s ease-in-out infinite;
-}
-
-.alert{
-  color:#ff3b30;
-  font-weight:700;
-  margin-top:6px;
-  animation:floatText 2.4s ease-in-out infinite;
-}
-
-.desc{
-  color:#666;
-  line-height:1.7;
-  margin-bottom:20px;
-}
-
-.btn{
-  display:block;
-  width:92%;
-  max-width:420px;
-  margin:12px auto;
-  padding:18px;
-  border-radius:16px;
-  font-size:20px;
-  font-weight:700;
-  text-decoration:none;
-}
-
-.btn-primary{
-  background:#ff6a00;
-  color:#fff;
-}
-
-.btn-secondary{
-  background:#f2f2f2;
-  color:#333;
-}
-
-.review{
-  margin-top:20px;
-  padding:16px;
-  background:#f9f9f9;
-  border-radius:12px;
-  line-height:1.6;
-}
-
-.trust{
-  margin-top:20px;
-  font-size:14px;
-  color:#888;
-  line-height:1.6;
-}
-
-.fixed-bar{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  background:#fff;
-  border-top:1px solid #eee;
-  padding:10px;
-}
-
-.fixed-btn{
-  display:block;
-  width:95%;
-  max-width:500px;
-  margin:auto;
-  padding:16px;
-  border-radius:14px;
-  background:#ff6a00;
-  color:#fff;
-  font-size:18px;
-  font-weight:800;
-  text-decoration:none;
-}
-</style>
-</head>
-
-<body>
-
-<div class="hero">
-  <img src="mustar_hero.png.PNG">
-</div>
-
-<div class="content">
-
-  <div class="price">🔥 今日現做｜8入 NT$199</div>
-
-  <div class="alert">⚠️ 今天剩少量</div>
-
-  <div class="desc">
-    👍 手工製作｜每天現烤<br>
-    限量供應｜售完為止<br>
-    適合拜拜、送禮、下午茶
-  </div>
-
-  <a class="btn btn-primary" href="https://line.me/ti/p/~jimmy141319?text=我要訂購%20MuStar%20手工堅果塔%0A數量：%0A取貨時間：">
-    👉 立即下單（今天現做）
-  </a>
-
-  <a class="btn btn-secondary" href="https://line.me/ti/p/~jimmy141319?text=我想詢問%20MuStar%20手工堅果塔">
-    詢問 / 預留
-  </a>
-
-  <div style="font-weight:700;margin-top:20px;">
-    🔥 已售出超過 100 盒
-  </div>
-
-  <div class="review">
-    ⭐ 客人回饋<br>
-    「很好吃！會再買👍」<br>
-    「堅果很新鮮，小孩很喜歡」<br>
-    「已經回購第二次」
-  </div>
-
-  <div class="trust">
-    📍 外木山可取<br>
-    🕒 每日新鮮製作<br>
-    ⚠️ 建議提前預訂
-  </div>
-
-</div>
-
-<div class="fixed-bar">
-  <a class="fixed-btn" href="https://line.me/ti/p/~jimmy141319?text=我要訂購%20MuStar%20手工堅果塔%0A數量：%0A取貨時間：">
-    👉 LINE 直接下單（剩少量）
-  </a>
-</div>
-
-</body>
-</html>
