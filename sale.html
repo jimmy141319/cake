@@ -6,22 +6,26 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
   />
-  <title>MuStar 手工堅果塔</title>
+  <title>MuStar 沐星人手工點心</title>
 
   <style>
     :root {
-      --bg: #fffaf5;
-      --text: #2d2d2d;
-      --muted: #6f6f6f;
-      --primary: #ff6a00;
-      --primary-dark: #e55d00;
-      --soft: #fff1e8;
-      --soft-2: #f7f7f7;
-      --danger: #ff3b30;
-      --line: #e9e9e9;
-      --card-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-      --radius: 18px;
-      --max: 860px;
+      --bg: #fffdf9;
+      --surface: #ffffff;
+      --surface-soft: #faf7f2;
+      --text: #2f2a25;
+      --muted: #756b62;
+      --line: #ece5dc;
+      --primary: #f46a1f;
+      --primary-dark: #dc5b14;
+      --primary-soft: #fff0e6;
+      --danger: #e5483f;
+      --success: #2d8a5f;
+      --shadow: 0 14px 34px rgba(70, 44, 20, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --maxw: 1120px;
     }
 
     * {
@@ -34,266 +38,87 @@
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
       color: var(--text);
-      background: #ffffff;
-      text-align: center;
+      background: linear-gradient(180deg, #fffdf9 0%, #fffaf4 100%);
+      line-height: 1.6;
+      padding-bottom: 96px;
       overflow-x: hidden;
-      padding-bottom: 100px;
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     a {
+      color: inherit;
       text-decoration: none;
     }
 
-    .wrap {
-      width: 100%;
-      max-width: var(--max);
+    .container {
+      width: min(100%, var(--maxw));
       margin: 0 auto;
+      padding: 0 18px;
     }
 
-    /* -------------------------
-       Animations
-    ------------------------- */
-    @keyframes heroBreath {
-      0% {
-        transform: scale(1) translateY(0);
-      }
-      50% {
-        transform: scale(1.06) translateY(-6px);
-      }
-      100% {
-        transform: scale(1) translateY(0);
-      }
-    }
-
-    @keyframes oceanSlide {
-      0% {
-        transform: translateX(0);
-      }
-      50% {
-        transform: translateX(-120px);
-      }
-      100% {
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes oceanRise {
-      0% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-      100% {
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes nutFloat {
-      0% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-16px);
-      }
-      100% {
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes lightSweep {
-      0% {
-        opacity: 0.18;
-        transform: translateX(-80px);
-      }
-      50% {
-        opacity: 0.55;
-        transform: translateX(70px);
-      }
-      100% {
-        opacity: 0.18;
-        transform: translateX(-80px);
-      }
-    }
-
-    @keyframes floatText {
-      0% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-4px);
-      }
-      100% {
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes pulseBtn {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.045);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* -------------------------
-       Hero
-    ------------------------- */
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 72vh;
-      min-height: 420px;
-      max-height: 760px;
-      overflow: hidden;
-      background: #dce8ef;
-    }
-
-    .hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      animation: heroBreath 10s ease-in-out infinite;
-      transform-origin: center center;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -12%;
-      width: 124%;
-      height: 100%;
-      background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.22),
-        transparent
-      );
-      pointer-events: none;
-      animation: lightSweep 5s linear infinite;
-      z-index: 2;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      left: -12%;
-      bottom: 0;
-      width: 124%;
-      height: 42%;
-      background: linear-gradient(
-        to top,
-        rgba(255, 255, 255, 0.22),
-        rgba(255, 255, 255, 0.08),
-        rgba(255, 255, 255, 0)
-      );
-      pointer-events: none;
-      animation:
-        oceanSlide 6s ease-in-out infinite,
-        oceanRise 4s ease-in-out infinite,
-        nutFloat 5s ease-in-out infinite;
-      z-index: 2;
-    }
-
-    /* -------------------------
-       Main content
-    ------------------------- */
     .section {
-      padding: 22px 18px;
-      animation: fadeUp 0.7s ease both;
+      padding: 54px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(26px, 4.5vw, 40px);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    .section-desc {
+      margin: 12px auto 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 16px;
     }
 
     .card {
-      background: #fff;
-      border-radius: 22px;
-      box-shadow: var(--card-shadow);
-      padding: 22px 18px;
-      margin: 0 auto 18px;
-    }
-
-    .price {
-      font-size: clamp(30px, 6vw, 40px);
-      font-weight: 900;
-      margin: 8px 0 6px;
-      letter-spacing: -0.5px;
-      animation: floatText 3.2s ease-in-out infinite;
-    }
-
-    .alert {
-      display: inline-block;
-      margin-top: 6px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: #fff2f1;
-      color: var(--danger);
-      font-weight: 800;
-      font-size: 15px;
-      animation: floatText 2.4s ease-in-out infinite;
-    }
-
-    .desc {
-      margin: 16px auto 0;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 17px;
-      max-width: 620px;
-    }
-
-    .selling-points {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 22px auto 8px;
-      max-width: 680px;
-    }
-
-    .point {
-      background: var(--soft);
-      border-radius: 16px;
-      padding: 14px 12px;
-      font-size: 15px;
-      font-weight: 700;
-      color: #74411c;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
     }
 
     .btn {
-      display: block;
-      width: 100%;
-      max-width: 520px;
-      margin: 14px auto 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: 999px;
       border: none;
-      border-radius: 18px;
-      padding: 18px 20px;
-      font-size: 20px;
-      font-weight: 800;
       cursor: pointer;
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+      font-weight: 800;
+      font-size: 16px;
+      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+      text-align: center;
+      white-space: nowrap;
     }
 
     .btn:hover {
@@ -303,8 +128,7 @@
     .btn-primary {
       background: var(--primary);
       color: #fff;
-      box-shadow: 0 12px 24px rgba(255, 106, 0, 0.22);
-      animation: pulseBtn 1.8s ease-in-out infinite;
+      box-shadow: 0 10px 24px rgba(244, 106, 31, 0.22);
     }
 
     .btn-primary:hover {
@@ -312,256 +136,1015 @@
     }
 
     .btn-secondary {
-      background: var(--soft-2);
-      color: #333;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--line);
     }
 
-    .mini-note {
-      margin-top: 12px;
-      color: #999;
+    .btn-block {
+      width: 100%;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #fff4f2;
+      color: var(--danger);
       font-size: 13px;
-      line-height: 1.6;
+      font-weight: 800;
     }
 
-    /* -------------------------
-       Trust
-    ------------------------- */
-    .trust-strip {
+    .muted {
+      color: var(--muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .grid-2,
+      .grid-3,
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 76vh;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      background: #d9e8ef;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform-origin: center center;
+      animation: heroFloat 10s ease-in-out infinite;
+    }
+
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20, 20, 20, 0.08) 0%, rgba(20, 20, 20, 0.18) 40%, rgba(20, 20, 20, 0.36) 100%),
+        radial-gradient(circle at 70% 16%, rgba(255,255,255,0.18), transparent 30%);
+      z-index: 1;
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      left: -10%;
+      bottom: 0;
+      width: 120%;
+      height: 36%;
+      background: linear-gradient(to top, rgba(255,255,255,0.18), rgba(255,255,255,0.05), rgba(255,255,255,0));
+      animation: oceanShift 7s ease-in-out infinite, oceanLift 4.8s ease-in-out infinite;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      width: min(100%, var(--maxw));
+      margin: 0 auto;
+      padding: 72px 18px 52px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: end;
+    }
+
+    @media (max-width: 960px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding-top: 64px;
+      }
+    }
+
+    .hero-copy {
+      color: #fff;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.12);
+      text-align: left;
+      align-self: center;
+      max-width: 760px;
+    }
+
+    .brand-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      font-weight: 800;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(34px, 6vw, 66px);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      max-width: 760px;
+    }
+
+    .hero-subtitle {
+      margin: 18px 0 0;
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.8;
+      max-width: 640px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .hero-tags {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 10px;
-      margin-top: 18px;
+      margin-top: 20px;
     }
 
-    .trust-badge {
-      background: #fff;
-      border: 1px solid #f0e5db;
-      border-radius: 999px;
+    .hero-tag {
       padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
       font-size: 14px;
       font-weight: 700;
-      color: #6a4a2d;
     }
 
-    .sold-box {
-      margin-top: 20px;
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .hero-panel {
+      align-self: end;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 28px;
+      padding: 22px 18px;
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.12);
+      max-width: 440px;
+      margin-left: auto;
+    }
+
+    @media (max-width: 960px) {
+      .hero-panel {
+        margin-left: 0;
+        max-width: none;
+      }
+
+      .hero-copy {
+        text-align: left;
+      }
+    }
+
+    .price-big {
+      font-size: clamp(30px, 5vw, 42px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin: 8px 0 8px;
+      animation: floatText 3.4s ease-in-out infinite;
+    }
+
+    .micro-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* Product cards */
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .product-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .product-body {
+      padding: 18px;
+      text-align: left;
+    }
+
+    .product-name {
+      margin: 0 0 8px;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .product-meta {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .product-price {
+      font-size: 26px;
+      font-weight: 900;
+      margin: 8px 0 10px;
+    }
+
+    .product-desc {
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    .product-points {
+      padding-left: 18px;
+      margin: 0 0 16px;
+      color: var(--text);
+    }
+
+    .product-points li {
+      margin-bottom: 6px;
+    }
+
+    .product-actions {
+      margin-top: auto;
+    }
+
+    /* Value blocks */
+    .value-item {
+      padding: 20px 18px;
+      text-align: left;
+    }
+
+    .value-title {
+      margin: 0 0 8px;
       font-size: 18px;
       font-weight: 900;
-      color: #222;
     }
 
-    .review-box {
-      margin-top: 20px;
-      background: #fafafa;
-      border: 1px solid #efefef;
-      border-radius: 18px;
-      padding: 18px 16px;
-      line-height: 1.8;
-      color: #555;
+    .value-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* Story / making */
+    .making-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .making-photo-main img,
+    .making-photo-side img {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .making-photo-main img {
+      height: 100%;
+      min-height: 420px;
+    }
+
+    .making-side-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .making-side-stack img {
+      height: 201px;
+    }
+
+    @media (max-width: 960px) {
+      .making-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .making-photo-main img,
+      .making-side-stack img {
+        min-height: 0;
+        height: auto;
+      }
+    }
+
+    /* Reviews */
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .review-card {
+      padding: 20px 18px;
       text-align: left;
-      max-width: 680px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
-    .review-title {
-      font-weight: 900;
-      color: #222;
+    .review-stars {
+      font-size: 18px;
       margin-bottom: 8px;
+    }
+
+    .review-text {
+      margin: 0;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .review-author {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    @media (max-width: 960px) {
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Use cases */
+    .use-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .use-item {
+      padding: 18px 14px;
       text-align: center;
     }
 
-    .review-item {
-      padding: 6px 0;
-      border-bottom: 1px dashed #ececec;
+    .use-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
     }
 
-    .review-item:last-child {
-      border-bottom: 0;
+    .use-label {
+      font-weight: 800;
+      font-size: 16px;
+      margin-bottom: 6px;
     }
 
-    .real-box {
-      margin-top: 20px;
-      max-width: 680px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .real-title {
-      font-weight: 900;
-      margin-bottom: 10px;
-      font-size: 18px;
-      color: #222;
-    }
-
-    .real-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .real-grid img {
-      border-radius: 16px;
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
-    }
-
-    .trust-info {
-      margin-top: 20px;
+    .use-text {
       font-size: 14px;
-      color: #888;
-      line-height: 1.8;
+      color: var(--muted);
     }
 
-    /* -------------------------
-       Fixed CTA
-    ------------------------- */
+    @media (max-width: 960px) {
+      .use-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* Ingredients */
+    .ingredient-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .ingredient-item {
+      padding: 18px 14px;
+      text-align: left;
+    }
+
+    .ingredient-name {
+      font-weight: 900;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .ingredient-copy {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    @media (max-width: 960px) {
+      .ingredient-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* FAQ */
+    .faq-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-item {
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 20px;
+      font-weight: 900;
+      text-align: left;
+      position: relative;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 22px;
+      color: var(--primary);
+    }
+
+    .faq-item[open] summary::after {
+      content: "–";
+    }
+
+    .faq-content {
+      padding: 0 20px 18px;
+      text-align: left;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    /* Final CTA */
+    .final-cta {
+      text-align: center;
+      padding: 28px 18px;
+    }
+
+    .final-box {
+      padding: 28px 22px;
+      background: linear-gradient(180deg, #fff8f2 0%, #fff2e8 100%);
+    }
+
+    .final-title {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 38px);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    .final-text {
+      margin: 12px auto 0;
+      color: var(--muted);
+      max-width: 680px;
+      font-size: 16px;
+    }
+
+    .final-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 22px;
+    }
+
+    /* Fixed CTA */
     .fixed-bar {
       position: fixed;
       left: 0;
       bottom: 0;
       width: 100%;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
+      z-index: 999;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
       border-top: 1px solid var(--line);
       padding: 10px 12px;
-      z-index: 999;
+    }
+
+    .fixed-inner {
+      width: min(100%, 720px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .fixed-copy {
+      text-align: left;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .fixed-copy strong {
+      display: block;
+      color: var(--text);
+      font-size: 14px;
     }
 
     .fixed-btn {
-      display: block;
-      width: 100%;
-      max-width: 560px;
-      margin: 0 auto;
-      border-radius: 16px;
-      background: var(--primary);
-      color: #fff;
-      font-size: 18px;
-      font-weight: 900;
-      padding: 16px 18px;
-      box-shadow: 0 10px 20px rgba(255, 106, 0, 0.2);
+      min-width: 200px;
+      justify-self: end;
       animation: pulseBtn 1.8s ease-in-out infinite;
     }
 
-    /* -------------------------
-       Responsive
-    ------------------------- */
     @media (max-width: 720px) {
-      .hero {
-        height: 68vh;
-        min-height: 360px;
-      }
-
-      .selling-points {
+      .fixed-inner {
         grid-template-columns: 1fr;
       }
 
-      .real-grid {
-        grid-template-columns: 1fr;
+      .fixed-btn {
+        width: 100%;
+        min-width: 0;
       }
 
-      .real-grid img {
-        height: 220px;
+      .fixed-copy {
+        text-align: center;
       }
+    }
 
-      .btn {
-        font-size: 18px;
-      }
+    /* Animations */
+    @keyframes heroFloat {
+      0% { transform: scale(1) translateY(0); }
+      50% { transform: scale(1.05) translateY(-6px); }
+      100% { transform: scale(1) translateY(0); }
+    }
+
+    @keyframes oceanShift {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-90px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes oceanLift {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes floatText {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes pulseBtn {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.035); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
 <body>
 
-  <div class="hero">
-    <img src="mustar_hero.png.PNG" alt="MuStar 手工堅果塔" />
-  </div>
+  <section class="hero">
+    <div class="hero-media">
+      <img src="mustar_hero.png.PNG" alt="MuStar 沐星人手工堅果塔" />
+    </div>
 
-  <div class="wrap">
-    <div class="section">
-      <div class="card">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="brand-line">MuStar 沐星人｜每日現做手工點心</div>
 
-        <div class="price">🔥 今日現做｜8入 NT$199</div>
+        <h1 class="hero-title">
+          手工堅果塔、杏仁片、蛋糕<br />
+          為送禮、拜拜、下午茶而做
+        </h1>
 
-        <div class="alert">⚠️ 今天剩少量</div>
+        <p class="hero-subtitle">
+          今天現做，少量供應。<br />
+          不追求大量工廠感，只做好吃、真實、能讓人願意回購的手工點心。
+        </p>
 
-        <div class="desc">
-          👍 手工製作｜每天現烤<br />
-          限量供應｜售完為止<br />
-          適合拜拜、送禮、下午茶
+        <div class="hero-tags">
+          <div class="hero-tag">每日現做</div>
+          <div class="hero-tag">手工製作</div>
+          <div class="hero-tag">限量供應</div>
+          <div class="hero-tag">外木山可取</div>
         </div>
 
-        <div class="selling-points">
-          <div class="point">每日新鮮製作</div>
-          <div class="point">外木山可取</div>
-          <div class="point">送禮體面有質感</div>
-          <div class="point">堅果香氣濃郁</div>
+        <div class="hero-actions">
+          <a
+            class="btn btn-primary"
+            href="https://line.me/ti/p/~jimmy141319?text=我要訂購%20MuStar%20手工點心%0A商品：堅果塔%20/%20杏仁片%20/%20蛋糕%0A數量：%0A取貨時間："
+          >
+            👉 立即下單
+          </a>
+
+          <a
+            class="btn btn-secondary"
+            href="#products"
+          >
+            先看商品
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="pill">⚠️ 今天現做，數量有限</div>
+
+        <div class="price-big">
+          堅果塔 8入 NT$199
+        </div>
+
+        <div class="muted">
+          通常下午就會賣完，建議先預留。
         </div>
 
         <a
-          class="btn btn-primary"
+          class="btn btn-primary btn-block"
+          style="margin-top:16px"
           href="https://line.me/ti/p/~jimmy141319?text=我要訂購%20MuStar%20手工堅果塔%0A數量：%0A取貨時間："
         >
-          👉 立即下單（今天現做）
+          LINE 直接下單
         </a>
 
-        <a
-          class="btn btn-secondary"
-          href="https://line.me/ti/p/~jimmy141319?text=我想詢問%20MuStar%20手工堅果塔"
-        >
-          詢問 / 預留
-        </a>
-
-        <div class="mini-note">
-          點下去會直接進 LINE，帶出下單訊息
+        <div class="micro-note">
+          點下去會直接帶出下單內容，不用自己打字。
         </div>
-
-        <div class="trust-strip">
-          <div class="trust-badge">手工製作</div>
-          <div class="trust-badge">每日現烤</div>
-          <div class="trust-badge">限量供應</div>
-          <div class="trust-badge">建議提前預訂</div>
-        </div>
-
-        <div class="sold-box">🔥 已售出超過 100 盒</div>
-
-        <div class="review-box">
-          <div class="review-title">⭐ 客人回饋</div>
-
-          <div class="review-item">「很好吃！會再買👍」</div>
-          <div class="review-item">「堅果很新鮮，小孩很喜歡」</div>
-          <div class="review-item">「已經回購第二次」</div>
-        </div>
-
-        <div class="real-box">
-          <div class="real-title">📸 每日實拍</div>
-
-          <div class="real-grid">
-            <img src="real1.jpg" alt="MuStar 實拍 1" />
-            <img src="real2.jpg" alt="MuStar 實拍 2" />
-          </div>
-        </div>
-
-        <div class="trust-info">
-          📍 外木山可取<br />
-          🕒 每日新鮮製作<br />
-          ⚠️ 建議提前預訂
-        </div>
-
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">為什麼買 MuStar</div>
+        <h2 class="section-title">不是大量工廠貨，而是每天真實做出來的點心</h2>
+        <p class="section-desc">
+          你現在要的不是看起來很多，而是吃起來記得住、送出去有體面、買過之後會想回來再買。
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <div class="card value-item">
+          <h3 class="value-title">每日現做</h3>
+          <p class="value-text">不是囤貨，不是放很久，當天做、當天出。</p>
+        </div>
+
+        <div class="card value-item">
+          <h3 class="value-title">手工製作</h3>
+          <p class="value-text">每一批都有人在做，不是工廠大量複製。</p>
+        </div>
+
+        <div class="card value-item">
+          <h3 class="value-title">甜而不膩</h3>
+          <p class="value-text">不是只求甜，是讓人吃完還想再拿一個。</p>
+        </div>
+
+        <div class="card value-item">
+          <h3 class="value-title">適合多場景</h3>
+          <p class="value-text">拜拜、送禮、家庭點心、下午茶都成立。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">商品</div>
+        <h2 class="section-title">先把真正會賣的產品放上來</h2>
+        <p class="section-desc">
+          主力先推堅果塔，杏仁片補客單，蛋糕走預訂制，先把產品線建立完整。
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card product-card">
+          <img src="mustar_hero.png.PNG" alt="MuStar 手工堅果塔" />
+          <div class="product-body">
+            <h3 class="product-name">手工堅果塔</h3>
+            <div class="product-meta">主打商品｜今日現做｜通常下午售完</div>
+            <div class="product-price">8入 NT$199</div>
+            <p class="product-desc">
+              手工製作、堅果新鮮、甜而不膩，是目前最適合先開始成交的主力商品。
+            </p>
+            <ul class="product-points">
+              <li>每日現做，少量供應</li>
+              <li>適合拜拜、送禮、家庭分享</li>
+              <li>外木山可取，方便預留</li>
+            </ul>
+            <div class="product-actions">
+              <a
+                class="btn btn-primary btn-block"
+                href="https://line.me/ti/p/~jimmy141319?text=我要訂購%20MuStar%20手工堅果塔%0A數量：%0A取貨時間："
+              >
+                👉 立即下單
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card product-card">
+          <img src="real1.jpg" alt="MuStar 杏仁片" />
+          <div class="product-body">
+            <h3 class="product-name">杏仁片</h3>
+            <div class="product-meta">加購商品｜酥脆點心｜回購型</div>
+            <div class="product-price">LINE 詢問</div>
+            <p class="product-desc">
+              輕薄酥脆，適合當作堅果塔以外的第二個選擇，也適合作為禮盒搭配商品。
+            </p>
+            <ul class="product-points">
+              <li>輕盈好入口，不會有負擔</li>
+              <li>適合當下午茶或小點心</li>
+              <li>可與堅果塔一起預訂</li>
+            </ul>
+            <div class="product-actions">
+              <a
+                class="btn btn-secondary btn-block"
+                href="https://line.me/ti/p/~jimmy141319?text=我想詢問%20MuStar%20杏仁片"
+              >
+                詢問杏仁片
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card product-card">
+          <img src="real2.jpg" alt="MuStar 手作蛋糕" />
+          <div class="product-body">
+            <h3 class="product-name">手作蛋糕</h3>
+            <div class="product-meta">預訂商品｜生日 / 節日 / 特殊需求</div>
+            <div class="product-price">預訂制</div>
+            <p class="product-desc">
+              蛋糕不走現貨，先採預訂制。這條產品線主要拉高客單，也讓品牌更完整。
+            </p>
+            <ul class="product-points">
+              <li>節日、生日、特定日期可預約</li>
+              <li>先以詢問需求為主</li>
+              <li>未來可發展成第二主力</li>
+            </ul>
+            <div class="product-actions">
+              <a
+                class="btn btn-secondary btn-block"
+                href="https://line.me/ti/p/~jimmy141319?text=我想詢問%20MuStar%20手作蛋糕"
+              >
+                詢問蛋糕預訂
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">真實製作</div>
+        <h2 class="section-title">讓人知道，不是只會做圖，是真的每天在做</h2>
+        <p class="section-desc">
+          真實製作過程，永遠比任何文案更有說服力。
+        </p>
+      </div>
+
+      <div class="making-grid">
+        <div class="making-photo-main">
+          <img src="real1.jpg" alt="MuStar 製作實拍" />
+        </div>
+
+        <div class="making-side-stack">
+          <img src="real2.jpg" alt="MuStar 成品實拍" />
+          <img src="mustar_hero.png.PNG" alt="MuStar 商品實拍" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">客人回饋</div>
+        <h2 class="section-title">別人買過、吃過、願意再買，才是真正的信任</h2>
+        <p class="section-desc">
+          這裡先放文字版，之後你可以補成真實聊天截圖。
+        </p>
+      </div>
+
+      <div class="review-grid">
+        <div class="card review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">「很好吃！會再買👍」</p>
+          <div class="review-author">回饋 01</div>
+        </div>
+
+        <div class="card review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">「堅果很新鮮，小孩很喜歡。」</p>
+          <div class="review-author">回饋 02</div>
+        </div>
+
+        <div class="card review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">「已經回購第二次，送人也很好看。」</p>
+          <div class="review-author">回饋 03</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">適用情境</div>
+        <h2 class="section-title">幫客人直接決定：什麼時候買、買來做什麼</h2>
+      </div>
+
+      <div class="use-list">
+        <div class="card use-item">
+          <div class="use-icon">🛍️</div>
+          <div class="use-label">送禮</div>
+          <div class="use-text">小而體面，拿得出手。</div>
+        </div>
+
+        <div class="card use-item">
+          <div class="use-icon">🕯️</div>
+          <div class="use-label">拜拜</div>
+          <div class="use-text">現做新鮮，適合當供品。</div>
+        </div>
+
+        <div class="card use-item">
+          <div class="use-icon">☕</div>
+          <div class="use-label">下午茶</div>
+          <div class="use-text">不只是甜，還有堅果香氣。</div>
+        </div>
+
+        <div class="card use-item">
+          <div class="use-icon">👨‍👩‍👧</div>
+          <div class="use-label">家庭分享</div>
+          <div class="use-text">大人小孩都能接受的口味。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">成分與定位</div>
+        <h2 class="section-title">不是亂堆詞，而是把品牌定位說清楚</h2>
+      </div>
+
+      <div class="ingredient-grid">
+        <div class="card ingredient-item">
+          <div class="ingredient-name">手工製作</div>
+          <p class="ingredient-copy">不是工廠大量做出來的口感。</p>
+        </div>
+
+        <div class="card ingredient-item">
+          <div class="ingredient-name">精選堅果</div>
+          <p class="ingredient-copy">重點不是多，而是新鮮與香氣。</p>
+        </div>
+
+        <div class="card ingredient-item">
+          <div class="ingredient-name">甜而不膩</div>
+          <p class="ingredient-copy">不追求死甜，追求吃完還想再拿。</p>
+        </div>
+
+        <div class="card ingredient-item">
+          <div class="ingredient-name">少量製作</div>
+          <p class="ingredient-copy">每天新鮮製作，不把量當目標。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">FAQ</div>
+        <h2 class="section-title">把最常被問的問題先回答掉</h2>
+      </div>
+
+      <div class="faq-wrap">
+        <details class="card faq-item">
+          <summary>今天有現貨嗎？</summary>
+          <div class="faq-content">
+            以當天實際製作數量為主。因為都是少量現做，通常建議先 LINE 預留。
+          </div>
+        </details>
+
+        <details class="card faq-item">
+          <summary>怎麼預訂？</summary>
+          <div class="faq-content">
+            直接點頁面上的 LINE 按鈕，系統會帶出下單格式。填好數量與取貨時間即可。
+          </div>
+        </details>
+
+        <details class="card faq-item">
+          <summary>怎麼取貨？</summary>
+          <div class="faq-content">
+            目前以外木山可取為主，詳細取貨時間可以在 LINE 裡確認。
+          </div>
+        </details>
+
+        <details class="card faq-item">
+          <summary>可以當禮盒送人嗎？</summary>
+          <div class="faq-content">
+            可以。堅果塔 8入就是目前最適合先送人的規格。
+          </div>
+        </details>
+
+        <details class="card faq-item">
+          <summary>蛋糕有現貨嗎？</summary>
+          <div class="faq-content">
+            沒有。蛋糕目前先採預訂制，請先透過 LINE 詢問日期與需求。
+          </div>
+        </details>
+
+        <details class="card faq-item">
+          <summary>保存多久？</summary>
+          <div class="faq-content">
+            以新鮮食用為主，收到後建議儘早食用，詳細保存方式可於 LINE 詢問。
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section final-cta">
+    <div class="container">
+      <div class="card final-box">
+        <h2 class="final-title">今天現做，喜歡就先留</h2>
+        <p class="final-text">
+          你不用想太多，先下單、先預留。<br />
+          尤其是堅果塔，通常下午就會賣完。
+        </p>
+
+        <div class="final-actions">
+          <a
+            class="btn btn-primary"
+            href="https://line.me/ti/p/~jimmy141319?text=我要訂購%20MuStar%20手工堅果塔%0A數量：%0A取貨時間："
+          >
+            👉 LINE 直接下單
+          </a>
+
+          <a
+            class="btn btn-secondary"
+            href="https://line.me/ti/p/~jimmy141319?text=我想詢問%20MuStar%20商品"
+          >
+            詢問商品 / 預留
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="fixed-bar">
-    <a
-      class="fixed-btn"
-      href="https://line.me/ti/p/~jimmy141319?text=我要訂購%20MuStar%20手工堅果塔%0A數量：%0A取貨時間："
-    >
-      👉 LINE 直接下單（剩少量）
-    </a>
+    <div class="fixed-inner">
+      <div class="fixed-copy">
+        <strong>MuStar 手工點心</strong>
+        今日現做｜堅果塔 8入 NT$199
+      </div>
+
+      <a
+        class="btn btn-primary fixed-btn"
+        href="https://line.me/ti/p/~jimmy141319?text=我要訂購%20MuStar%20手工堅果塔%0A數量：%0A取貨時間："
+      >
+        👉 立即下單
+      </a>
+    </div>
   </div>
 
 </body>
