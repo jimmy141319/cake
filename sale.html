@@ -1,111 +1,877 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MuStar 手工餅乾</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MuStar 沐星人手工點心</title>
+  <style>
+    :root{
+      --bg:#fffdf9;
+      --card:#ffffff;
+      --soft:#f7f3ee;
+      --line:#ece5db;
+      --text:#2d2a26;
+      --muted:#756d65;
+      --primary:#f46a1f;
+      --primary-dark:#db5f1c;
+      --danger:#e5483f;
+      --radius:22px;
+      --shadow:0 10px 30px rgba(70,44,20,.08);
+      --max:1100px;
+    }
 
-<style>
-body{margin:0;font-family:-apple-system;background:#fff;color:#222;line-height:1.7;padding-bottom:100px}
-.section{padding:80px 20px;text-align:center}
-h1,h2,h3{margin:10px 0}
-.hero{position:relative;height:100vh}
-.hero img{width:100%;height:100%;object-fit:cover}
-.hero-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff}
-.hero-text h1{font-size:42px}
-.btn{display:block;background:#ff6a00;color:#fff;padding:18px;border-radius:30px;margin:20px auto;text-decoration:none;font-weight:bold;max-width:420px}
-.card{background:#f8f8f8;border-radius:20px;padding:25px;margin:25px auto;max-width:600px}
-img{max-width:100%;border-radius:20px}
-.price{font-size:34px;font-weight:bold;color:#ff6a00}
-.fixed{position:fixed;bottom:0;width:100%;background:#fff;padding:10px;box-shadow:0 -2px 10px rgba(0,0,0,0.1)}
-</style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#fffdf9 0%,#fff9f2 100%);
+      line-height:1.65;
+      padding-bottom:92px;
+    }
 
+    img{display:block;max-width:100%}
+    a{text-decoration:none;color:inherit}
+
+    .container{
+      width:min(100%,var(--max));
+      margin:0 auto;
+      padding:0 18px;
+    }
+
+    .section{padding:56px 0}
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#fff0e6;
+      color:var(--primary-dark);
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.04em;
+    }
+
+    .section-head{
+      text-align:center;
+      margin-bottom:26px;
+    }
+
+    .section-title{
+      margin:14px 0 0;
+      font-size:clamp(28px,4vw,42px);
+      line-height:1.18;
+      letter-spacing:-.03em;
+    }
+
+    .section-desc{
+      margin:12px auto 0;
+      max-width:760px;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      padding:0 22px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:16px;
+      transition:.18s ease;
+      border:none;
+      cursor:pointer;
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{
+      background:var(--primary);
+      color:#fff;
+      box-shadow:0 10px 24px rgba(244,106,31,.2);
+    }
+    .btn-primary:hover{background:var(--primary-dark)}
+    .btn-secondary{
+      background:#fff;
+      border:1px solid var(--line);
+      color:var(--text);
+    }
+
+    /* hero */
+    .hero{
+      position:relative;
+      min-height:76vh;
+      overflow:hidden;
+      background:#dbe8f0;
+    }
+
+    .hero-media{
+      position:absolute;
+      inset:0;
+    }
+
+    .hero-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.06) 0%,rgba(0,0,0,.18) 48%,rgba(0,0,0,.4) 100%);
+    }
+
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      width:min(100%,var(--max));
+      margin:0 auto;
+      padding:72px 18px 52px;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px;
+      align-items:end;
+    }
+
+    .hero-copy{
+      color:#fff;
+      text-align:left;
+      max-width:760px;
+    }
+
+    .hero-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.14);
+      backdrop-filter:blur(8px);
+      font-size:13px;
+      font-weight:800;
+      margin-bottom:18px;
+    }
+
+    .hero-title{
+      margin:0;
+      font-size:clamp(34px,6vw,66px);
+      line-height:.98;
+      letter-spacing:-.04em;
+    }
+
+    .hero-subtitle{
+      margin:18px 0 0;
+      max-width:620px;
+      font-size:18px;
+      line-height:1.8;
+      color:rgba(255,255,255,.92);
+    }
+
+    .hero-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .hero-tag{
+      padding:9px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.14);
+      backdrop-filter:blur(8px);
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .hero-panel{
+      background:rgba(255,255,255,.94);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,.55);
+      border-radius:28px;
+      padding:22px 18px;
+      box-shadow:0 20px 40px rgba(0,0,0,.12);
+      max-width:430px;
+      margin-left:auto;
+    }
+
+    .pill-danger{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#fff1ef;
+      color:var(--danger);
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .price-big{
+      margin:10px 0 8px;
+      font-size:clamp(30px,5vw,42px);
+      font-weight:900;
+      line-height:1.08;
+      letter-spacing:-.04em;
+    }
+
+    .muted{color:var(--muted)}
+
+    /* feature blocks */
+    .grid-4{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .feature{
+      padding:20px 18px;
+      text-align:left;
+    }
+
+    .feature h3{
+      margin:0 0 8px;
+      font-size:18px;
+    }
+
+    .feature p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    /* products */
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .product-card{
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+
+    .product-card img{
+      width:100%;
+      aspect-ratio:4/3;
+      object-fit:cover;
+    }
+
+    .product-body{
+      padding:18px;
+      text-align:left;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+
+    .product-name{
+      margin:0 0 8px;
+      font-size:24px;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+
+    .product-price{
+      font-size:30px;
+      font-weight:900;
+      margin:0 0 10px;
+      color:var(--primary);
+    }
+
+    .product-meta{
+      color:var(--muted);
+      font-size:14px;
+      margin-bottom:12px;
+    }
+
+    .product-desc{
+      color:var(--muted);
+      margin:0 0 16px;
+    }
+
+    .product-points{
+      margin:0 0 18px;
+      padding-left:18px;
+    }
+
+    .product-points li{margin-bottom:6px}
+    .product-actions{margin-top:auto}
+
+    /* making */
+    .making-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:18px;
+    }
+
+    .making-main img,
+    .making-side img{
+      width:100%;
+      object-fit:cover;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .making-main img{
+      min-height:420px;
+      height:100%;
+    }
+
+    .making-stack{
+      display:grid;
+      gap:18px;
+    }
+
+    .making-stack img{
+      height:201px;
+    }
+
+    /* reviews */
+    .review-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .review-card{
+      padding:20px 18px;
+      text-align:left;
+    }
+
+    .review-stars{font-size:18px;margin-bottom:8px}
+    .review-text{margin:0;color:var(--text)}
+    .review-author{margin-top:10px;color:var(--muted);font-size:14px;font-weight:700}
+
+    /* usage */
+    .use-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .use-item{
+      padding:18px 14px;
+      text-align:center;
+    }
+
+    .use-icon{font-size:28px;margin-bottom:8px}
+    .use-label{font-weight:900;margin-bottom:6px}
+    .use-text{font-size:14px;color:var(--muted)}
+
+    /* ingredients */
+    .ingredient-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .ingredient-item{
+      padding:18px 14px;
+      text-align:left;
+    }
+
+    .ingredient-item h3{
+      margin:0 0 8px;
+      font-size:16px;
+    }
+
+    .ingredient-item p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* faq */
+    .faq-wrap{
+      max-width:860px;
+      margin:0 auto;
+      display:grid;
+      gap:12px;
+    }
+
+    .faq-item{
+      overflow:hidden;
+    }
+
+    .faq-item summary{
+      list-style:none;
+      cursor:pointer;
+      padding:18px 20px;
+      font-weight:900;
+      text-align:left;
+      position:relative;
+    }
+
+    .faq-item summary::-webkit-details-marker{display:none}
+    .faq-item summary::after{
+      content:"+";
+      position:absolute;
+      right:20px;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:22px;
+      color:var(--primary);
+    }
+
+    .faq-item[open] summary::after{content:"–"}
+
+    .faq-content{
+      padding:0 20px 18px;
+      text-align:left;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+    }
+
+    /* final */
+    .final-box{
+      padding:30px 22px;
+      background:linear-gradient(180deg,#fff8f2 0%,#fff1e6 100%);
+      text-align:center;
+    }
+
+    .final-title{
+      margin:0;
+      font-size:clamp(28px,4vw,40px);
+      line-height:1.2;
+      letter-spacing:-.03em;
+    }
+
+    .final-text{
+      margin:12px auto 0;
+      max-width:720px;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    .final-actions{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    /* fixed bar */
+    .fixed-bar{
+      position:fixed;
+      left:0;
+      bottom:0;
+      width:100%;
+      z-index:999;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(12px);
+      border-top:1px solid var(--line);
+      padding:10px 12px;
+    }
+
+    .fixed-inner{
+      width:min(100%,720px);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:10px;
+      align-items:center;
+    }
+
+    .fixed-copy{
+      text-align:left;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.35;
+    }
+
+    .fixed-copy strong{
+      display:block;
+      color:var(--text);
+      font-size:14px;
+    }
+
+    @media (max-width: 960px){
+      .hero-inner,
+      .making-grid,
+      .grid-3,
+      .grid-4,
+      .review-grid,
+      .use-grid,
+      .ingredient-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-panel{
+        margin-left:0;
+        max-width:none;
+      }
+
+      .making-main img,
+      .making-stack img{
+        min-height:0;
+        height:auto;
+      }
+    }
+
+    @media (max-width: 720px){
+      .hero{min-height:74vh}
+      .hero-title{font-size:40px}
+      .hero-subtitle{font-size:16px}
+      .fixed-inner{grid-template-columns:1fr}
+      .fixed-copy{text-align:center}
+      .btn{width:100%}
+    }
+  </style>
 </head>
 <body>
 
-<!-- HERO -->
-<div class="hero">
-<img src="https://picsum.photos/1200/900">
-<div class="hero-text">
-<h1>你還在買那些吃完就忘的餅乾嗎？</h1>
-<p>MuStar，只做會讓人回購的手工餅乾</p>
-<a class="btn" href="https://line.me/ti/p/~jimmy141319">👉 立即下單</a>
-</div>
-</div>
+  <section class="hero">
+    <div class="hero-media">
+      <img src="nuts_real.jpg" alt="MuStar 手工堅果塔" />
+    </div>
+    <div class="hero-overlay"></div>
 
-<!-- 痛點 -->
-<div class="section">
-<h2>市面餅乾很多，但真的會再買的不多</h2>
-<p>太甜、太普通、沒有記憶點<br>送禮沒感覺，自己吃也不會回購</p>
-</div>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="hero-kicker">MuStar 沐星人｜手工點心品牌</div>
 
-<!-- 解法 -->
-<div class="section">
-<h2>MuStar 做的不是餅乾，是讓人記住的點心</h2>
-<p>每日現做・手工製作・限量供應<br>只做會讓人想再吃一口的味道</p>
-</div>
+        <h1 class="hero-title">
+          每日現做的堅果塔、杏仁片與手工餅乾
+        </h1>
 
-<!-- 主商品 -->
-<div class="section card">
-<img src="https://picsum.photos/500/400">
-<h2>手工堅果塔</h2>
-<div class="price">8入 NT$199</div>
-<p>今日現做｜通常下午售完</p>
-<a class="btn" href="https://line.me/ti/p/~jimmy141319">👉 下單</a>
-</div>
+        <p class="hero-subtitle">
+          不亂放圖，不用工廠感包裝。<br>
+          先把真正會賣、會回購、送出去有體面的產品做起來。
+        </p>
 
-<!-- 杏仁片 -->
-<div class="section card">
-<img src="https://picsum.photos/500/401">
-<h2>杏仁片</h2>
-<p>酥脆輕食｜搭配購買</p>
-<a class="btn" href="https://line.me/ti/p/~jimmy141319">詢問杏仁片</a>
-</div>
+        <div class="hero-tags">
+          <div class="hero-tag">每日現做</div>
+          <div class="hero-tag">手工製作</div>
+          <div class="hero-tag">限量供應</div>
+          <div class="hero-tag">外木山可取</div>
+        </div>
 
-<!-- 餅乾 -->
-<div class="section card">
-<img src="https://picsum.photos/500/402">
-<h2>楚利斯餅乾</h2>
-<p>手工餅乾｜日常回購</p>
-<a class="btn" href="https://line.me/ti/p/~jimmy141319">詢問餅乾</a>
-</div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://line.me/ti/p/~jimmy141319?text=我要訂購%20MuStar%20手工點心%0A商品：堅果塔%20/%20杏仁片%20/%20餅乾%0A數量：%0A取貨時間：">👉 立即下單</a>
+          <a class="btn btn-secondary" href="#products">先看商品</a>
+        </div>
+      </div>
 
-<!-- 製作 -->
-<div class="section">
-<h2>每日現做</h2>
-<img src="https://picsum.photos/800/500">
-<p>不是庫存，是每天真的在做</p>
-</div>
+      <div class="hero-panel">
+        <div class="pill-danger">⚠️ 今天現做，通常下午會賣完</div>
+        <div class="price-big">堅果塔 8入 NT$199</div>
+        <div class="muted">目前先主打堅果塔，杏仁片與手工餅乾可一起詢問。</div>
+        <a class="btn btn-primary btn-block" style="margin-top:16px" href="https://line.me/ti/p/~jimmy141319?text=我要訂購%20MuStar%20手工堅果塔%0A數量：%0A取貨時間：">LINE 直接下單</a>
+      </div>
+    </div>
+  </section>
 
-<!-- 信任 -->
-<div class="section">
-<h2>客人回饋</h2>
-<p>很好吃！會再買 👍</p>
-<p>不會太甜，小孩很喜歡</p>
-</div>
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">商品主張</span>
+        <h2 class="section-title">先把真正會賣的產品放上來</h2>
+        <p class="section-desc">
+          主力先推堅果塔，杏仁片補客單，手工餅乾走日常回購，先把產品線建立完整。
+        </p>
+      </div>
 
-<!-- 情境 -->
-<div class="section">
-<h2>適合這些時候</h2>
-<p>送禮｜拜拜｜下午茶｜家庭分享</p>
-</div>
+      <div class="grid-4">
+        <div class="card feature">
+          <h3>每日現做</h3>
+          <p>不是放很久的庫存，是每天真實做出來的產品。</p>
+        </div>
+        <div class="card feature">
+          <h3>手工製作</h3>
+          <p>不追求工廠大量感，先把口感和香氣做好。</p>
+        </div>
+        <div class="card feature">
+          <h3>限量供應</h3>
+          <p>先少量、先穩定，喜歡就先預留。</p>
+        </div>
+        <div class="card feature">
+          <h3>多情境適用</h3>
+          <p>送禮、拜拜、家庭點心、下午茶都成立。</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- FAQ -->
-<div class="section">
-<h2>常見問題</h2>
-<p>如何訂購 → LINE<br>有現貨嗎 → 每日現做<br>怎麼取貨 → 外木山</p>
-</div>
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">商品</span>
+        <h2 class="section-title">MuStar 現階段產品</h2>
+        <p class="section-desc">
+          不亂放風景圖，不假裝完整。先用真圖、真產品，把會成交的區塊做好。
+        </p>
+      </div>
 
-<!-- CTA -->
-<div class="section">
-<h2>今天現做，先留再說</h2>
-<a class="btn" href="https://line.me/ti/p/~jimmy141319">👉 LINE 下單</a>
-</div>
+      <div class="grid-3">
+        <article class="card product-card">
+          <img src="nuts_real.jpg" alt="手工堅果塔" />
+          <div class="product-body">
+            <h3 class="product-name">手工堅果塔</h3>
+            <div class="product-price">8入 NT$199</div>
+            <div class="product-meta">主打商品｜今日現做｜通常下午售完</div>
+            <p class="product-desc">
+              先用這個商品打市場。堅果香氣夠、視覺也夠，是目前最適合先成交的主商品。
+            </p>
+            <ul class="product-points">
+              <li>適合送禮、拜拜、家庭分享</li>
+              <li>每日現做，建議先預留</li>
+              <li>外木山可取</li>
+            </ul>
+            <div class="product-actions">
+              <a class="btn btn-primary btn-block" href="https://line.me/ti/p/~jimmy141319?text=我要訂購%20MuStar%20手工堅果塔%0A數量：%0A取貨時間：">👉 立即下單</a>
+            </div>
+          </div>
+        </article>
 
-<!-- 固定 -->
-<div class="fixed">
-<a class="btn" href="https://line.me/ti/p/~jimmy141319">👉 立即下單（剩少量）</a>
-</div>
+        <article class="card product-card">
+          <img src="almond.jpg" alt="杏仁片" />
+          <div class="product-body">
+            <h3 class="product-name">杏仁片</h3>
+            <div class="product-price">LINE 詢問</div>
+            <div class="product-meta">補客單商品｜酥脆輕食</div>
+            <p class="product-desc">
+              作為第二商品很適合，酥脆、輕量、好入口，也比較容易形成回購。
+            </p>
+            <ul class="product-points">
+              <li>適合下午茶與小點心</li>
+              <li>可搭配堅果塔一起預訂</li>
+              <li>之後可延伸成禮盒組合</li>
+            </ul>
+            <div class="product-actions">
+              <a class="btn btn-secondary btn-block" href="https://line.me/ti/p/~jimmy141319?text=我想詢問%20MuStar%20杏仁片">詢問杏仁片</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card product-card">
+          <img src="brand.jpg" alt="MuStar 手工餅乾" />
+          <div class="product-body">
+            <h3 class="product-name">手工餅乾</h3>
+            <div class="product-price">LINE 詢問</div>
+            <div class="product-meta">日常回購｜手工點心</div>
+            <p class="product-desc">
+              餅乾這條線先放進來，但先不亂放錯圖。等真產品照齊了，再把這區完整升級。
+            </p>
+            <ul class="product-points">
+              <li>作為日常回購型商品</li>
+              <li>可補足品牌完整度</li>
+              <li>之後再細分口味</li>
+            </ul>
+            <div class="product-actions">
+              <a class="btn btn-secondary btn-block" href="https://line.me/ti/p/~jimmy141319?text=我想詢問%20MuStar%20手工餅乾">詢問餅乾</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">真實製作</span>
+        <h2 class="section-title">不是工廠，是每天真的在做</h2>
+        <p class="section-desc">
+          現在這階段，真實製作圖比任何華麗效果都重要。
+        </p>
+      </div>
+
+      <div class="making-grid">
+        <div class="making-main">
+          <img src="nuts_real.jpg" alt="MuStar 製作實拍" />
+        </div>
+
+        <div class="making-stack">
+          <img src="almond.jpg" alt="MuStar 杏仁片實拍" />
+          <img src="brand.jpg" alt="MuStar 品牌圖" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">客人回饋</span>
+        <h2 class="section-title">不是只有自己說好吃</h2>
+        <p class="section-desc">
+          這裡現在先用文字，之後你再換成真實聊天截圖。
+        </p>
+      </div>
+
+      <div class="review-grid">
+        <div class="card review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">「很好吃！會再買👍」</p>
+          <div class="review-author">回饋 01</div>
+        </div>
+
+        <div class="card review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">「堅果很新鮮，小孩很喜歡。」</p>
+          <div class="review-author">回饋 02</div>
+        </div>
+
+        <div class="card review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">「送人也體面，自己吃也會想再買。」</p>
+          <div class="review-author">回饋 03</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">適用情境</span>
+        <h2 class="section-title">幫客人決定什麼時候買</h2>
+      </div>
+
+      <div class="use-grid">
+        <div class="card use-item">
+          <div class="use-icon">🛍️</div>
+          <div class="use-label">送禮</div>
+          <div class="use-text">不想送太普通，這種比較有記憶點。</div>
+        </div>
+        <div class="card use-item">
+          <div class="use-icon">🕯️</div>
+          <div class="use-label">拜拜</div>
+          <div class="use-text">體面、乾淨、當天現做更安心。</div>
+        </div>
+        <div class="card use-item">
+          <div class="use-icon">☕</div>
+          <div class="use-label">下午茶</div>
+          <div class="use-text">比一般隨手餅乾更有質感。</div>
+        </div>
+        <div class="card use-item">
+          <div class="use-icon">👨‍👩‍👧</div>
+          <div class="use-label">家庭分享</div>
+          <div class="use-text">長輩、小孩都能接受的方向。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">品牌定位</span>
+        <h2 class="section-title">先把品牌說清楚，不是只放商品名</h2>
+      </div>
+
+      <div class="ingredient-grid">
+        <div class="card ingredient-item">
+          <h3>每日現做</h3>
+          <p>不是放很久再賣，先把新鮮感守住。</p>
+        </div>
+        <div class="card ingredient-item">
+          <h3>手工製作</h3>
+          <p>不是大量工廠感，而是實際有人在做。</p>
+        </div>
+        <div class="card ingredient-item">
+          <h3>精選堅果</h3>
+          <p>目前最有辨識度的產品核心。</p>
+        </div>
+        <div class="card ingredient-item">
+          <h3>不亂擴品</h3>
+          <p>先做會賣、會回購、會被記住的品項。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-title">先把最常被問的問題回答掉</h2>
+      </div>
+
+      <div class="faq-wrap">
+        <details class="card faq-item">
+          <summary>今天有現貨嗎？</summary>
+          <div class="faq-content">
+            以當天實際製作數量為主。因為是少量現做，建議先 LINE 預留。
+          </div>
+        </details>
+
+        <details class="card faq-item">
+          <summary>怎麼下單？</summary>
+          <div class="faq-content">
+            點頁面上的 LINE 按鈕，直接帶出下單訊息，填數量與取貨時間即可。
+          </div>
+        </details>
+
+        <details class="card faq-item">
+          <summary>怎麼取貨？</summary>
+          <div class="faq-content">
+            目前以外木山可取為主，詳細時間可在 LINE 裡確認。
+          </div>
+        </details>
+
+        <details class="card faq-item">
+          <summary>杏仁片和餅乾也能一起訂嗎？</summary>
+          <div class="faq-content">
+            可以，先透過 LINE 詢問目前可供應的數量與品項。
+          </div>
+        </details>
+
+        <details class="card faq-item">
+          <summary>可以送禮嗎？</summary>
+          <div class="faq-content">
+            可以。堅果塔目前是最適合先當禮品的規格。
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card final-box">
+        <h2 class="final-title">今天現做，喜歡就先留</h2>
+        <p class="final-text">
+          你現在不需要想太多，先留一盒最實際。<br>
+          尤其是堅果塔，通常下午就會賣完。
+        </p>
+
+        <div class="final-actions">
+          <a class="btn btn-primary" href="https://line.me/ti/p/~jimmy141319?text=我要訂購%20MuStar%20手工堅果塔%0A數量：%0A取貨時間：">👉 LINE 直接下單</a>
+          <a class="btn btn-secondary" href="https://line.me/ti/p/~jimmy141319?text=我想詢問%20MuStar%20商品">詢問商品 / 預留</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="fixed-bar">
+    <div class="fixed-inner">
+      <div class="fixed-copy">
+        <strong>MuStar 沐星人手工點心</strong>
+        堅果塔 8入 NT$199｜今日現做
+      </div>
+      <a class="btn btn-primary" href="https://line.me/ti/p/~jimmy141319?text=我要訂購%20MuStar%20手工堅果塔%0A數量：%0A取貨時間：">👉 立即下單</a>
+    </div>
+  </div>
 
 </body>
 </html>
