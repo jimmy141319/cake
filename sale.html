@@ -9,13 +9,15 @@
       --bg:#f6f1ea;
       --paper:#fffaf4;
       --card:#fffdf9;
-      --ink:#2d2926;
-      --sub:#766f67;
-      --line:#e7ddd1;
+      --ink:#241f1b;
+      --sub:#6f675f;
+      --line:#e5dacd;
       --accent1:#ff7a00;
-      --accent2:#ff5a00;
-      --deep:#312a24;
+      --accent2:#ff4d00;
+      --deep1:#181310;
+      --deep2:#352b22;
       --danger:#e60012;
+      --warm:#fff1e7;
     }
 
     *{box-sizing:border-box}
@@ -23,19 +25,19 @@
     html,body{
       margin:0;
       padding:0;
-      background:linear-gradient(180deg,#f7f2eb 0%,#f3ede5 100%);
+      background:linear-gradient(180deg,#f7f2eb 0%,#f2ece3 100%);
       color:var(--ink);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;
     }
 
     body{
-      padding-bottom:110px;
+      padding-bottom:112px;
     }
 
     .wrap{
       max-width:520px;
       margin:0 auto;
-      padding:18px 16px 36px;
+      padding:18px 16px 40px;
     }
 
     .hero{
@@ -43,26 +45,37 @@
       overflow:hidden;
       border-radius:28px;
       background:#ddd;
-      box-shadow:0 18px 40px rgba(60,40,20,.10);
+      box-shadow:0 22px 48px rgba(55,35,10,.12);
     }
 
     .hero img{
       width:100%;
       display:block;
       border-radius:28px;
+      transform:scale(1.02);
     }
 
     .hero-badge{
       position:absolute;
       left:14px;
       top:14px;
-      background:rgba(255,255,255,.92);
+      background:rgba(255,255,255,.94);
       color:var(--accent2);
       border-radius:999px;
       padding:8px 12px;
       font-size:13px;
-      font-weight:800;
-      box-shadow:0 8px 20px rgba(0,0,0,.08);
+      font-weight:900;
+      box-shadow:0 10px 24px rgba(0,0,0,.10);
+      letter-spacing:.03em;
+    }
+
+    .hero-badge.right{
+      left:auto;
+      right:14px;
+      top:auto;
+      bottom:14px;
+      background:rgba(255,122,0,.94);
+      color:#fff;
     }
 
     .title-block{
@@ -72,9 +85,9 @@
     .eyebrow{
       display:inline-block;
       font-size:13px;
-      font-weight:800;
+      font-weight:900;
       color:var(--accent2);
-      background:#fff1e8;
+      background:var(--warm);
       border-radius:999px;
       padding:8px 12px;
       margin-bottom:14px;
@@ -82,14 +95,21 @@
 
     h1{
       margin:0;
-      font-size:30px;
-      line-height:1.22;
-      letter-spacing:-0.03em;
+      font-size:31px;
+      line-height:1.2;
+      letter-spacing:-0.035em;
       font-weight:900;
     }
 
-    .lead{
+    .sub-strong{
       margin-top:14px;
+      font-size:19px;
+      line-height:1.6;
+      font-weight:800;
+    }
+
+    .lead{
+      margin-top:10px;
       color:var(--sub);
       font-size:17px;
       line-height:1.8;
@@ -99,28 +119,21 @@
       margin-top:20px;
       background:linear-gradient(180deg,#fffdfa 0%,#fff7ef 100%);
       border:1px solid var(--line);
-      border-radius:24px;
+      border-radius:26px;
       padding:20px 18px;
-      box-shadow:0 12px 30px rgba(70,45,20,.06);
-    }
-
-    .price-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
+      box-shadow:0 14px 34px rgba(70,45,20,.07);
     }
 
     .price{
-      font-size:34px;
+      font-size:36px;
       font-weight:900;
       letter-spacing:-0.03em;
+      line-height:1.1;
     }
 
     .soldout{
       color:var(--danger);
-      font-size:18px;
+      font-size:19px;
       font-weight:900;
       margin-top:8px;
     }
@@ -131,10 +144,11 @@
       font-size:15px;
     }
 
-    .mini-note{
+    .proof{
       margin-top:10px;
-      font-size:14px;
-      color:var(--sub);
+      font-size:15px;
+      font-weight:800;
+      color:#4d433b;
     }
 
     .btn{
@@ -142,19 +156,20 @@
       align-items:center;
       justify-content:center;
       width:100%;
-      min-height:60px;
+      min-height:62px;
       text-decoration:none;
       border-radius:999px;
-      font-size:21px;
+      font-size:22px;
       font-weight:900;
       transition:.18s ease;
+      letter-spacing:-0.02em;
     }
 
     .btn-primary{
       margin-top:18px;
       color:#fff;
       background:linear-gradient(135deg,var(--accent1),var(--accent2));
-      box-shadow:0 16px 32px rgba(255,106,0,.28);
+      box-shadow:0 18px 40px rgba(255,80,0,.40);
     }
 
     .btn-primary:hover{
@@ -185,42 +200,50 @@
       gap:10px;
       color:var(--ink);
       font-size:17px;
-      font-weight:700;
+      font-weight:800;
     }
 
     .detail-image{
       overflow:hidden;
-      border-radius:22px;
-      box-shadow:0 12px 30px rgba(70,45,20,.08);
+      border-radius:24px;
+      box-shadow:0 16px 34px rgba(70,45,20,.10);
       background:#eee;
     }
 
     .detail-image img{
       width:100%;
       display:block;
+      transform:scale(1.08);
     }
 
     .dark-band{
       margin-top:24px;
-      background:linear-gradient(135deg,#352d27 0%,#241e1a 100%);
+      background:linear-gradient(135deg,var(--deep1) 0%,var(--deep2) 100%);
       color:#fff;
-      border-radius:26px;
-      padding:26px 20px;
-      box-shadow:0 18px 36px rgba(20,10,0,.18);
+      border-radius:28px;
+      padding:28px 20px;
+      box-shadow:0 22px 44px rgba(20,10,0,.22);
     }
 
     .dark-band .big{
-      font-size:26px;
-      line-height:1.3;
+      font-size:28px;
+      line-height:1.28;
       font-weight:900;
       letter-spacing:-0.03em;
     }
 
     .dark-band .subtext{
-      margin-top:10px;
-      color:rgba(255,255,255,.78);
-      font-size:15px;
-      line-height:1.8;
+      margin-top:12px;
+      color:rgba(255,255,255,.82);
+      font-size:16px;
+      line-height:1.85;
+    }
+
+    .dark-band .dangerline{
+      margin-top:14px;
+      color:#ff8b4d;
+      font-size:18px;
+      font-weight:900;
     }
 
     .scene-grid{
@@ -238,6 +261,30 @@
       text-align:center;
       font-weight:800;
       box-shadow:0 6px 18px rgba(50,30,10,.04);
+      font-size:16px;
+    }
+
+    .review-grid{
+      display:grid;
+      gap:12px;
+    }
+
+    .review{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:14px 14px;
+    }
+
+    .review .stars{
+      color:#ff8a00;
+      font-weight:900;
+      margin-bottom:6px;
+    }
+
+    .review .text{
+      font-size:16px;
+      line-height:1.8;
     }
 
     .faq{
@@ -269,21 +316,28 @@
 
     .final-box{
       text-align:center;
-      background:linear-gradient(180deg,#fff9f2 0%,#fff3e6 100%);
+      background:linear-gradient(180deg,#fff9f2 0%,#fff1e4 100%);
     }
 
     .final-box .strong{
-      font-size:28px;
-      line-height:1.32;
+      font-size:30px;
+      line-height:1.3;
       font-weight:900;
       letter-spacing:-0.03em;
     }
 
     .final-box .danger{
       color:var(--danger);
-      font-size:18px;
+      font-size:19px;
       font-weight:900;
       margin-top:10px;
+    }
+
+    .final-box .sub{
+      color:var(--sub);
+      margin-top:10px;
+      font-size:16px;
+      line-height:1.8;
     }
 
     .footer-bar{
@@ -291,7 +345,7 @@
       left:0;
       right:0;
       bottom:0;
-      background:rgba(246,241,234,.95);
+      background:rgba(246,241,234,.96);
       backdrop-filter:blur(12px);
       border-top:1px solid var(--line);
       padding:10px 12px calc(10px + env(safe-area-inset-bottom));
@@ -308,6 +362,7 @@
       color:var(--sub);
       font-size:13px;
       margin-bottom:8px;
+      font-weight:700;
     }
   </style>
 </head>
@@ -318,24 +373,24 @@
     <div class="hero">
       <img src="mustar_box.jpg.PNG.PNG" alt="MuStar 8入堅果塔禮盒">
       <div class="hero-badge">🔥 8顆裝｜迷你精緻款</div>
+      <div class="hero-badge right">下午通常售完</div>
     </div>
 
     <div class="title-block">
       <div class="eyebrow">今日現做・限量供應</div>
       <h1>MuStar 手工堅果塔</h1>
+      <div class="sub-strong">這批賣完，就等明天。</div>
       <div class="lead">
         不是大顆版本，走的是小顆精緻路線。<br>
-        適合下午茶、送禮、拜拜，一盒 8 顆剛剛好。
+        8顆一盒，適合下午茶、送禮、拜拜，也適合先試一盒。
       </div>
     </div>
 
     <div class="price-card">
-      <div class="price-top">
-        <div class="price">8入 NT$199</div>
-      </div>
+      <div class="price">8入 NT$199</div>
       <div class="soldout">（今日剩少量）</div>
       <div class="size-note">迷你尺寸｜每顆約 20g</div>
-      <div class="mini-note">很多時候下午就沒了，想留盒數建議先用 LINE 預留。</div>
+      <div class="proof">很多人都是先用 LINE 預留，現場不一定買得到。</div>
 
       <a
         href="https://line.me/R/ti/p/~jimmy141319"
@@ -367,6 +422,7 @@
         不是現場隨時都有。<br>
         賣完就等下一批，這也是它看起來比較像手工點心、不是大量零食的原因。
       </div>
+      <div class="dangerline">現在不留，就等下一批。</div>
     </div>
 
     <div class="section card">
@@ -376,6 +432,24 @@
         <div class="scene">拜拜</div>
         <div class="scene">下午茶</div>
         <div class="scene">家庭分享</div>
+      </div>
+    </div>
+
+    <div class="section card">
+      <div class="section-title">客人會在意的事</div>
+      <div class="review-grid">
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <div class="text">堅果很多，吃得出來不是隨便做的。</div>
+        </div>
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <div class="text">小小一顆很精緻，拿來送人很好看。</div>
+        </div>
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <div class="text">不是那種很大的塔，反而比較好入口。</div>
+        </div>
       </div>
     </div>
 
@@ -402,6 +476,7 @@
     <div class="section card final-box">
       <div class="strong">今天這批，賣完就等下一批</div>
       <div class="danger">下一批製作時間：明天</div>
+      <div class="sub">想留盒數，直接加 LINE 傳訊息就好。</div>
 
       <a
         href="https://line.me/R/ti/p/~jimmy141319"
