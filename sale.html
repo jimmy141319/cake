@@ -6,88 +6,135 @@
   <title>MuStar 手工堅果塔</title>
   <style>
     :root{
-      --bg:#f7f3ee;
-      --text:#2d2a26;
-      --muted:#6f675f;
-      --accent:#ff6a00;
-      --accent-dark:#e55f00;
-      --danger:#e60000;
-      --card:#fffaf5;
+      --bg:#f6f1ea;
+      --paper:#fffaf4;
+      --card:#fffdf9;
+      --ink:#2d2926;
+      --sub:#766f67;
       --line:#e7ddd1;
+      --accent1:#ff7a00;
+      --accent2:#ff5a00;
+      --deep:#312a24;
+      --danger:#e60012;
     }
 
     *{box-sizing:border-box}
 
-    body{
+    html,body{
       margin:0;
+      padding:0;
+      background:linear-gradient(180deg,#f7f2eb 0%,#f3ede5 100%);
+      color:var(--ink);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.7;
-      padding-bottom:100px;
+    }
+
+    body{
+      padding-bottom:110px;
     }
 
     .wrap{
       max-width:520px;
       margin:0 auto;
-      padding:18px 16px 28px;
+      padding:18px 16px 36px;
     }
 
-    .hero-img,
-    .detail-img{
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      background:#ddd;
+      box-shadow:0 18px 40px rgba(60,40,20,.10);
+    }
+
+    .hero img{
       width:100%;
       display:block;
-      border-radius:24px;
-      box-shadow:0 8px 24px rgba(0,0,0,.06);
+      border-radius:28px;
+    }
+
+    .hero-badge{
+      position:absolute;
+      left:14px;
+      top:14px;
+      background:rgba(255,255,255,.92);
+      color:var(--accent2);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:13px;
+      font-weight:800;
+      box-shadow:0 8px 20px rgba(0,0,0,.08);
+    }
+
+    .title-block{
+      padding:24px 4px 8px;
     }
 
     .eyebrow{
       display:inline-block;
-      margin-top:22px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:#fff1e8;
-      color:var(--accent-dark);
       font-size:13px;
       font-weight:800;
-      letter-spacing:.04em;
+      color:var(--accent2);
+      background:#fff1e8;
+      border-radius:999px;
+      padding:8px 12px;
+      margin-bottom:14px;
     }
 
     h1{
-      font-size:28px;
-      line-height:1.28;
-      margin:14px 0 10px;
+      margin:0;
+      font-size:30px;
+      line-height:1.22;
+      letter-spacing:-0.03em;
       font-weight:900;
-      letter-spacing:-.02em;
     }
 
-    .sub{
-      font-size:18px;
-      font-weight:700;
-      margin-bottom:10px;
+    .lead{
+      margin-top:14px;
+      color:var(--sub);
+      font-size:17px;
+      line-height:1.8;
     }
 
-    .muted{
-      color:var(--muted);
+    .price-card{
+      margin-top:20px;
+      background:linear-gradient(180deg,#fffdfa 0%,#fff7ef 100%);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:20px 18px;
+      box-shadow:0 12px 30px rgba(70,45,20,.06);
+    }
+
+    .price-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
     .price{
       font-size:34px;
       font-weight:900;
-      margin:18px 0 6px;
-      letter-spacing:-.02em;
+      letter-spacing:-0.03em;
     }
 
-    .danger{
+    .soldout{
       color:var(--danger);
-      font-weight:900;
       font-size:18px;
+      font-weight:900;
+      margin-top:8px;
     }
 
-    .mini{
-      color:var(--muted);
+    .size-note{
+      margin-top:8px;
+      color:var(--sub);
       font-size:15px;
-      margin-top:6px;
+    }
+
+    .mini-note{
+      margin-top:10px;
+      font-size:14px;
+      color:var(--sub);
     }
 
     .btn{
@@ -95,91 +142,111 @@
       align-items:center;
       justify-content:center;
       width:100%;
-      min-height:58px;
-      border-radius:999px;
+      min-height:60px;
       text-decoration:none;
+      border-radius:999px;
+      font-size:21px;
       font-weight:900;
-      font-size:20px;
-      margin:18px 0;
-      border:none;
-      cursor:pointer;
       transition:.18s ease;
     }
 
-    .btn:hover{transform:translateY(-1px)}
-
-    .btn-line{
-      background:var(--accent);
+    .btn-primary{
+      margin-top:18px;
       color:#fff;
-      box-shadow:0 10px 22px rgba(255,106,0,.22);
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      box-shadow:0 16px 32px rgba(255,106,0,.28);
     }
 
-    .btn-line:hover{
-      background:var(--accent-dark);
+    .btn-primary:hover{
+      transform:translateY(-1px);
+    }
+
+    .section{
+      margin-top:22px;
     }
 
     .card{
       background:var(--card);
       border:1px solid var(--line);
-      border-radius:24px;
-      padding:18px 18px;
-      margin-top:18px;
+      border-radius:26px;
+      padding:22px 18px;
+      box-shadow:0 12px 30px rgba(70,45,20,.05);
     }
 
     .section-title{
-      font-size:22px;
+      margin:0 0 12px;
+      font-size:24px;
       font-weight:900;
-      margin:0 0 10px;
-      letter-spacing:-.02em;
+      letter-spacing:-0.02em;
     }
 
     .checklist{
-      margin:0;
-      padding:0;
-      list-style:none;
-    }
-
-    .checklist li{
-      margin:10px 0;
+      display:grid;
+      gap:10px;
+      color:var(--ink);
       font-size:17px;
       font-weight:700;
+    }
+
+    .detail-image{
+      overflow:hidden;
+      border-radius:22px;
+      box-shadow:0 12px 30px rgba(70,45,20,.08);
+      background:#eee;
+    }
+
+    .detail-image img{
+      width:100%;
+      display:block;
+    }
+
+    .dark-band{
+      margin-top:24px;
+      background:linear-gradient(135deg,#352d27 0%,#241e1a 100%);
+      color:#fff;
+      border-radius:26px;
+      padding:26px 20px;
+      box-shadow:0 18px 36px rgba(20,10,0,.18);
+    }
+
+    .dark-band .big{
+      font-size:26px;
+      line-height:1.3;
+      font-weight:900;
+      letter-spacing:-0.03em;
+    }
+
+    .dark-band .subtext{
+      margin-top:10px;
+      color:rgba(255,255,255,.78);
+      font-size:15px;
+      line-height:1.8;
     }
 
     .scene-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:12px;
-      margin-top:8px;
+      margin-top:12px;
     }
 
-    .scene-item{
+    .scene{
       background:#fff;
       border:1px solid var(--line);
       border-radius:18px;
       padding:14px 10px;
       text-align:center;
       font-weight:800;
-      font-size:15px;
+      box-shadow:0 6px 18px rgba(50,30,10,.04);
     }
 
-    .review{
-      padding:14px 0;
-      border-bottom:1px solid var(--line);
-    }
-
-    .review:last-child{
-      border-bottom:none;
-      padding-bottom:0;
-    }
-
-    .stars{
-      color:#ff8a00;
-      font-weight:900;
-      margin-bottom:6px;
+    .faq{
+      display:grid;
+      gap:14px;
     }
 
     .faq-item{
-      padding:14px 0;
+      padding-bottom:14px;
       border-bottom:1px solid var(--line);
     }
 
@@ -189,30 +256,56 @@
     }
 
     .faq-q{
+      font-size:17px;
       font-weight:900;
-      margin-bottom:6px;
+      margin-bottom:8px;
     }
 
-    .fixed-bar{
+    .faq-a{
+      color:var(--sub);
+      font-size:16px;
+      line-height:1.9;
+    }
+
+    .final-box{
+      text-align:center;
+      background:linear-gradient(180deg,#fff9f2 0%,#fff3e6 100%);
+    }
+
+    .final-box .strong{
+      font-size:28px;
+      line-height:1.32;
+      font-weight:900;
+      letter-spacing:-0.03em;
+    }
+
+    .final-box .danger{
+      color:var(--danger);
+      font-size:18px;
+      font-weight:900;
+      margin-top:10px;
+    }
+
+    .footer-bar{
       position:fixed;
       left:0;
       right:0;
       bottom:0;
-      background:rgba(247,243,238,.96);
-      backdrop-filter:blur(10px);
+      background:rgba(246,241,234,.95);
+      backdrop-filter:blur(12px);
       border-top:1px solid var(--line);
       padding:10px 12px calc(10px + env(safe-area-inset-bottom));
-      z-index:20;
+      z-index:99;
     }
 
-    .fixed-inner{
+    .footer-inner{
       max-width:520px;
       margin:0 auto;
     }
 
-    .fixed-note{
+    .footer-note{
       text-align:center;
-      color:var(--muted);
+      color:var(--sub);
       font-size:13px;
       margin-bottom:8px;
     }
@@ -222,126 +315,112 @@
 
   <div class="wrap">
 
-    <!-- 主圖 -->
-    <img src="mustar_box.jpg.PNG.PNG" alt="MuStar 8入堅果塔禮盒" class="hero-img" />
-
-    <div class="eyebrow">🔥 今日現做｜限量供應</div>
-
-    <h1>MuStar 手工堅果塔</h1>
-
-    <div class="sub">下午通常售完，喜歡先留</div>
-
-    <div class="muted">
-      純天然堅果｜無添加<br>
-      每天新鮮製作，不是大量庫存商品
+    <div class="hero">
+      <img src="mustar_box.jpg.PNG.PNG" alt="MuStar 8入堅果塔禮盒">
+      <div class="hero-badge">🔥 8顆裝｜迷你精緻款</div>
     </div>
 
-    <div class="price">8入 NT$199</div>
-    <div class="danger">（今日剩少量）</div>
-    <div class="mini">迷你尺寸｜每顆約20g</div>
-
-    <a
-      href="https://line.me/R/ti/p/~jimmy141319"
-      class="btn btn-line"
-      target="_blank"
-      rel="noopener noreferrer"
-    >👉 LINE 立即下單</a>
-
-    <div class="card">
-      <div class="section-title">為什麼這盒會賣</div>
-      <ul class="checklist">
-        <li>✔ 使用整顆堅果</li>
-        <li>✔ 手工製作，每批有限</li>
-        <li>✔ 小顆精緻，送禮和下午茶都適合</li>
-        <li>✔ 不是工廠量產，是每天真的在做</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <div class="section-title">產品細節</div>
-      <img src="mustar_single.jpg.PNG" alt="MuStar 單顆包裝" class="detail-img" />
-      <div class="mini" style="margin-top:12px;">
-        單顆包裝示意｜透明袋＋紙條＋麻繩風格
+    <div class="title-block">
+      <div class="eyebrow">今日現做・限量供應</div>
+      <h1>MuStar 手工堅果塔</h1>
+      <div class="lead">
+        不是大顆版本，走的是小顆精緻路線。<br>
+        適合下午茶、送禮、拜拜，一盒 8 顆剛剛好。
       </div>
     </div>
 
-    <div class="card">
-      <div class="section-title">適合這些情境</div>
-      <div class="scene-grid">
-        <div class="scene-item">送禮</div>
-        <div class="scene-item">拜拜</div>
-        <div class="scene-item">下午茶</div>
-        <div class="scene-item">家庭分享</div>
+    <div class="price-card">
+      <div class="price-top">
+        <div class="price">8入 NT$199</div>
       </div>
-    </div>
+      <div class="soldout">（今日剩少量）</div>
+      <div class="size-note">迷你尺寸｜每顆約 20g</div>
+      <div class="mini-note">很多時候下午就沒了，想留盒數建議先用 LINE 預留。</div>
 
-    <div class="card">
-      <div class="section-title">客人會在意的點</div>
-      <div class="muted">
-        這不是大顆塔，是迷你尺寸手工堅果塔。<br>
-        小顆、精緻、好入口，8顆一盒剛好適合分享。
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="section-title">回饋感受</div>
-
-      <div class="review">
-        <div class="stars">★★★★★</div>
-        <div>「小小一顆很精緻，吃起來很順口。」</div>
-      </div>
-
-      <div class="review">
-        <div class="stars">★★★★★</div>
-        <div>「送人很好看，不會像一般零食。」</div>
-      </div>
-
-      <div class="review">
-        <div class="stars">★★★★★</div>
-        <div>「堅果很多，吃得出來不是隨便做的。」</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="section-title">常見問題</div>
-
-      <div class="faq-item">
-        <div class="faq-q">Q：今天一定有貨嗎？</div>
-        <div class="muted">A：不一定，因為是當日現做，通常下午就會賣完，建議先用 LINE 預留。</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">Q：一顆多大？</div>
-        <div class="muted">A：每顆約 20g，屬於迷你精緻款，不是外面那種大顆版本。</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">Q：怎麼下單最快？</div>
-        <div class="muted">A：直接點下面的 LINE 按鈕，傳訊息預留數量即可。</div>
-      </div>
-    </div>
-
-    <div class="card" style="text-align:center;">
-      <div class="section-title">今天這批，賣完就等下一批</div>
-      <div class="danger" style="margin-bottom:10px;">下一批製作時間：明天</div>
       <a
         href="https://line.me/R/ti/p/~jimmy141319"
-        class="btn btn-line"
         target="_blank"
         rel="noopener noreferrer"
+        class="btn btn-primary"
+      >👉 LINE 立即下單</a>
+    </div>
+
+    <div class="section card">
+      <div class="section-title">這盒的重點</div>
+      <div class="checklist">
+        <div>✔ 使用整顆堅果</div>
+        <div>✔ 無防腐劑</div>
+        <div>✔ 手工製作，每批有限</div>
+        <div>✔ 小顆精緻，不是外面那種大顆版</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="detail-image">
+        <img src="mustar_single.jpg.PNG" alt="MuStar 單顆包裝">
+      </div>
+    </div>
+
+    <div class="dark-band">
+      <div class="big">今天這批，很多人都是先預留</div>
+      <div class="subtext">
+        不是現場隨時都有。<br>
+        賣完就等下一批，這也是它看起來比較像手工點心、不是大量零食的原因。
+      </div>
+    </div>
+
+    <div class="section card">
+      <div class="section-title">適合這些情境</div>
+      <div class="scene-grid">
+        <div class="scene">送禮</div>
+        <div class="scene">拜拜</div>
+        <div class="scene">下午茶</div>
+        <div class="scene">家庭分享</div>
+      </div>
+    </div>
+
+    <div class="section card">
+      <div class="section-title">常見問題</div>
+      <div class="faq">
+        <div class="faq-item">
+          <div class="faq-q">Q：今天一定有貨嗎？</div>
+          <div class="faq-a">A：不一定，因為是當日現做，通常下午就會賣完，建議先用 LINE 預留。</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Q：一顆多大？</div>
+          <div class="faq-a">A：每顆約 20g，屬於迷你精緻款，不是外面那種大顆版本。</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Q：怎麼下單最快？</div>
+          <div class="faq-a">A：直接點下面的 LINE 按鈕，傳訊息預留數量即可。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section card final-box">
+      <div class="strong">今天這批，賣完就等下一批</div>
+      <div class="danger">下一批製作時間：明天</div>
+
+      <a
+        href="https://line.me/R/ti/p/~jimmy141319"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary"
       >👉 LINE 下單預留</a>
     </div>
 
   </div>
 
-  <div class="fixed-bar">
-    <div class="fixed-inner">
-      <div class="fixed-note">MuStar 手工堅果塔｜8入 NT$199</div>
+  <div class="footer-bar">
+    <div class="footer-inner">
+      <div class="footer-note">MuStar 手工堅果塔｜8入 NT$199</div>
       <a
         href="https://line.me/R/ti/p/~jimmy141319"
-        class="btn btn-line"
         target="_blank"
         rel="noopener noreferrer"
+        class="btn btn-primary"
         style="margin:0;"
       >👉 立即加 LINE 下單</a>
     </div>
