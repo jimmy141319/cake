@@ -1,96 +1,351 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MuStar 手工堅果塔</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MuStar 手工堅果塔</title>
+  <style>
+    :root{
+      --bg:#f7f3ee;
+      --text:#2d2a26;
+      --muted:#6f675f;
+      --accent:#ff6a00;
+      --accent-dark:#e55f00;
+      --danger:#e60000;
+      --card:#fffaf5;
+      --line:#e7ddd1;
+    }
 
-<style>
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont;
-  background:#f8f6f2;
-  color:#2d2a26;
-}
-.container{
-  max-width:480px;
-  margin:auto;
-  padding:16px;
-}
-img{
-  width:100%;
-  border-radius:16px;
-}
-h1{
-  font-size:26px;
-  margin-top:16px;
-}
-.section{
-  margin-top:20px;
-  line-height:1.6;
-}
-.price{
-  font-size:32px;
-  font-weight:bold;
-  margin:16px 0;
-}
-.highlight{
-  color:red;
-  font-weight:bold;
-}
-.button{
-  display:block;
-  text-align:center;
-  background:#ff6a00;
-  color:white;
-  padding:16px;
-  border-radius:30px;
-  text-decoration:none;
-  font-size:18px;
-  margin:20px 0;
-}
-</style>
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.7;
+      padding-bottom:100px;
+    }
+
+    .wrap{
+      max-width:520px;
+      margin:0 auto;
+      padding:18px 16px 28px;
+    }
+
+    .hero-img,
+    .detail-img{
+      width:100%;
+      display:block;
+      border-radius:24px;
+      box-shadow:0 8px 24px rgba(0,0,0,.06);
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-top:22px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#fff1e8;
+      color:var(--accent-dark);
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.04em;
+    }
+
+    h1{
+      font-size:28px;
+      line-height:1.28;
+      margin:14px 0 10px;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+
+    .sub{
+      font-size:18px;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .muted{
+      color:var(--muted);
+    }
+
+    .price{
+      font-size:34px;
+      font-weight:900;
+      margin:18px 0 6px;
+      letter-spacing:-.02em;
+    }
+
+    .danger{
+      color:var(--danger);
+      font-weight:900;
+      font-size:18px;
+    }
+
+    .mini{
+      color:var(--muted);
+      font-size:15px;
+      margin-top:6px;
+    }
+
+    .btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      min-height:58px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:900;
+      font-size:20px;
+      margin:18px 0;
+      border:none;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+
+    .btn-line{
+      background:var(--accent);
+      color:#fff;
+      box-shadow:0 10px 22px rgba(255,106,0,.22);
+    }
+
+    .btn-line:hover{
+      background:var(--accent-dark);
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:18px 18px;
+      margin-top:18px;
+    }
+
+    .section-title{
+      font-size:22px;
+      font-weight:900;
+      margin:0 0 10px;
+      letter-spacing:-.02em;
+    }
+
+    .checklist{
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .checklist li{
+      margin:10px 0;
+      font-size:17px;
+      font-weight:700;
+    }
+
+    .scene-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:8px;
+    }
+
+    .scene-item{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px 10px;
+      text-align:center;
+      font-weight:800;
+      font-size:15px;
+    }
+
+    .review{
+      padding:14px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .review:last-child{
+      border-bottom:none;
+      padding-bottom:0;
+    }
+
+    .stars{
+      color:#ff8a00;
+      font-weight:900;
+      margin-bottom:6px;
+    }
+
+    .faq-item{
+      padding:14px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .faq-item:last-child{
+      border-bottom:none;
+      padding-bottom:0;
+    }
+
+    .faq-q{
+      font-weight:900;
+      margin-bottom:6px;
+    }
+
+    .fixed-bar{
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      background:rgba(247,243,238,.96);
+      backdrop-filter:blur(10px);
+      border-top:1px solid var(--line);
+      padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+      z-index:20;
+    }
+
+    .fixed-inner{
+      max-width:520px;
+      margin:0 auto;
+    }
+
+    .fixed-note{
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:8px;
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="container">
+  <div class="wrap">
 
-<!-- 主圖（8顆禮盒） -->
-<img src="mustar_box.jpg.PNG.PNG">
+    <!-- 主圖 -->
+    <img src="mustar_box.jpg.PNG.PNG" alt="MuStar 8入堅果塔禮盒" class="hero-img" />
 
-<h1>🔥 今日現做｜下午通常售完<br>MuStar 手工堅果塔</h1>
+    <div class="eyebrow">🔥 今日現做｜限量供應</div>
 
-<div class="section">
-純天然堅果｜無添加<br>
-每天新鮮製作，通常下午售完
-</div>
+    <h1>MuStar 手工堅果塔</h1>
 
-<div class="price">
-8入 NT$199<br>
-<span class="highlight">（今日剩少量）</span>
-</div>
+    <div class="sub">下午通常售完，喜歡先留</div>
 
-<a href="#" class="button">👉 立即下單（剩少量）</a>
+    <div class="muted">
+      純天然堅果｜無添加<br>
+      每天新鮮製作，不是大量庫存商品
+    </div>
 
-<!-- 單顆細節 -->
-<div class="section">
-<img src="mustar_single.jpg.PNG">
-</div>
+    <div class="price">8入 NT$199</div>
+    <div class="danger">（今日剩少量）</div>
+    <div class="mini">迷你尺寸｜每顆約20g</div>
 
-<div class="section">
-✔ 使用整顆堅果<br>
-✔ 無防腐劑<br>
-✔ 手工製作，每批有限
-</div>
+    <a
+      href="https://line.me/R/ti/p/~jimmy141319"
+      class="btn btn-line"
+      target="_blank"
+      rel="noopener noreferrer"
+    >👉 LINE 立即下單</a>
 
-<div class="section highlight">
-今日製作數量有限，售完即止
-</div>
+    <div class="card">
+      <div class="section-title">為什麼這盒會賣</div>
+      <ul class="checklist">
+        <li>✔ 使用整顆堅果</li>
+        <li>✔ 手工製作，每批有限</li>
+        <li>✔ 小顆精緻，送禮和下午茶都適合</li>
+        <li>✔ 不是工廠量產，是每天真的在做</li>
+      </ul>
+    </div>
 
-<a href="#" class="button">👉 立即下單</a>
+    <div class="card">
+      <div class="section-title">產品細節</div>
+      <img src="mustar_single.jpg.PNG" alt="MuStar 單顆包裝" class="detail-img" />
+      <div class="mini" style="margin-top:12px;">
+        單顆包裝示意｜透明袋＋紙條＋麻繩風格
+      </div>
+    </div>
 
-</div>
+    <div class="card">
+      <div class="section-title">適合這些情境</div>
+      <div class="scene-grid">
+        <div class="scene-item">送禮</div>
+        <div class="scene-item">拜拜</div>
+        <div class="scene-item">下午茶</div>
+        <div class="scene-item">家庭分享</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">客人會在意的點</div>
+      <div class="muted">
+        這不是大顆塔，是迷你尺寸手工堅果塔。<br>
+        小顆、精緻、好入口，8顆一盒剛好適合分享。
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">回饋感受</div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <div>「小小一顆很精緻，吃起來很順口。」</div>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <div>「送人很好看，不會像一般零食。」</div>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <div>「堅果很多，吃得出來不是隨便做的。」</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">常見問題</div>
+
+      <div class="faq-item">
+        <div class="faq-q">Q：今天一定有貨嗎？</div>
+        <div class="muted">A：不一定，因為是當日現做，通常下午就會賣完，建議先用 LINE 預留。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Q：一顆多大？</div>
+        <div class="muted">A：每顆約 20g，屬於迷你精緻款，不是外面那種大顆版本。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Q：怎麼下單最快？</div>
+        <div class="muted">A：直接點下面的 LINE 按鈕，傳訊息預留數量即可。</div>
+      </div>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <div class="section-title">今天這批，賣完就等下一批</div>
+      <div class="danger" style="margin-bottom:10px;">下一批製作時間：明天</div>
+      <a
+        href="https://line.me/R/ti/p/~jimmy141319"
+        class="btn btn-line"
+        target="_blank"
+        rel="noopener noreferrer"
+      >👉 LINE 下單預留</a>
+    </div>
+
+  </div>
+
+  <div class="fixed-bar">
+    <div class="fixed-inner">
+      <div class="fixed-note">MuStar 手工堅果塔｜8入 NT$199</div>
+      <a
+        href="https://line.me/R/ti/p/~jimmy141319"
+        class="btn btn-line"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="margin:0;"
+      >👉 立即加 LINE 下單</a>
+    </div>
+  </div>
 
 </body>
 </html>
